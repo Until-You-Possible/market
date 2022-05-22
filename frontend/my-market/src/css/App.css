@@ -2,6 +2,10 @@
 
 .App {
   text-align: center;
+  background: #cccccc;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .App-logo {

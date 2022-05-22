@@ -1,10 +1,16 @@
 import React from "react";
 import NavHeader from "../../publickComponents/NavHeader";
+import SearchComponent from "../../publickComponents/SearchComponent";
+import Category from "../../publickComponents/Category";
+import FooterComponent from "../../publickComponents/FooterComponent";
 
 function Home() {
     return (
         <div className="homeContainer">
             <NavHeader />
+            <SearchComponent />
+            <Category />
+            <FooterComponent />
         </div>
     )
 }
