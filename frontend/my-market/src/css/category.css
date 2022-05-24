@@ -1,0 +1,7 @@
+.categoryRow {
+    margin-top: 30px;
+}
+
+.categoryRow .goodWrapper {
+    border: 1px dotted #1890ff;
+}

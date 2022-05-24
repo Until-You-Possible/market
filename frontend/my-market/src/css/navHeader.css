@@ -1,0 +1,10 @@
+.headerWrap {
+    height: 40px;
+    line-height: 40px;
+    background: #eee;
+    margin-bottom: 40px;
+}
+
+.headerCartWrap {
+    text-align: right;
+}
