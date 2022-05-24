@@ -1,11 +1,14 @@
 @import '~antd/dist/antd.min.css';
 
 .App {
-  text-align: center;
-  background: #cccccc;
+  background: #f6f6f6;
   width: 100%;
   height: 100vh;
   overflow: scroll;
 }
 
+.wrap {
+  width: 1080px;
+  margin: 0 auto;
+}
 
