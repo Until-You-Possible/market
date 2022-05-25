@@ -23,6 +23,7 @@ const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
         }
         return config;
     } catch (error) {
+        // @ts-ignore
         throw new Error(error);
     }
 }
@@ -31,6 +32,7 @@ const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
 class Http {
     private  instance: AxiosInstance | null = null;
     private get Http(): AxiosInstance {
+        return this.instance !=null ? this.instance : this.initHttp();
     }
     initHttp() {
         const http = axios.create({
@@ -39,12 +41,18 @@ class Http {
             withCredentials: true
         });
 
-        http.interceptors.request.use(injectToken, () => Promise.reject(error));
+        http.interceptors.request.use(injectToken, (error) => Promise.reject(error));
 
         http.interceptors.response.use((response) => {
             return response;
         }, (error) => {
-
+            return Http.handleError(error)
         });
+        this.instance = http;
+        return http;
+    }
+
+    private static handleError(error: any) {
+        return Promise.reject(error);
     }
 }
