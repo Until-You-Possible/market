@@ -2,11 +2,11 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 // 相关HTTP码定义 (如果是自定义的码 可以单独维护)
-enum StatusCode {
-    Unauthorized    = 401,
-    Forbidden       = 403,
-    InternalServerError = 500
-}
+// enum StatusCode {
+//     Unauthorized    = 401,
+//     Forbidden       = 403,
+//     InternalServerError = 500
+// }
 
 
 const headers: Readonly<Record<string, string | boolean>> = {
@@ -52,7 +52,39 @@ class Http {
         return http;
     }
 
+    request<T = any, R = AxiosResponse<T>>(config: AxiosRequestConfig): Promise<R> {
+        return this.Http.request(config);
+    }
+
+    get<T = any, R = AxiosResponse<T>>(url: string, config?: AxiosRequestConfig): Promise<R> {
+        return this.Http.get<T, R>(url, config);
+    }
+
+    post<T = any, R = AxiosResponse<T>>(
+        url    : string,
+        data   : T,
+        config?: AxiosRequestConfig
+    ): Promise<R> {
+       return this.Http.post<T, R>(url, data, config);
+    }
+
+    delete<T = any, R = AxiosResponse<T>>(url: string, config?: AxiosRequestConfig): Promise<R> {
+        return this.Http.delete<T, R>(url, config);
+    }
+
+    put<T = any, R = AxiosResponse<T>>(
+        url   : string,
+        data? : T,
+        config? : AxiosRequestConfig
+    ): Promise<R> {
+        return this.Http.put<T, R>(url, data, config);
+    }
+
     private static handleError(error: any) {
         return Promise.reject(error);
+
     }
+
 }
+
+export const http = new Http();

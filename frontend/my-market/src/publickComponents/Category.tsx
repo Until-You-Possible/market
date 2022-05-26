@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Carousel, Col, Row, Space} from "antd";
 import "../css/category.css";
-
+import { userApi } from "../api/user";
 
 const contentStyle: React.CSSProperties = {
     color: '#fff',
@@ -12,6 +12,16 @@ const contentStyle: React.CSSProperties = {
 
 const Category: React.FC = () => {
         const [size] = useState(2);
+
+        useEffect( () => {
+            const fetchData = async () => {
+                const users = await userApi.fetchUsers();
+                console.log("users", users.data);
+            }
+            fetchData().then(r => console.log(r));
+
+        }, [])
+
         return <div className="wrap categoryWrap">
             <Row className="categoryRow">
                 <Col span={6}>

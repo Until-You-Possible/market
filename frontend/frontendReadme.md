@@ -17,3 +17,7 @@
 管理后台细分：
 
 ![img_4.png](readmeImage/img_4.png)
+
+### 查看ts版本 
+
+npm view typescript version
