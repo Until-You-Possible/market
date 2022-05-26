@@ -8,6 +8,7 @@ import {
     Routes
 } from "react-router-dom";
 import Home from "./view/home";
+import Register from "./view/register";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Routes>
                   <Route path="*" element={<Navigate to="/home" />} />
                   <Route path="/home" element={ <Home />} />
+                  <Route path="/register" element={ <Register />} />
               </Routes>
           </div>
       </Router>
