@@ -9,6 +9,21 @@ import {
     QuestionOutlined
 } from '@ant-design/icons';
 import "./index.css";
+
+interface RegisterInfo {
+    name: string,
+    // rules: ruleObject[],
+    component?: any,
+    required?: boolean
+}
+
+const registerItemList = [
+    {
+
+    }
+]
+
+
 const Register: React.FC = () => {
 
     const onFinish = (values: any) => {
@@ -16,7 +31,9 @@ const Register: React.FC = () => {
     };
 
     return <div className="registerWrap">
+
         <div className="registerTitle">新用户注册</div>
+
         <Form
             name="normal_login"
             size="large"
@@ -41,7 +58,7 @@ const Register: React.FC = () => {
                 />
             </Form.Item>
             <Form.Item
-                name="password"
+                name="checkPassword"
                 rules={[{ required: true, message: '请再次输入密码' }]}
             >
                 <Input
@@ -51,7 +68,7 @@ const Register: React.FC = () => {
                 />
             </Form.Item>
             <Form.Item
-                name="password"
+                name="phone"
                 rules={[{ required: true, message: '输入电话' }]}
             >
                 <Input
@@ -61,7 +78,7 @@ const Register: React.FC = () => {
                 />
             </Form.Item>
             <Form.Item
-                name="password"
+                name="email"
                 rules={[{ required: true, message: '输入邮箱' }]}
             >
                 <Input
@@ -71,7 +88,7 @@ const Register: React.FC = () => {
                 />
             </Form.Item>
             <Form.Item
-                name="password"
+                name="question"
                 rules={[{ required: true, message: '输入密码提示问题' }]}
             >
                 <Input
@@ -81,12 +98,12 @@ const Register: React.FC = () => {
                 />
             </Form.Item>
             <Form.Item
-                name="password"
+                name="answer"
                 rules={[{ required: true, message: '输入密码提示答案' }]}
             >
                 <Input
                     prefix={<QuestionOutlined />}
-                    type="password"
+                    type="text"
                     placeholder="输入密码提示答案"
                 />
             </Form.Item>

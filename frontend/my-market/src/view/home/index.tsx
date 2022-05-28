@@ -1,8 +1,8 @@
 import React from "react";
-import NavHeader from "../../publickComponents/NavHeader";
-import SearchComponent from "../../publickComponents/SearchComponent";
-import Category from "../../publickComponents/Category";
-import FooterComponent from "../../publickComponents/FooterComponent";
+import NavHeader from "../../publicComponents/NavHeader";
+import SearchComponent from "../../publicComponents/SearchComponent";
+import Category from "../../publicComponents/Category";
+import FooterComponent from "../../publicComponents/FooterComponent";
 
 function Home() {
     return (
