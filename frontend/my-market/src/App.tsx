@@ -10,6 +10,8 @@ import {
 import Home from "./view/home";
 import Register from "./view/register";
 import Login from "./view/login";
+import FindPassword from "./view/findPassword";
+import RegisterSuccess from "./view/registerSuccess";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
                   <Route path="/home" element={ <Home />} />
                   <Route path="/register" element={ <Register />} />
                   <Route path="/login" element={ <Login />} />
+                  <Route path="/findPassword" element={ <FindPassword />} />
+                  <Route path="/registerSuccess" element={ <RegisterSuccess />} />
               </Routes>
           </div>
       </Router>
