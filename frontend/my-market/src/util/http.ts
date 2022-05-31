@@ -62,7 +62,7 @@ class Http {
 
     post<T = any, R = AxiosResponse<T>>(
         url    : string,
-        data   : T,
+        data?  : T,
         config?: AxiosRequestConfig
     ): Promise<R> {
        return this.Http.post<T, R>(url, data, config);

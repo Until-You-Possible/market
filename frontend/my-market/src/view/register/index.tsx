@@ -145,8 +145,8 @@ const Register: React.FC = () => {
             onFinish={onFinish}
         >
             {
-                registerItemList.map((item) => {
-                    return    <div>
+                registerItemList.map((item,index) => {
+                    return    <div key={index}>
                         <Form.Item
                             name={item.name}
                             rules={item.rules}

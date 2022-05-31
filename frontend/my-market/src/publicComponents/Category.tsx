@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Carousel, Col, Row, Space} from "antd";
 import "../css/category.css";
 import { userApi } from "../api/user";
+import {productApi} from "../api/product";
 
 const contentStyle: React.CSSProperties = {
     color: '#fff',
@@ -15,8 +16,8 @@ const Category: React.FC = () => {
 
         useEffect( () => {
             const fetchData = async () => {
-                const users = await userApi.fetchUsers();
-                console.log("users", users.data);
+                const productList = await productApi.fetchProductList();
+                console.log("productList", productList);
             }
             fetchData().then(r => console.log(r));
 
