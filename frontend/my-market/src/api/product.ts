@@ -17,7 +17,7 @@ class ProductApi {
      * get product list
      */
     async fetchProductList(params: string): Promise<any> {
-        return await http.get<Product>(this.productListURL);
+        return await http.get<Product>(this.productListURL, { params: params });
     }
 
     /**
