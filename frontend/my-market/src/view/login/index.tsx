@@ -1,76 +1,36 @@
 import React from "react";
 import { Form, Input, Button } from 'antd';
-import {
-    UserOutlined,
-    LockOutlined,
-} from '@ant-design/icons';
-
-interface RuleObject {
-    required: boolean,
-    message : string
-}
+import { LoginItemList, userLoginInfo } from "./loginType";
+import { userApi } from "../../api/user";
 
 
-interface LoginInfo {
-    name       : string,
-    rules      : RuleObject[],
-    component  : any,
-    type?      : string
-}
-
-const LoginItemList:LoginInfo[]  = [
-    {
-        name: "username",
-        rules: [
-            {
-                required: true,
-                message: "请输入用户名"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <UserOutlined className="site-form-item-icon" />,
-            placeholder: "请输入用户名"
-        }
-    },
-    {
-        name: "password",
-        rules: [
-            {
-                required: true,
-                message: "请输入密码"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <LockOutlined className="site-form-item-icon" />,
-            placeholder: "请输入密码"
-        },
-        type: "password"
-    }
-]
 
 
 const Register: React.FC = () => {
 
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
+    const onFinish = (values: userLoginInfo) => {
+        userLogin(values);
     };
+
+    const userLogin = (values: userLoginInfo) => {
+        userApi.userLogin(values).then(res => {
+            console.log("res", res);
+        });
+    }
 
     return <div className="registerWrap">
 
         <div className="registerTitle">用户登陆</div>
-
         <Form
             name="normal_login"
             size="large"
             className="login-form"
-            initialValues={{ remember: true }}
+            initialValues={{ remember: false }}
             onFinish={onFinish}
         >
             {
-                LoginItemList.map((item) => {
-                    return    <div>
+                LoginItemList.map((item, index) => {
+                    return    <div key={index}>
                         <Form.Item
                             name={item.name}
                             rules={item.rules}

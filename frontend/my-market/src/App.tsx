@@ -14,7 +14,6 @@ import FindPassword from "./view/findPassword";
 import RegisterSuccess from "./view/registerSuccess";
 
 function App() {
-    window.print = console.log;
       return (
           <Router>
               <div className="App">

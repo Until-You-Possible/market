@@ -1,0 +1,17 @@
+.registerSuccessTitle {
+    color: #555;
+    text-align: center;
+}
+
+.registerSuccessLoginButton {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.registerSuccessWrap {
+    background: #ffffff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}

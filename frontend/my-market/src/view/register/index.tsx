@@ -1,137 +1,35 @@
 import React from "react";
-import { Form, Input, Button } from 'antd';
-import {
-    UserOutlined,
-    LockOutlined,
-    PhoneOutlined,
-    MailOutlined,
-    QuestionCircleOutlined,
-    QuestionOutlined
-} from '@ant-design/icons';
+import { Form, Input, Button, message} from 'antd';
 import "./index.css";
+import { registerItemList, registerUserInfo } from "./registerType";
+import { userApi } from "../../api/user";
+import { useNavigate } from "react-router-dom";
 
-interface RuleObject {
-    required: boolean,
-    message : string
-}
-
-
-interface RegisterInfo {
-    name       : string,
-    rules      : RuleObject[],
-    component  : any,
-    type?      : string
-}
-
-const registerItemList:RegisterInfo[]  = [
-    {
-        name: "username",
-        rules: [
-            {
-                required: true,
-                message: "请输入用户名"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <UserOutlined className="site-form-item-icon" />,
-            placeholder: "请输入用户名"
-        }
-    },
-    {
-        name: "password",
-        rules: [
-            {
-                required: true,
-                message: "请输入密码"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <LockOutlined className="site-form-item-icon" />,
-            placeholder: "请输入密码"
-        },
-        type: "password"
-    },
-    {
-        name: "checkPassword",
-        rules: [
-            {
-                required: true,
-                message: "请再次输入密码"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <UserOutlined className="site-form-item-icon" />,
-            placeholder: "请再次输入密码"
-        },
-        type: "password"
-    },
-    {
-        name: "phone",
-        rules: [
-            {
-                required: true,
-                message: "输入电话"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <PhoneOutlined className="site-form-item-icon" />,
-            placeholder: "输入电话"
-        }
-    },
-    {
-        name: "email",
-        rules: [
-            {
-                required: true,
-                message: "输入邮箱"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <MailOutlined className="site-form-item-icon" />,
-            placeholder: "输入邮箱"
-        }
-    },
-    {
-        name: "question",
-        rules: [
-            {
-                required: true,
-                message: "输入密码提示问题"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <QuestionCircleOutlined className="site-form-item-icon" />,
-            placeholder: "输入密码提示问题"
-        }
-    },
-    {
-        name: "answer",
-        rules: [
-            {
-                required: true,
-                message: "输入密码提示答案"
-            }
-        ],
-        component: {
-            type: "INPUT",
-            prefix: <QuestionOutlined className="site-form-item-icon" />,
-            placeholder: "输入密码提示答案"
-        }
-    }
-]
 
 
 const Register: React.FC = () => {
 
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
+    const navigate = useNavigate();
+
+    const onFinish = (values: registerUserInfo) => {
+        // 相关验证通过之后
+        // 这里不在赘述了
+        // 此方法也是仅仅处理表单相关的逻辑和业务
+        // 注册的话就单独再起方法去写，整体相对清晰
+        registerNewAccount(values);
     };
+
+    const registerNewAccount = (values: registerUserInfo) => {
+        userApi.Register(values).then(res => {
+            // 0 success  1 fail
+            if (res.status === 0) {
+                message.success("注册成功");
+                setTimeout(() => {
+                    navigate("/registerSuccess", { replace: true });
+                }, 1000)
+            }
+        });
+    }
 
     return <div className="registerWrap">
 

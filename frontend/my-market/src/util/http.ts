@@ -1,5 +1,8 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { message } from 'antd';
+import qs from "qs";
+
 
 // 相关HTTP码定义 (如果是自定义的码 可以单独维护)
 // enum StatusCode {
@@ -9,8 +12,14 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 // }
 
 
+interface ErrorData {
+    data    : string,
+    msg     : string,
+    status  : number
+}
+
 const headers: Readonly<Record<string, string | boolean>> = {
-    Accept: "application/json"
+    "Content-Type": "application/x-www-form-urlencoded"
 }
 
 const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
@@ -21,6 +30,7 @@ const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
                 config.headers.Authorization = `Bear ${token}`;
             }
         }
+        config.data = qs.stringify(config.data);
         return config;
     } catch (error) {
         // @ts-ignore
@@ -28,11 +38,14 @@ const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
     }
 }
 
+const errorFun = (info: string) => {
+    message.error(info);
+};
 
 class Http {
     private  instance: AxiosInstance | null = null;
     private get Http(): AxiosInstance {
-        return this.instance !=null ? this.instance : this.initHttp();
+        return this.instance != null ? this.instance : this.initHttp();
     }
     initHttp() {
         const http = axios.create({
@@ -44,7 +57,10 @@ class Http {
         http.interceptors.request.use(injectToken, (error) => Promise.reject(error));
 
         http.interceptors.response.use((response) => {
-            return response;
+            if (response.data.status === 0) {
+                return response.data;
+            }
+            return Http.handleError(response.data)
         }, (error) => {
             return Http.handleError(error)
         });
@@ -80,7 +96,9 @@ class Http {
         return this.Http.put<T, R>(url, data, config);
     }
 
-    private static handleError(error: any) {
+    private static handleError(error: ErrorData) {
+        const errorMessage = error.msg;
+        errorFun(errorMessage);
         return Promise.reject(error);
 
     }

@@ -1,11 +1,8 @@
 //关于use的接口 (测试版本)
 
 import { http } from "../util/http";
-
-export type UserDataType = {
-    username : string,
-    password : string
-}
+import { registerUserInfo } from "../view/register/registerType";
+import { userLoginInfo } from "../view/login/loginType";
 
 class UserApi {
     // URLs
@@ -36,7 +33,7 @@ class UserApi {
      *  user login
      * @param userData
      */
-    async userLogin(userData: UserDataType): Promise<any> {
+    async userLogin(userData: any): Promise<any> {
         return http.post(this.loginURL, userData);
     }
 
@@ -53,8 +50,8 @@ class UserApi {
      * @param userRegister
      * @constructor
      */
-    async Register(userRegister: {}): Promise<any> {
-        return http.post(this.checkLogin, userRegister);
+    async Register(userRegister: registerUserInfo): Promise<any> {
+        return http.post(this.userRegister, userRegister);
     }
 
     /**
