@@ -36,7 +36,8 @@ export const registerItemList:RegisterInfo[]  = [
             type: "INPUT",
             prefix: <UserOutlined className="site-form-item-icon" />,
             placeholder: "请输入用户名"
-        }
+        },
+        type: "username"
     },
     {
         name: "password",

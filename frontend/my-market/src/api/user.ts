@@ -2,17 +2,17 @@
 
 import { http } from "../util/http";
 import { registerUserInfo } from "../view/register/registerType";
-import { userLoginInfo } from "../view/login/loginType";
+import {CheckUserNameIsExists, userLoginInfo} from "../view/login/loginType";
 
 class UserApi {
     // URLs
     // login
     private loginURL        : string = "/user/login.do";
-    // check username (whether exist)
+    // 检查用户名是否存在
     private checkLogin      : string = "/user/check_valid.do";
     // register
     private  userRegister   : string = "/user/register.do";
-    // check status of user (logging or logout)
+    // 检查登陆状态
     private userMessage     : string = "/user/get_user_info.do";
     // get user's question
     private  userQuestion   : string = "/user/forget_get_question.do";
@@ -38,11 +38,11 @@ class UserApi {
     }
 
     /**
-     *  check user login
-     * @param username
+     *  check username exists
+     * @param existsUserInfo
      */
-    async checkUserLogin(username: string): Promise<any> {
-        return http.post(this.checkLogin, username);
+    async checkUsernameExists(existsUserInfo: CheckUserNameIsExists): Promise<any> {
+        return http.post(this.checkLogin, existsUserInfo);
     }
 
     /**
@@ -60,6 +60,13 @@ class UserApi {
      */
     async checkLoginStatus(userInfo: {}): Promise<any> {
         return http.post(this.checkLogin, userInfo);
+    }
+
+    /**
+     * check status of user
+     */
+    async getCurrentUserInfo(): Promise<any> {
+        return http.post(this.userInfoURL);
     }
 
     /**
@@ -89,7 +96,7 @@ class UserApi {
     /**
      * get user's status (logging or logout)
      */
-    async getUserInfo(): Promise<any> {
+    async getUserStatus(): Promise<any> {
         return http.post(this.userMessage);
     }
 

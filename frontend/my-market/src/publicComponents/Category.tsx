@@ -17,7 +17,7 @@ const Category: React.FC = () => {
                 // const productList = await productApi.fetchProductList();
                 // console.log("productList", productList);
             }
-            fetchData().then(r => console.log(r));
+            // fetchData().then(r => console.log(r));
 
         }, [])
 

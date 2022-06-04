@@ -3,6 +3,7 @@ import { Form, Input, Button } from 'antd';
 import { LoginItemList, userLoginInfo } from "./loginType";
 import { userApi } from "../../api/user";
 import { useNavigate } from "react-router-dom";
+import { Constants } from "../../model/constant";
 
 
 
@@ -17,7 +18,7 @@ const Register: React.FC = () => {
 
     const userLogin = (values: userLoginInfo) => {
         userApi.userLogin(values).then(res => {
-            if (res.status === 0) {
+            if (res.status === Constants.Status.SUCCESS) {
                 navigate("/home");
             }
         });

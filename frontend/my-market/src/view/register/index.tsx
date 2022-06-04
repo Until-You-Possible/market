@@ -1,9 +1,12 @@
 import React from "react";
-import { Form, Input, Button, message} from 'antd';
+import { Form, Input, Button } from 'antd';
 import "./index.css";
 import { registerItemList, registerUserInfo } from "./registerType";
 import { userApi } from "../../api/user";
 import {Link, useNavigate} from "react-router-dom";
+import { CheckUserNameIsExists } from "../login/loginType";
+import { Constants } from "../../model/constant";
+import { helper } from "../../util/helper";
 
 
 
@@ -21,9 +24,8 @@ const Register: React.FC = () => {
 
     const registerNewAccount = (values: registerUserInfo) => {
         userApi.Register(values).then(res => {
-            // 0 success  1 fail
-            if (res.status === 0) {
-                message.success("注册成功");
+            if (res.status === Constants.Status.SUCCESS) {
+                helper.showMessage("用户名可用～");
                 setTimeout(() => {
                     navigate("/registerSuccess", { replace: true });
                 }, 1000);
@@ -32,8 +34,18 @@ const Register: React.FC = () => {
     }
 
     // to check if username is exists
-    const onBlurCheckName = (item: any) => {
-        console.log("item", item);
+    const onBlurCheckName = (event: React.FocusEvent<HTMLInputElement>, type: string | undefined) => {
+        if (type === Constants.ConstantString.USERNAME) {
+            let info: CheckUserNameIsExists = {
+                type: "username",
+                str : event.target.value || ""
+            }
+            userApi.checkUsernameExists(info).then(res => {
+                if (res.status === Constants.Status.SUCCESS) {
+                    helper.showMessage("用户名可用～");
+                }
+            });
+        }
     }
 
     return <div className="registerWrap">
@@ -57,7 +69,7 @@ const Register: React.FC = () => {
                             <Input
                                 prefix={item.component.prefix}
                                 type={item.type ? item.type : "text"}
-                                onBlur={(item) => onBlurCheckName(item)}
+                                onBlur={(event) => onBlurCheckName(event, item.type)}
                                 placeholder={item.component.placeholder}
                             />
                         </Form.Item>
