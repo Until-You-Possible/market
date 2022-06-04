@@ -2,11 +2,14 @@ import React from "react";
 import { Form, Input, Button } from 'antd';
 import { LoginItemList, userLoginInfo } from "./loginType";
 import { userApi } from "../../api/user";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const Register: React.FC = () => {
+
+    const navigate = useNavigate();
 
     const onFinish = (values: userLoginInfo) => {
         userLogin(values);
@@ -14,7 +17,9 @@ const Register: React.FC = () => {
 
     const userLogin = (values: userLoginInfo) => {
         userApi.userLogin(values).then(res => {
-            console.log("res", res);
+            if (res.status === 0) {
+                navigate("/home");
+            }
         });
     }
 

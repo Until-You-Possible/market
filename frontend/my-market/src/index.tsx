@@ -7,10 +7,11 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+// React.StrictMode
+// 在严格模式下 周期函数回调用两次
+// 包括 hooks函数 useEffect等
 root.render(
-  <React.StrictMode>
     <App />
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

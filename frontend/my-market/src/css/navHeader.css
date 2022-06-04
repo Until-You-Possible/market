@@ -12,3 +12,10 @@
 .registerLink {
     margin-left: 10px;
 }
+
+.accountToLogin {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    text-align: right;
+}

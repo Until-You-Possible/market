@@ -8,12 +8,12 @@ class UserApi {
     // URLs
     // login
     private loginURL        : string = "/user/login.do";
-    // check login
+    // check username (whether exist)
     private checkLogin      : string = "/user/check_valid.do";
     // register
     private  userRegister   : string = "/user/register.do";
-    // check status of user
-    private userStatus      : string = "/user/get_user_info.do";
+    // check status of user (logging or logout)
+    private userMessage     : string = "/user/get_user_info.do";
     // get user's question
     private  userQuestion   : string = "/user/forget_get_question.do";
     // check the answer for last question
@@ -59,7 +59,7 @@ class UserApi {
      * @param userInfo
      */
     async checkLoginStatus(userInfo: {}): Promise<any> {
-        return http.post(this.userStatus, userInfo);
+        return http.post(this.checkLogin, userInfo);
     }
 
     /**
@@ -87,10 +87,10 @@ class UserApi {
     }
 
     /**
-     * get user' info
+     * get user's status (logging or logout)
      */
     async getUserInfo(): Promise<any> {
-        return http.post(this.userInfoURL);
+        return http.post(this.userMessage);
     }
 
     /**

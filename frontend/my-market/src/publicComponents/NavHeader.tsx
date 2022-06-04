@@ -1,5 +1,5 @@
 
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import {Row, Col, Button} from "antd";
 import "../css/navHeader.css"
 import { ShoppingCartOutlined } from "@ant-design/icons";
@@ -8,12 +8,14 @@ import {userApi} from "../api/user";
 
 const HavHeader:React.FC = () => {
 
-    // 尝试获取用户信息 (必须先登陆)
+    // 尝试获取用户信息 (必须先登陆,在获取用户信息之前,检查用户的登陆状态)
     useEffect(() => {
-
-        userApi.getUserInfo().then(res => {
-            console.log("get user info", res);
+        userApi.checkUserLogin("wanggang006").then(res => {
+            console.log("check user status", res);
         });
+        // userApi.getUserInfo().then(res => {
+        //     console.log("get user info", res);
+        // });
 
     }, []);
 
@@ -26,7 +28,7 @@ const HavHeader:React.FC = () => {
             <Col className="headerCartWrap" span={12}>
                 <Button type="link" icon={<ShoppingCartOutlined />}>购物车</Button>
                 <Button type="link">我的订单(0)</Button>
-                <Button type="link">我的信息</Button>
+                <Button type="link">个人中心</Button>
                 <Button type="link">关于我</Button>
             </Col>
         </Row>

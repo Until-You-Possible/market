@@ -3,7 +3,7 @@ import { Form, Input, Button, message} from 'antd';
 import "./index.css";
 import { registerItemList, registerUserInfo } from "./registerType";
 import { userApi } from "../../api/user";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 
@@ -26,9 +26,14 @@ const Register: React.FC = () => {
                 message.success("注册成功");
                 setTimeout(() => {
                     navigate("/registerSuccess", { replace: true });
-                }, 1000)
+                }, 1000);
             }
         });
+    }
+
+    // to check if username is exists
+    const onBlurCheckName = (item: any) => {
+        console.log("item", item);
     }
 
     return <div className="registerWrap">
@@ -52,6 +57,7 @@ const Register: React.FC = () => {
                             <Input
                                 prefix={item.component.prefix}
                                 type={item.type ? item.type : "text"}
+                                onBlur={(item) => onBlurCheckName(item)}
                                 placeholder={item.component.placeholder}
                             />
                         </Form.Item>
@@ -62,6 +68,9 @@ const Register: React.FC = () => {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     立即注册
                 </Button>
+                <Link className="accountToLogin" to="/login">
+                    已有账号？立即登陆
+                </Link>
             </Form.Item>
         </Form>
     </div>

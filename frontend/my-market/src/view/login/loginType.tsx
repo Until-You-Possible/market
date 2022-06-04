@@ -47,7 +47,17 @@ export const LoginItemList:LoginInfo[]  = [
     }
 ];
 
+// login
 export interface userLoginInfo  {
     username: string,
     password: string
 }
+
+// check username if it is exists
+
+export interface CheckUserNameIsExists {
+    type: string,
+    str : string
+}
+
+
