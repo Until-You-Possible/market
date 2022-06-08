@@ -1,28 +1,26 @@
 
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useState } from "react";
 import {Row, Col, Button} from "antd";
 import "../css/navHeader.css"
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { userApi } from "../api/user";
-import { CheckUserNameIsExists } from "../view/login/loginType";
+import {Constants} from "../model/constant";
 
 const HavHeader:React.FC = () => {
 
+    const userInfo = useState<string>("");
+
     // 尝试获取用户信息 (必须先登陆,在获取用户信息之前,检查用户的登陆状态)
     useEffect(() => {
-        let checkUserInfo: CheckUserNameIsExists = {
-            type: "username",
-            str: "wanggang05"
-        }
-        userApi.getUserStatus().then(res => {
-            if (res.status === 0) {
-                console.log("check user status", res);
+        userApi.checkLoginStatus().then(res => {
+            if (res.status === Constants.Status.SUCCESS) {
                 userApi.getCurrentUserInfo().then(res => {
-                    console.log("get user info", res);
+                    console.log("获取用户信息", res);
                 });
             }
         });
+
 
     }, []);
 

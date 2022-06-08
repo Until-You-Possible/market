@@ -8,12 +8,12 @@ class UserApi {
     // URLs
     // login
     private loginURL        : string = "/user/login.do";
-    // 检查用户名是否存在
-    private checkLogin      : string = "/user/check_valid.do";
+    // 检查用户名是否存在(有效)
+    private checkNameValid  : string = "/user/check_valid.do";
     // register
     private  userRegister   : string = "/user/register.do";
     // 检查登陆状态
-    private userMessage     : string = "/user/get_user_info.do";
+    private checkUserLogin     : string = "/user/get_user_info.do";
     // get user's question
     private  userQuestion   : string = "/user/forget_get_question.do";
     // check the answer for last question
@@ -42,7 +42,7 @@ class UserApi {
      * @param existsUserInfo
      */
     async checkUsernameExists(existsUserInfo: CheckUserNameIsExists): Promise<any> {
-        return http.post(this.checkLogin, existsUserInfo);
+        return http.post(this.checkNameValid, existsUserInfo);
     }
 
     /**
@@ -55,11 +55,10 @@ class UserApi {
     }
 
     /**
-     * check status of user
-     * @param userInfo
+     * 检查用户登陆状态
      */
-    async checkLoginStatus(userInfo: {}): Promise<any> {
-        return http.post(this.checkLogin, userInfo);
+    async checkLoginStatus(): Promise<any> {
+        return http.post(this.checkUserLogin);
     }
 
     /**
@@ -96,9 +95,9 @@ class UserApi {
     /**
      * get user's status (logging or logout)
      */
-    async getUserStatus(): Promise<any> {
-        return http.post(this.userMessage);
-    }
+    // async getUserStatus(): Promise<any> {
+    //     return http.post(this.userMessage);
+    // }
 
     /**
      * update personal info
