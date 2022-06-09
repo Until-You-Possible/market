@@ -1,0 +1,24 @@
+{
+  "arrayList": [
+    {
+      "category": "100021",
+      "path": "../img/banner/banner1.jpg"
+    },
+    {
+      "category": "100030",
+      "path": "../img/banner/banner2.jpg"
+    },
+    {
+      "category": "100016",
+      "path": "../img/banner/banner3.jpg"
+    },
+    {
+      "category": "100001",
+      "path": "../img/banner/banner4.jpg"
+    },
+    {
+      "category": "100021",
+      "path": "../img/banner/banner5.jpg"
+    }
+  ]
+}

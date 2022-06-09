@@ -6,7 +6,19 @@
 }
 
 .headerCartWrap {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    color: #999;
+}
+
+.userInfoWrapperHeader {
+    display: flex;
+}
+.userInfoWrapperHeader a{
+    color: #999999;
+}
+.userInfoWrapperHeader div {
+    color: #999999;
 }
 
 .registerLink {
@@ -18,4 +30,12 @@
     display: block;
     width: 100%;
     text-align: right;
+}
+
+.uiMarginLeft {
+    margin-left: 20px;
+}
+
+.headerCartWrap div {
+    cursor: pointer;
 }

@@ -12,3 +12,16 @@
   margin: 0 auto;
 }
 
+.ant-btn-primary {
+  background: #CF002C;
+  border: #CF002C;
+}
+
+.ant-btn-primary:hover {
+  background: #CF002C;
+}
+.ant-input-affix-wrapper-focused {
+  border-color: transparent !important;
+  outline: transparent;
+}
+

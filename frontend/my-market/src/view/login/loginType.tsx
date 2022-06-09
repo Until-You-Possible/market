@@ -60,4 +60,10 @@ export interface CheckUserNameIsExists {
     str : string
 }
 
+// logout response
+
+export interface LogOutType {
+    status: number
+}
+
 

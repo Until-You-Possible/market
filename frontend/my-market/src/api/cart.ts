@@ -1,6 +1,9 @@
 // cart 相关接口
 
 
+import {http} from "../util/http";
+import { CartResult } from "../view/home/homeType";
+
 class Cart {
 
 
@@ -17,6 +20,11 @@ class Cart {
     private updateCart    : string = "/cart/update.do";
 
     private deleteCart    : string = "/cart/delete_product.do";
+
+
+    async getBasketCount (): Promise<CartResult> {
+        return http.post(this.getCartCount);
+    }
 
 
 }

@@ -2,7 +2,7 @@
 
 import { http } from "../util/http";
 import { registerUserInfo } from "../view/register/registerType";
-import {CheckUserNameIsExists, userLoginInfo} from "../view/login/loginType";
+import { CheckUserNameIsExists, LogOutType } from "../view/login/loginType";
 
 class UserApi {
     // URLs
@@ -119,7 +119,7 @@ class UserApi {
     /**
      * logout
      */
-    async logOut(): Promise<any> {
+    async logOut(): Promise<LogOutType> {
         return http.post(this.logOutURL);
     }
 }

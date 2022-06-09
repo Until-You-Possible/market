@@ -1,40 +1,67 @@
 
 import React, { useEffect, useState } from "react";
-import {Row, Col, Button} from "antd";
+import {Row, Col } from "antd";
 import "../css/navHeader.css"
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { userApi } from "../api/user";
-import {Constants} from "../model/constant";
+import { Constants } from "../model/constant";
+import {cartApi} from "../api/cart";
 
 const HavHeader:React.FC = () => {
 
-    const userInfo = useState<string>("");
+    const [userInfo, setUserInfo] = useState<string>("");
 
-    // 尝试获取用户信息 (必须先登陆,在获取用户信息之前,检查用户的登陆状态)
+    const [cartNumber, setCartNumber] = useState<number>(0)
+
     useEffect(() => {
-        userApi.checkLoginStatus().then(res => {
+
+        //检查登录状态
+        userApi.checkLoginStatus().then((res) => {
             if (res.status === Constants.Status.SUCCESS) {
+                // 获取用户信息
                 userApi.getCurrentUserInfo().then(res => {
-                    console.log("获取用户信息", res);
+                    setUserInfo(res.data.username)
                 });
             }
+        });
+
+        // 获取购物车数量
+        cartApi.getBasketCount().then((res) => {
+            setCartNumber(res.data);
         });
 
 
     }, []);
 
+    // 退出
+    const logOut = () => {
+         userApi.logOut().then((res) => {
+             if (res.status === Constants.Status.SUCCESS) {
+                 setUserInfo("");
+             }
+        });
+    }
+
     return <div className="headerWrap">
         <Row className="wrap">
-            <Col span={12}>
-                <Link to="/login">登陆</Link>
-                <Link className="registerLink" to="/register">注册</Link>
-            </Col>
+            {
+                userInfo ?
+                    <Col span={12} className="userInfoWrapperHeader">
+                        <div>欢迎 { userInfo }</div>
+                        <div className="uiMarginLeft" onClick={logOut}>退出</div>
+                    </Col>
+                :
+                    <Col span={12} className="userInfoWrapperHeader">
+                        <Link to="/login">登陆</Link>
+                        <Link className="registerLink" to="/register">注册</Link>
+                    </Col>
+            }
             <Col className="headerCartWrap" span={12}>
-                <Button type="link" icon={<ShoppingCartOutlined />}>购物车</Button>
-                <Button type="link">我的订单(0)</Button>
-                <Button type="link">个人中心</Button>
-                <Button type="link">关于我</Button>
+                <div><ShoppingCartOutlined style={{marginRight: "4px"}} />购物车({cartNumber})</div>
+                <div className="uiMarginLeft">我的订单</div>
+                <div className="uiMarginLeft">个人中心</div>
+                <div className="uiMarginLeft">关于我</div>
             </Col>
         </Row>
     </div>

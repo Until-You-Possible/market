@@ -1,30 +1,45 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Carousel, Col, Row, Space} from "antd";
+import { Button, Carousel, Col, Row, Space } from "antd";
 import "../css/category.css";
+import slideList from "../mockData/categoryList.json";
+import imgURL1 from "../img/banner/banner1.jpg";
+import imgURL2 from "../img/banner/banner2.jpg";
+import imgURL3 from "../img/banner/banner3.jpg";
+import imgURL4 from "../img/banner/banner4.jpg";
+import imgURL5 from "../img/banner/banner5.jpg";
 
-const contentStyle: React.CSSProperties = {
-    color: '#fff',
-    lineHeight: '322px',
-    textAlign: 'center',
-    background: '#364d79',
-}
+
 
 const Category: React.FC = () => {
+
         const [size] = useState(2);
 
         useEffect( () => {
-            const fetchData = async () => {
-                // const productList = await productApi.fetchProductList();
-                // console.log("productList", productList);
-            }
-            // fetchData().then(r => console.log(r));
 
-        }, [])
+        }, []);
+
+        const judgeSlideImage = (index: number) => {
+            if (index === 1) {
+                return imgURL1;
+            }
+            if (index === 2) {
+                return imgURL2;
+            }
+            if (index === 3) {
+                return imgURL3;
+            }
+            if (index === 4) {
+                return imgURL4;
+            }
+            if (index === 5) {
+                return imgURL5;
+            }
+        }
 
         return <div className="wrap categoryWrap">
-            <Row className="categoryRow">
-                <Col span={6}>
-                    <Row className="goodWrapper">
+            <Row gutter={[18,0]} className="categoryRow">
+                <Col span={6} className="goodWrapper">
+                    <Row>
                         <Col span={24}>
                             <Space size={size}>
                                 <Button type="link">手机</Button>
@@ -95,18 +110,15 @@ const Category: React.FC = () => {
                 </Col>
                 <Col span={18}>
                     <Carousel autoplay>
-                        <div>
-                            <h3 style={contentStyle}>1</h3>
-                        </div>
-                        <div>
-                            <h3 style={contentStyle}>2</h3>
-                        </div>
-                        <div>
-                            <h3 style={contentStyle}>3</h3>
-                        </div>
-                        <div>
-                            <h3 style={contentStyle}>4</h3>
-                        </div>
+                        {
+                            slideList.arrayList && slideList.arrayList.map((response, index) => {
+                                return <div key={response.category}>
+                                    {
+                                        <img src={judgeSlideImage(index+1)} alt=""/>
+                                    }
+                                </div>
+                            })
+                        }
                     </Carousel>
                 </Col>
             </Row>

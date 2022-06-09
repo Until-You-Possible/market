@@ -4,4 +4,18 @@
 
 .categoryRow .goodWrapper {
     border: 1px dotted #1890ff;
+    background: #666;
+    padding-top: 10px;
+}
+
+.categoryRow .goodWrapper .ant-btn  span {
+    color: #ffffff;;
+}
+
+.categoryRow .goodWrapper .ant-btn  span:hover {
+    color: #CF002C;
+}
+
+.categoryRow .goodWrapper .ant-col:hover {
+    background: #ccc;
 }
