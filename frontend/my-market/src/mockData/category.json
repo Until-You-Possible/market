@@ -47,6 +47,90 @@
         "type": "link",
         "text": "小家电"
       }
+    ],
+    [
+      {
+        "type": "link",
+        "text": "家具"
+      },
+      {
+        "type": "link",
+        "text": "家装"
+      }
+    ],
+    [
+      {
+        "type": "link",
+        "text": "个护化妆"
+      },
+      {
+        "type": "link",
+        "text": "清洁"
+      },
+      {
+        "type": "link",
+        "text": "纸品"
+      }
+    ],
+    [
+      {
+        "type": "link",
+        "text": "母婴"
+      },
+      {
+        "type": "link",
+        "text": "玩具"
+      },
+      {
+        "type": "link",
+        "text": "童装童鞋"
+      }
+    ],
+    [
+      {
+        "type": "link",
+        "text": "鞋靴"
+      },
+      {
+        "type": "link",
+        "text": "箱包"
+      },
+      {
+        "type": "link",
+        "text": "钟表"
+      },
+      {
+        "type": "link",
+        "text": "珠宝"
+      }
+    ],
+    [
+      {
+        "type": "link",
+        "text": "户外运动"
+      },
+      {
+        "type": "link",
+        "text": "足球"
+      },
+      {
+        "type": "link",
+        "text": "汽车生活"
+      }
+    ],
+    [
+      {
+        "type": "link",
+        "text": "图书"
+      },
+      {
+        "type": "link",
+        "text": "音响"
+      },
+      {
+        "type": "link",
+        "text": "电子书"
+      }
     ]
   ]
 }
