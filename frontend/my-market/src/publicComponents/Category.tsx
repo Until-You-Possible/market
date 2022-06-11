@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Button, Carousel, Col, Row, Space } from "antd";
 import "../css/category.css";
-import slideList from "../mockData/categoryList.json";
+import slideList from "../mockData/sliders.json";
 import imgURL1 from "../img/banner/banner1.jpg";
 import imgURL2 from "../img/banner/banner2.jpg";
 import imgURL3 from "../img/banner/banner3.jpg";
@@ -12,10 +12,10 @@ import imgURL5 from "../img/banner/banner5.jpg";
 
 const Category: React.FC = () => {
 
-        const [size] = useState(2);
+        const [size] = useState<number>(2);
 
         useEffect( () => {
-
+            console.log("imgURL1", imgURL1)
         }, []);
 
         const judgeSlideImage = (index: number) => {

@@ -1,0 +1,52 @@
+{
+  "categories": [
+       [
+        {
+          "type": "link",
+          "text": "手机"
+        },
+        {
+          "type": "link",
+          "text": "数码"
+        }
+      ],
+       [
+        {
+          "type": "link",
+          "text": "电脑"
+        },
+        {
+          "type": "link",
+          "text": "办公配件"
+        }
+      ],
+       [
+        {
+          "type": "link",
+          "text": "电视"
+        },
+        {
+          "type": "link",
+          "text": "空调"
+        },
+        {
+          "type": "link",
+          "text": "冰箱"
+        },
+        {
+          "type": "link",
+          "text": "洗衣机"
+        }
+      ],
+    [
+      {
+        "type": "link",
+        "text": "厨卫家电"
+      },
+      {
+        "type": "link",
+        "text": "小家电"
+      }
+    ]
+  ]
+}
