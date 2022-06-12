@@ -1,0 +1,44 @@
+
+
+.styleSingle {
+    /*width: 220px;*/
+    height: 220px;
+    /*background: #1890ff;*/
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.productWrap .rowContainer {
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+}
+
+.productWrap .titleName {
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #d58717;
+    margin-bottom: 10px;
+}
+
+.ant-col-5 {
+    flex: 0 0 20% !important;
+}
+
+.productListItem {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    width: 80%;
+    height: 75%;
+    border: none;
+}
+.floorText {
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 16px;
+    color: #5e5e5e;
+}

@@ -3,6 +3,7 @@ import NavHeader from "../../publicComponents/NavHeader";
 import SearchComponent from "../../publicComponents/SearchComponent";
 import Category from "../../publicComponents/Category";
 import FooterComponent from "../../publicComponents/FooterComponent";
+import Products from "../../publicComponents/Products";
 
 function Home() {
     return (
@@ -10,6 +11,7 @@ function Home() {
             <NavHeader />
             <SearchComponent />
             <Category />
+            <Products />
             <FooterComponent />
         </div>
     )

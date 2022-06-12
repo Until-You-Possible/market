@@ -1,0 +1,152 @@
+[
+  {
+    "title": "F1家用电器",
+    "list": [
+      {
+        "title": "双开门冰箱",
+        "categoryId": "100006",
+        "path": "/floor1-1.jpg"
+      },
+      {
+        "title": "电视",
+        "categoryId": "100007",
+        "path": "/floor1-2.jpg"
+      },
+      {
+        "title": "洗衣机",
+        "categoryId": "100008",
+        "path": "/floor1-3.jpg"
+      },
+      {
+        "title": "空调",
+        "categoryId": "100009",
+        "path": "/floor1-4.jpg"
+      },
+      {
+        "title": "热水器",
+        "categoryId": "100010",
+        "path": "/floor1-5.jpg"
+      }
+    ]
+  },
+  {
+    "title": "F2 数码3C",
+    "list": [
+      {
+        "title": "笔记本电脑",
+        "categoryId": "100011",
+        "path": "/floor2-1.jpg"
+      },
+      {
+        "title": "手机",
+        "categoryId": "100012",
+        "path": "/floor2-2.jpg"
+      },
+      {
+        "title": "平板电脑",
+        "categoryId": "100013",
+        "path": "/floor2-3.jpg"
+      },
+      {
+        "title": "数码相机",
+        "categoryId": "100014",
+        "path": "/floor2-4.jpg"
+      },
+      {
+        "title": "3C配件",
+        "categoryId": "100015",
+        "path": "/floor2-5.jpg"
+      }
+    ]
+  },
+  {
+    "title": "F3 服装箱包",
+    "list": [
+      {
+        "title": "女装",
+        "categoryId": "100016",
+        "path": "/floor3-1.jpg"
+      },
+      {
+        "title": "帽子专区",
+        "categoryId": "100017",
+        "path": "/floor3-2.jpg"
+      },
+      {
+        "title": "旅行箱",
+        "categoryId": "100018",
+        "path": "/floor3-3.jpg"
+      },
+      {
+        "title": "手提包",
+        "categoryId": "100019",
+        "path": "/floor3-4.jpg"
+      },
+      {
+        "title": "保暖内衣",
+        "categoryId": "100020",
+        "path": "/floor3-5.jpg"
+      }
+    ]
+  },
+  {
+    "title": "F4 食品生鲜",
+    "list": [
+      {
+        "title": "最爱零食",
+        "categoryId": "100021",
+        "path": "/floor4-1.jpg"
+      },
+      {
+        "title": "生鲜",
+        "categoryId": "100022",
+        "path": "/floor4-2.jpg"
+      },
+      {
+        "title": "半成品菜",
+        "categoryId": "100023",
+        "path": "/floor4-3.jpg"
+      },
+      {
+        "title": "速冻专区",
+        "categoryId": "100024",
+        "path": "/floor4-4.jpg"
+      },
+      {
+        "title": "进口牛奶",
+        "categoryId": "100025",
+        "path": "/floor4-5.jpg"
+      }
+    ]
+  },
+  {
+    "title": "F5 酒水饮料",
+    "list": [
+      {
+        "title": "白酒",
+        "categoryId": "100026",
+        "path": "/floor5-1.jpg"
+      },
+      {
+        "title": "红酒",
+        "categoryId": "100027",
+        "path": "/floor5-2.jpg"
+      },
+      {
+        "title": "饮料",
+        "categoryId": "100028",
+        "path": "/floor5-3.jpg"
+      },
+      {
+        "title": "调制鸡尾酒",
+        "categoryId": "100029",
+        "path": "/floor5-4.jpg"
+      },
+      {
+        "title": "进口洋酒",
+        "categoryId": "100030",
+        "path": "/floor5-5.jpg"
+      }
+    ]
+  }
+]
