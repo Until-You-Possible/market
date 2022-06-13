@@ -1,10 +1,10 @@
 import React from "react";
 import { Form, Input, Button } from 'antd';
-import { LoginItemList, userLoginInfo } from "./loginType";
 import { userApi } from "../../api/user";
 import {Link, useNavigate} from "react-router-dom";
 import { Constants } from "../../model/constant";
 import "../../css/login.css";
+import {LoginItemList, userLoginInfo} from "../dataType/userType";
 
 
 

@@ -12,6 +12,7 @@ import Register from "./view/register";
 import Login from "./view/login";
 import FindPassword from "./view/findPassword";
 import RegisterSuccess from "./view/registerSuccess";
+import ResetPassword from "./view/resetPassword";
 
 function App() {
       return (
@@ -24,6 +25,7 @@ function App() {
                       <Route path="/login" element={ <Login />} />
                       <Route path="/findPassword" element={ <FindPassword />} />
                       <Route path="/registerSuccess" element={ <RegisterSuccess />} />
+                      <Route path="/resetPassword" element={ <ResetPassword />} />
                   </Routes>
               </div>
           </Router>

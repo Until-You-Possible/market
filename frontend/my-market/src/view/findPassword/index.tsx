@@ -1,21 +1,41 @@
 import React, {useState} from "react";
 import { Button, Form, Input } from "antd";
-import { passwordInfo, passwordItemList, questionItemList, usernameType} from "./passwordType";
 import { userApi } from "../../api/user";
 import { Constants } from "../../model/constant";
+import {CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType} from "../dataType/userType";
 
 
 const FindPassword: React.FC = () => {
 
     const [question, setQuestion] = useState<string>("");
 
-    const onFinish = (values: usernameType) => {
+    const [currentName, setCurrentName] = useState<string>();
+
+    const onFinish = (values: usernameType | CheckQuestionType) => {
         // 根据用户名查询密码提示问题
-        userApi.getUserQuestion({ username: values.username}).then(res => {
-            if (res.status === Constants.Status.SUCCESS) {
-                setQuestion(res.data);
+        if (!question) {
+            setCurrentName(values.username);
+            userApi.getUserQuestion({ username: values.username}).then(res => {
+                if (res.status === Constants.Status.SUCCESS) {
+                    setQuestion(res.data);
+                }
+            });
+        }
+        if (question) {
+            // 校验问题密码
+            if ("answer" in values) {
+                const userMessage: CheckQuestionType = {
+                    username: currentName || "",
+                    question: question,
+                    answer: values.answer
+                }
+                userApi.getUserQuestionAnswer(userMessage).then(res => {
+                    if (res.status === Constants.Status.SUCCESS) {
+                        console.log("res question", res);
+                    }
+                });
             }
-        });
+        }
     }
 
     const renderForm = (list: passwordInfo[]): JSX.Element[] => {

@@ -1,9 +1,13 @@
 //关于use的接口 (测试版本)
 
 import { http } from "../util/http";
-import { registerUserInfo } from "../view/register/registerType";
-import { CheckUserNameIsExists, LogOutType } from "../view/login/loginType";
-import { usernameType } from "../view/findPassword/passwordType";
+import {
+    CheckQuestionType,
+    CheckUserNameIsExists,
+    LogOutType,
+    registerUserInfo,
+    usernameType
+} from "../view/dataType/userType";
 
 class UserApi {
     // URLs
@@ -71,7 +75,7 @@ class UserApi {
 
     /**
      * get question for user
-     * @param username
+     * @param usernameInfo
      */
     async getUserQuestion(usernameInfo: usernameType): Promise<any> {
         return http.post(this.userQuestion, usernameInfo);
@@ -81,7 +85,7 @@ class UserApi {
      * get answer for last question
      * @param userInfo
      */
-    async getUserQuestionAnswer(userInfo: {}): Promise<any> {
+    async getUserQuestionAnswer(userInfo: CheckQuestionType): Promise<any> {
         return http.post(this.userAnswer, userInfo);
     }
 
