@@ -3,6 +3,7 @@
 import { http } from "../util/http";
 import { registerUserInfo } from "../view/register/registerType";
 import { CheckUserNameIsExists, LogOutType } from "../view/login/loginType";
+import { usernameType } from "../view/findPassword/passwordType";
 
 class UserApi {
     // URLs
@@ -72,8 +73,8 @@ class UserApi {
      * get question for user
      * @param username
      */
-    async getUserQuestion(username: string): Promise<any> {
-        return http.post(this.userQuestion, username);
+    async getUserQuestion(usernameInfo: usernameType): Promise<any> {
+        return http.post(this.userQuestion, usernameInfo);
     }
 
     /**

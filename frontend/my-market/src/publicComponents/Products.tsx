@@ -1,13 +1,9 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Col, Row} from "antd";
 import "../css/products.css";
 import productJson from "../mockData/productFloor.json";
 
 const Products:React.FC = () =>   {
-
-    useEffect(() => {
-        console.log("x", productJson);
-    })
 
     return (
         <div className=" wrap productWrap">

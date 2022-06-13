@@ -2,9 +2,9 @@ import React from "react";
 import { Form, Input, Button } from 'antd';
 import { LoginItemList, userLoginInfo } from "./loginType";
 import { userApi } from "../../api/user";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { Constants } from "../../model/constant";
-
+import "../../css/login.css";
 
 
 
@@ -54,6 +54,10 @@ const Register: React.FC = () => {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     立即登陆
                 </Button>
+                <div className="passwordAndRegister">
+                    <Link className="forgetPassword" to="/findPassword">忘记密码</Link>
+                    <Link className="freeRegister" to="/register">免费注册</Link>
+                </div>
             </Form.Item>
         </Form>
     </div>
