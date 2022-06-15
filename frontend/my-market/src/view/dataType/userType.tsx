@@ -270,3 +270,17 @@ export const questionItemList:passwordInfo[]  = [
         }
     },
 ];
+
+export interface ILocation {
+    hash     : string,
+    key      : string,
+    pathname : string,
+    search   : string,
+    state?   : any
+}
+
+export interface setPasswordType {
+    username    : string,
+    passwordNew : string,
+    forgetToken : string
+}

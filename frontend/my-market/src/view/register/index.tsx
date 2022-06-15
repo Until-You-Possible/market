@@ -26,7 +26,7 @@ const Register: React.FC = () => {
             if (res.status === Constants.Status.SUCCESS) {
                 helper.showMessage("用户名可用～");
                 setTimeout(() => {
-                    navigate("/registerSuccess", { replace: true });
+                    navigate("/registerSuccess");
                 }, 1000);
             }
         });

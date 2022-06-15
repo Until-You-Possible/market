@@ -93,7 +93,7 @@ class UserApi {
      * reset the user's password
      * @param userInfo
      */
-    async resetPassword(userInfo: {}): Promise<any> {
+    async resetPassword(userInfo: any): Promise<any> {
         return http.post(this.setUserPassword, userInfo);
     }
 

@@ -2,10 +2,13 @@ import React, {useState} from "react";
 import { Button, Form, Input } from "antd";
 import { userApi } from "../../api/user";
 import { Constants } from "../../model/constant";
-import {CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType} from "../dataType/userType";
+import { CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType } from "../dataType/userType";
+import { useNavigate } from "react-router-dom";
 
 
 const FindPassword: React.FC = () => {
+
+    const navigate = useNavigate();
 
     const [question, setQuestion] = useState<string>("");
 
@@ -31,7 +34,12 @@ const FindPassword: React.FC = () => {
                 }
                 userApi.getUserQuestionAnswer(userMessage).then(res => {
                     if (res.status === Constants.Status.SUCCESS) {
-                        console.log("res question", res);
+                        window.localStorage.setItem("token", res.data);
+                        navigate("/resetPassword", {
+                            state: {
+                                username: currentName
+                            }
+                        });
                     }
                 });
             }
