@@ -30,6 +30,11 @@ class Helper {
                 message.success(content, duration).then( r => r);
         }
     }
+
+    // 成功状态
+    public successResponse(response) {
+        return response.status === Constants.Status.SUCCESS
+    }
 }
 
 
