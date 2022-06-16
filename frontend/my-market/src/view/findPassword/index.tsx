@@ -4,6 +4,7 @@ import { userApi } from "../../api/user";
 import { Constants } from "../../model/constant";
 import { CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType } from "../dataType/userType";
 import { useNavigate } from "react-router-dom";
+import {helper} from "../../util/helper";
 
 
 const FindPassword: React.FC = () => {
@@ -19,7 +20,7 @@ const FindPassword: React.FC = () => {
         if (!question) {
             setCurrentName(values.username);
             userApi.getUserQuestion({ username: values.username}).then(res => {
-                if (res.status === Constants.Status.SUCCESS) {
+                if (helper.successResponse(res)) {
                     setQuestion(res.data);
                 }
             });
@@ -33,7 +34,7 @@ const FindPassword: React.FC = () => {
                     answer: values.answer
                 }
                 userApi.getUserQuestionAnswer(userMessage).then(res => {
-                    if (res.status === Constants.Status.SUCCESS) {
+                    if (helper.successResponse(res)) {
                         window.localStorage.setItem("token", res.data);
                         navigate("/resetPassword", {
                             state: {

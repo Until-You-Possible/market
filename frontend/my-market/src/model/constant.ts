@@ -19,4 +19,8 @@ export namespace Constants {
         WARN    = "warn",
         LOADING = "loading",
     }
+    export enum SuccessPageType {
+        RESETPASSWORD = "resetPasswordSuccess",
+        REGISTER      = "registerSuccess"
+    }
 }

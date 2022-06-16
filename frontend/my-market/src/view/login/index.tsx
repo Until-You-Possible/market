@@ -5,6 +5,7 @@ import {Link, useNavigate} from "react-router-dom";
 import { Constants } from "../../model/constant";
 import "../../css/login.css";
 import {LoginItemList, userLoginInfo} from "../dataType/userType";
+import { helper } from "../../util/helper";
 
 
 
@@ -18,7 +19,7 @@ const Register: React.FC = () => {
 
     const userLogin = (values: userLoginInfo) => {
         userApi.userLogin(values).then(res => {
-            if (res.status === Constants.Status.SUCCESS) {
+            if (helper.successResponse(res)) {
                 navigate("/home");
             }
         });

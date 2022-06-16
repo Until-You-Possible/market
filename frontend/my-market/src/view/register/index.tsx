@@ -5,7 +5,7 @@ import { userApi } from "../../api/user";
 import {Link, useNavigate} from "react-router-dom";
 import { Constants } from "../../model/constant";
 import { helper } from "../../util/helper";
-import {CheckUserNameIsExists, registerItemList, registerUserInfo} from "../dataType/userType";
+import { CheckUserNameIsExists, registerItemList, registerUserInfo } from "../dataType/userType";
 
 
 
@@ -23,10 +23,10 @@ const Register: React.FC = () => {
 
     const registerNewAccount = (values: registerUserInfo) => {
         userApi.Register(values).then(res => {
-            if (res.status === Constants.Status.SUCCESS) {
+            if (helper.successResponse(res)) {
                 helper.showMessage("用户名可用～");
                 setTimeout(() => {
-                    navigate("/registerSuccess");
+                    navigate("/resultSuccess?successPageType=" + Constants.SuccessPageType.REGISTER);
                 }, 1000);
             }
         });
@@ -40,7 +40,7 @@ const Register: React.FC = () => {
                 str : event.target.value || ""
             }
             userApi.checkUsernameExists(info).then(res => {
-                if (res.status === Constants.Status.SUCCESS) {
+                if (helper.successResponse(res)) {
                     helper.showMessage("用户名可用～");
                 }
             });

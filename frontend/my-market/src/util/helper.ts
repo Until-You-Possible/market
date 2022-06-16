@@ -32,7 +32,7 @@ class Helper {
     }
 
     // 成功状态
-    public successResponse(response) {
+    public successResponse(response: any) {
         return response.status === Constants.Status.SUCCESS
     }
 }
