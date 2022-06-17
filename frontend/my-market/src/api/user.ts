@@ -7,7 +7,7 @@ import {
     LogOutType,
     registerUserInfo,
     usernameType
-} from "../view/dataType/userType";
+} from "../dataType/userType";
 
 class UserApi {
     // URLs

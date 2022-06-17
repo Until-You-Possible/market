@@ -39,7 +39,7 @@ const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
 }
 
 const errorFun = (info: string) => {
-    message.error(info);
+    message.error(info).then(r => r);
 };
 
 class Http {

@@ -1,13 +1,30 @@
 
 import React from "react";
 import Search from "antd/es/input/Search";
-import {Col, Row} from "antd";
+import { Col, Row } from "antd";
+import { productApi } from "../api/product";
+import { SearchKeywordType } from "../dataType/product";
+import { Constants } from "../model/constant";
+import { helper } from "../util/helper";
 
 const SearchComponent:React.FC = () =>  {
 
-    function onSearch() {
-
+    const onSearch = (value: string) => {
+        if (value) {
+            const params: SearchKeywordType = {
+                pageNum  : 1,
+                pageSize : 10,
+                orderBy  : Constants.SearchOrderBy.DEFAULT,
+                keyword  : value
+            }
+            productApi.fetchProductList(params).then(res => {
+                if (helper.successResponse(res)) {
+                    console.log("res list", res.data);
+                }
+            });
+        }
     }
+
     return <div>
         <Row>
             <Col span={12} offset={6}>

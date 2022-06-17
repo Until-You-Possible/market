@@ -1,11 +1,9 @@
 // 关于product接口
 
 import { http } from "../util/http";
+import { ProductResultType } from "../dataType/product";
 
-export type Product = {
-    status : string,
-    data   : object
-}
+
 
 class ProductApi {
     // product list url
@@ -16,8 +14,8 @@ class ProductApi {
     /**
      * get product list
      */
-    async fetchProductList(params: string): Promise<any> {
-        return await http.get<Product>(this.productListURL, { params: params });
+    async fetchProductList(params: { pageSize: number; orderBy: string; keyword: string; pageNum: number }): Promise<any> {
+        return await http.get<ProductResultType>(this.productListURL, { params: params });
     }
 
     /**
@@ -25,7 +23,7 @@ class ProductApi {
      * @param productId
      */
     async fetchProductDetail(productId: string): Promise<any> {
-        return await http.get<Product>(this.productDetailURL);
+        return await http.get(this.productDetailURL);
     }
 
 }

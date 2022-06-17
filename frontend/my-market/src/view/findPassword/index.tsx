@@ -1,10 +1,9 @@
 import React, {useState} from "react";
 import { Button, Form, Input } from "antd";
 import { userApi } from "../../api/user";
-import { Constants } from "../../model/constant";
-import { CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType } from "../dataType/userType";
+import { CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType } from "../../dataType/userType";
 import { useNavigate } from "react-router-dom";
-import {helper} from "../../util/helper";
+import { helper } from "../../util/helper";
 
 
 const FindPassword: React.FC = () => {

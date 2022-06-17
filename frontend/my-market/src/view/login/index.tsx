@@ -2,9 +2,8 @@ import React from "react";
 import { Form, Input, Button } from 'antd';
 import { userApi } from "../../api/user";
 import {Link, useNavigate} from "react-router-dom";
-import { Constants } from "../../model/constant";
 import "../../css/login.css";
-import {LoginItemList, userLoginInfo} from "../dataType/userType";
+import {LoginItemList, userLoginInfo} from "../../dataType/userType";
 import { helper } from "../../util/helper";
 
 

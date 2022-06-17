@@ -1,6 +1,5 @@
 // 整理常用的常量
 
-
 export namespace Constants {
     export enum Status {
         SUCCESS  = 0,
@@ -22,5 +21,8 @@ export namespace Constants {
     export enum SuccessPageType {
         RESETPASSWORD = "resetPasswordSuccess",
         REGISTER      = "registerSuccess"
+    }
+    export enum SearchOrderBy {
+        DEFAULT = "default"
     }
 }

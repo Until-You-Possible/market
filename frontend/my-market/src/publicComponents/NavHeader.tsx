@@ -5,8 +5,8 @@ import "../css/navHeader.css"
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { userApi } from "../api/user";
-import { Constants } from "../model/constant";
-import {cartApi} from "../api/cart";
+import { cartApi } from "../api/cart";
+import {helper} from "../util/helper";
 
 const HavHeader:React.FC = () => {
 
@@ -18,7 +18,7 @@ const HavHeader:React.FC = () => {
 
         //检查登录状态
         userApi.checkLoginStatus().then((res) => {
-            if (res.status === Constants.Status.SUCCESS) {
+            if (helper.successResponse(res)) {
                 // 获取用户信息
                 userApi.getCurrentUserInfo().then(res => {
                     setUserInfo(res.data.username)
@@ -37,7 +37,7 @@ const HavHeader:React.FC = () => {
     // 退出
     const logOut = () => {
          userApi.logOut().then((res) => {
-             if (res.status === Constants.Status.SUCCESS) {
+             if (helper.successResponse(res)) {
                  setUserInfo("");
              }
         });

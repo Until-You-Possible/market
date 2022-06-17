@@ -1,8 +1,8 @@
 import React from "react";
-import {Button, Form, Input} from "antd";
-import { ILocation, setPasswordItemList, setPasswordType} from "../dataType/userType";
-import {NavigateFunction, useLocation, useNavigate, useSearchParams} from "react-router-dom";
-import {userApi} from "../../api/user";
+import { Button, Form, Input } from "antd";
+import { ILocation, setPasswordItemList, setPasswordType} from "../../dataType/userType";
+import { NavigateFunction, useLocation, useNavigate } from "react-router-dom";
+import { userApi } from "../../api/user";
 import { Constants } from "../../model/constant";
 import { helper } from "../../util/helper";
 
