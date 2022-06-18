@@ -3,12 +3,14 @@ import React from "react";
 import { GithubOutlined } from "@ant-design/icons";
 
 const footerStyle:React.CSSProperties = {
-    height     : "50px",
-    lineHeight : "50px",
+    height     : "80px",
+    lineHeight : "80px",
     textAlign  : "center",
     cursor     : "pointer",
     color      : "#CF002C",
-    fontWeight : "700"
+    fontWeight : "700",
+    border     : "1px solid",
+    background : "#fff"
 }
 
 const iconStyle: React.CSSProperties = {
@@ -26,7 +28,7 @@ const FooterComponent: React.FC = () => {
         window.open("https://github.com/Until-You-Possible");
     }
 
-    return <div className="wrap" style={footerStyle}>
+    return <div className="" style={footerStyle}>
         <div onClick={onClickGithub} style={wrapperStyle}>
             <GithubOutlined style={iconStyle} />
             github: https://github.com/Until-You-Possible

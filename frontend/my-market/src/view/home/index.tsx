@@ -4,14 +4,38 @@ import SearchComponent from "../../publicComponents/SearchComponent";
 import Category from "../../publicComponents/Category";
 import FooterComponent from "../../publicComponents/FooterComponent";
 import Products from "../../publicComponents/Products";
+import {
+    Route,
+    Routes,
+    useLocation
+} from "react-router-dom";
+
+import ProductList from "../productList";
 
 function Home() {
+
+    const location = useLocation();
+
+    const showDifferentComp = (location: any) => {
+        if (location.pathname.includes("productList")) {
+            return null
+        }
+        return <div>
+            <Category />
+            <Products />
+        </div>
+    }
+
     return (
         <div className="homeContainer">
             <NavHeader />
             <SearchComponent />
-            <Category />
-            <Products />
+            {
+                showDifferentComp(location)
+            }
+            <Routes>
+                <Route path="/productList" element={<ProductList/>}/>
+            </Routes>
             <FooterComponent />
         </div>
     )

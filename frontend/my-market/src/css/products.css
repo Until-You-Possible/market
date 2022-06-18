@@ -42,3 +42,53 @@
     font-size: 16px;
     color: #5e5e5e;
 }
+
+.productListWrap {
+    min-height: 300px;
+    border-top: 2px solid #CF002C;
+    margin-top: 30px;
+}
+
+.breadcrumbContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*background: #fff;*/
+}
+
+.buttonWrapProductList .ant-radio-button-checked  {
+    background: #CF002C;
+    outline: none;
+    border: none;
+}
+
+ant-radio-button-wrapper:hover {
+    color: #333;
+}
+.priceContainer {
+    font-size: 16px;
+    color: #CF002C;
+}
+
+.listItem {
+    position: relative;
+    width: 180px;
+    padding: 10px;
+    margin: 0 20px 20px 0;
+    float: left;
+    cursor: pointer;
+    background: #fff;
+    transition: box-shadow .5s ease;
+}
+.listContainer {
+    overflow: hidden;
+    margin-top: 20px;
+}
+.nameContainer {
+    height: 40px;
+    overflow: hidden;
+}
+
+.itemImage {
+    width: 160px;
+    height: 200px;
+}

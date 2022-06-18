@@ -25,3 +25,19 @@
   outline: transparent;
 }
 
+.ant-input-wrapper {
+  border: 2px solid #CF002C;
+}
+
+.ant-input-search>.ant-input-group>.ant-input-group-addon:last-child {
+  left: 1px;
+}
+
+.ant-input-search>.ant-input-group>.ant-input-group-addon:last-child:hover {
+  outline: none;
+}
+
+.ant-input-search>.ant-input-group>.ant-input-group-addon:last-child:focus {
+  border: none;
+  outline: none;
+}

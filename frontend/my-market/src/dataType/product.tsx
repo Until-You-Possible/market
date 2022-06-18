@@ -1,12 +1,14 @@
 // 定义产品相关的数据类型
 
+import { ParsedQuery } from "query-string";
+
 export {}
 
 export interface SearchKeywordType {
     pageNum  : number,
     pageSize : number,
-    orderBy  : string,
-    keyword  : string
+    orderBy  : string | undefined,
+    keyword  :  string | (string | null)[] | null
 }
 
 
@@ -36,7 +38,7 @@ export interface ProductListResultType {
     total            : number
 }
 
-interface ListDataType {
+export interface ListDataType {
     categoryId : number,
     id         : number,
     imageHost  : string,

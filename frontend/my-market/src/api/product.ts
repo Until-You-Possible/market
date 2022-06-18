@@ -1,7 +1,7 @@
 // 关于product接口
 
 import { http } from "../util/http";
-import { ProductResultType } from "../dataType/product";
+import {ProductResultType, SearchKeywordType} from "../dataType/product";
 
 
 
@@ -14,7 +14,7 @@ class ProductApi {
     /**
      * get product list
      */
-    async fetchProductList(params: { pageSize: number; orderBy: string; keyword: string; pageNum: number }): Promise<any> {
+    async fetchProductList(params: SearchKeywordType): Promise<any> {
         return await http.get<ProductResultType>(this.productListURL, { params: params });
     }
 

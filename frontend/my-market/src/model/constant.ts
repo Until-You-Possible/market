@@ -23,6 +23,11 @@ export namespace Constants {
         REGISTER      = "registerSuccess"
     }
     export enum SearchOrderBy {
-        DEFAULT = "default"
+        DEFAULT  = "default",
+        PRICEASE = "price_ase"
+    }
+    export enum productListOrder {
+        PRICE     = "price",
+        RECOMMEND = "recommend"
     }
 }

@@ -2,26 +2,15 @@
 import React from "react";
 import Search from "antd/es/input/Search";
 import { Col, Row } from "antd";
-import { productApi } from "../api/product";
-import { SearchKeywordType } from "../dataType/product";
-import { Constants } from "../model/constant";
-import { helper } from "../util/helper";
+import { useNavigate } from "react-router-dom";
 
 const SearchComponent:React.FC = () =>  {
 
+    const navigation = useNavigate();
+
     const onSearch = (value: string) => {
         if (value) {
-            const params: SearchKeywordType = {
-                pageNum  : 1,
-                pageSize : 10,
-                orderBy  : Constants.SearchOrderBy.DEFAULT,
-                keyword  : value
-            }
-            productApi.fetchProductList(params).then(res => {
-                if (helper.successResponse(res)) {
-                    console.log("res list", res.data);
-                }
-            });
+            navigation("/home/productList?keyword=" + value);
         }
     }
 
@@ -29,7 +18,7 @@ const SearchComponent:React.FC = () =>  {
         <Row>
             <Col span={12} offset={6}>
                 <Search
-                    placeholder="请输入商品名称"
+                    placeholder="请输入商品名称/例如/手机/电脑"
                     allowClear
                     enterButton="搜索"
                     size="large"
