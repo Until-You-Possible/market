@@ -9,18 +9,26 @@ import imgURL4 from "../img/banner/banner4.jpg";
 import imgURL5 from "../img/banner/banner5.jpg";
 
 import categoriesList from "../mockData/category.json";
+import { useNavigate } from "react-router-dom";
 
-const Category: React.FC = () => {
+
+interface PropsSearch {
+    getSearchKeyword: (key: string) => void
+}
+const Category: React.FC<PropsSearch> = (props) => {
 
         const [size] = useState<number>(2);
 
+        const navigate = useNavigate();
 
         useEffect( () => {
 
         }, []);
 
         const onCategory = (event: any, keyword: any) => {
-            console.log("keyword", keyword);
+            navigate("/home/productList?keyword=" + keyword);
+            // 将keyword传递到home
+            props.getSearchKeyword(keyword);
         }
 
         const judgeSlideImage = (index: number) => {

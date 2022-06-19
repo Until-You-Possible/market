@@ -48,3 +48,7 @@ export interface ListDataType {
     status     : number,
     subtitle   : string
 }
+
+export interface searchTermType {
+    searchTerm : string
+}

@@ -82,6 +82,7 @@ ant-radio-button-wrapper:hover {
 .listContainer {
     overflow: hidden;
     margin-top: 20px;
+    min-height: 305px;
 }
 .nameContainer {
     height: 40px;
@@ -91,4 +92,9 @@ ant-radio-button-wrapper:hover {
 .itemImage {
     width: 160px;
     height: 200px;
+}
+
+.paginationWrap {
+    text-align: center;
+    padding-bottom: 20px;
 }

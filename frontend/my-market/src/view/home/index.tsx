@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createContext, Dispatch, Fragment, SetStateAction, useEffect, useState} from "react";
 import NavHeader from "../../publicComponents/NavHeader";
 import SearchComponent from "../../publicComponents/SearchComponent";
 import Category from "../../publicComponents/Category";
@@ -12,24 +12,41 @@ import {
 
 import ProductList from "../productList";
 
+export const Context = createContext<string>("");
+
+
 function Home() {
 
     const location = useLocation();
+
+    const [categoryKey, setCategoryKey] = useState<string>("");
 
     const showDifferentComp = (location: any) => {
         if (location.pathname.includes("productList")) {
             return null
         }
-        return <div>
-            <Category />
-            <Products />
-        </div>
+        return <Fragment>
+            <div>
+                <Category getSearchKeyword={getChildrenKeyword} />
+                <Products />
+            </div>
+        </Fragment>
+    }
+
+    useEffect(() => {
+
+    }, []);
+
+    const getChildrenKeyword = (key: string): void => {
+        setCategoryKey(key);
     }
 
     return (
         <div className="homeContainer">
             <NavHeader />
-            <SearchComponent />
+            <Context.Provider value={categoryKey}>
+                <SearchComponent />
+            </Context.Provider>
             {
                 showDifferentComp(location)
             }
