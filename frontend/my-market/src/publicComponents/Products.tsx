@@ -1,9 +1,16 @@
 import React from "react";
-import {Col, Row} from "antd";
+import { Col, Row } from "antd";
 import "../css/products.css";
 import productJson from "../mockData/productFloor.json";
+import { useNavigate } from "react-router-dom";
 
 const Products:React.FC = () =>   {
+
+    const navigation = useNavigate();
+
+    const goToDetail = (id: string) => {
+        navigation("/home/productDetail?categoryId=" +  id);
+    }
 
     return (
         <div className=" wrap productWrap">
@@ -17,7 +24,7 @@ const Products:React.FC = () =>   {
                                      {
                                          items.list.map((item, idx) =>
                                              <Col className="gutter-row" span={5} key={idx}>
-                                                 <div className="styleSingle">
+                                                 <div className="styleSingle" onClick={() => goToDetail(item.categoryId)}>
                                                      <span className="floorText">{item.title}</span>
                                                      <img className="productListItem" src={require(`../img/floor${item.path}`)} alt={item.title}/>
                                                  </div>

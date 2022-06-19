@@ -98,3 +98,8 @@ ant-radio-button-wrapper:hover {
     text-align: center;
     padding-bottom: 20px;
 }
+
+.productDetailContainer {
+    margin-top: 20px;
+    min-height: 305px;
+}

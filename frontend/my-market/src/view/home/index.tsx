@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 
 import ProductList from "../productList";
+import ProductDetail from "../productDetail";
+import {Constants} from "../../model/constant";
 
 export const Context = createContext<string>("");
 
@@ -22,7 +24,9 @@ function Home() {
     const [categoryKey, setCategoryKey] = useState<string>("");
 
     const showDifferentComp = (location: any) => {
-        if (location.pathname.includes("productList")) {
+        let listExist = [Constants.ProductInfoType.PRODUCTLIST, Constants.ProductInfoType.PRODUCTDETAIL];
+        let isExist = listExist.filter(v => location.pathname.includes(v));
+        if (isExist.length > Constants.ConditionStatus.ZERO) {
             return null
         }
         return <Fragment>
@@ -52,6 +56,7 @@ function Home() {
             }
             <Routes>
                 <Route path="/productList" element={<ProductList/>}/>
+                <Route path="/productDetail" element={<ProductDetail/>}/>
             </Routes>
             <FooterComponent />
         </div>

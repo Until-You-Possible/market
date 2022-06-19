@@ -52,3 +52,7 @@ export interface ListDataType {
 export interface searchTermType {
     searchTerm : string
 }
+
+export interface PageTile {
+    title: string
+}

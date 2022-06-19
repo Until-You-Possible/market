@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState } from "react";
-import { Breadcrumb, Pagination, Radio, Image, Empty, Spin } from "antd";
+import { Pagination, Radio, Image, Empty, Spin } from "antd";
 import { Constants } from "../../model/constant";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ListDataType, SearchKeywordType} from "../../dataType/product";
 import { productApi } from "../../api/product";
 import { helper } from "../../util/helper";
 import qs from "query-string";
+import NavigationHeader from "../../publicComponents/NavigationHeader";
 
 
 const ProductList: React.FC = () => {
@@ -20,6 +21,8 @@ const ProductList: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const location = useLocation();
+
+    const navigation = useNavigate();
 
 
     const onChoose  = (value: string) => {
@@ -48,7 +51,7 @@ const ProductList: React.FC = () => {
             pageNum  : pageNum || 1,
             pageSize : 10,
             orderBy  : orderType || Constants.SearchOrderBy.DEFAULT,
-            keyword  : keyword
+            keyword  : keyword || ""
         }
         setLoading(false);
         setTimeout(() => {
@@ -78,13 +81,19 @@ const ProductList: React.FC = () => {
         setCurrentPage(1);
     }
 
+    const goToDetail = (id: number) => {
+        navigation("/home/productDetail?categoryId=" +  id);
+    }
+
     // 列表的渲染
     const renderProductList = () => {
         if (productData.length) {
             return productData.map((item, index) => {
-                return <div className="listItem" key={index}>
+                return <div className="listItem" key={index} onClick={() => goToDetail(item.categoryId)}>
                     <div className="itemImage">
-                        <Image onError={imageError} fallback={require("../../img/failImage.jpeg")} src={item.imageHost + item.mainImage} alt="图片"/>
+                        <Image onError={imageError}
+                               fallback={require("../../img/failImage.jpeg")}
+                               src={item.imageHost + item.mainImage} alt="图片"/>
                     </div>
                     <div className="priceContainer">
                         ¥{item.price}
@@ -97,20 +106,13 @@ const ProductList: React.FC = () => {
             });
         }
         if (!productData.length && loading) {
-            return <Empty description="暂无查询数据" />
+            return <Empty description={Constants.ProductInfoType.NODATA} />
         }
     }
 
     return <div className="wrap productListWrap">
         <div className="breadcrumbContainer">
-            <Breadcrumb>
-                <Breadcrumb.Item>
-                    <Link to="/home">首页</Link>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                   商品列表
-                </Breadcrumb.Item>
-            </Breadcrumb>
+            <NavigationHeader title={Constants.NavigationText.LIST}/>
         </div>
         <div className="buttonWrapProductList">
             <Radio.Group buttonStyle="solid" value={currentButton} onChange={e => onChoose(e.target.value)}>

@@ -30,4 +30,19 @@ export namespace Constants {
         PRICE     = "price",
         RECOMMEND = "recommend"
     }
+    export enum ProductInfoType {
+        PRODUCTLIST   = "productList",
+        PRODUCTDETAIL = "productDetail",
+        NODATA        = "暂无查询数据"
+    }
+    export enum ConditionStatus {
+        ZERO        = 0,
+        NEGATIVEONE = -1,
+        POSTIVENOE  = 1
+    }
+    export enum NavigationText {
+        HOME   = "首页",
+        LIST   = "商品列表",
+        DETAIL = "商品详情"
+    }
 }
