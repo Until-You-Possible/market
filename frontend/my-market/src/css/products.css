@@ -124,14 +124,21 @@ ant-radio-button-wrapper:hover {
 }
 
 .thumbnailWrap .nailItem {
-    width: 74px;
+    /*width: 74px;*/
     height: 74px;
     float: left;
     margin-right: 10px;
-    border: 2px solid #eee;
+    /*border: 2px solid #eee;*/
     cursor: pointer;
+    display: flex;
 }
-
+.thumbnailWrap .nailItem .ant-image {
+    margin-right: 10px;
+}
+.thumbnailWrap .nailItem .ant-image img  {
+    width: 100%;
+    height: 100%;
+}
 .thumbnailWrap .nailItem img {
     width: 100%;
     height: 100%;
@@ -234,4 +241,31 @@ ant-radio-button-wrapper:hover {
 
 .detailContentBottom {
     margin-top: 15px;
+}
+
+.detailContentBottom {
+    background: #eee;
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #c60023;
+}
+
+.detailInfoTitle {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    /*padding: 10px;*/
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.informationDetailProduct {
+    min-height: 100px;
+    background: #fff;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.chooseBorderStyle {
+    border: 2px solid #CF002C !important;
 }

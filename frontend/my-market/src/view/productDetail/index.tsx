@@ -1,12 +1,12 @@
 
-import React, {Fragment, useEffect, useState} from "react";
+import React, { Fragment, useEffect, useState} from "react";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Constants } from "../../model/constant";
 import { Image } from "antd";
-import {productApi} from "../../api/product";
+import { productApi } from "../../api/product";
 import {useLocation} from "react-router-dom";
 import qs from "query-string";
-import {helper} from "../../util/helper";
+import { helper } from "../../util/helper";
 import { detailInformationType } from "../../dataType/product";
 
 const ProductDetail: React.FC = () => {
@@ -14,6 +14,8 @@ const ProductDetail: React.FC = () => {
     const location = useLocation();
 
     const paramsId = qs.parse(location.search).productId as string;
+
+    let [currentChooseIndex, setCurrentChooseIndex] = useState<number>(0);
 
     const [detailInfo, setDetailInfo] = useState<detailInformationType>({
         categoryId: 0,
@@ -37,23 +39,28 @@ const ProductDetail: React.FC = () => {
         productApi.fetchProductDetail(paramsId).then(res => {
             if (helper.successResponse(res)) {
                 setDetailInfo(res.data);
+                setCurrentMaimImage(res.data.imageHost + res.data.mainImage);
             }
         });
     }, []);
 
     let [currentCount, setCurrentCount] = useState<number>(0);
 
+    let [currentMainImage, setCurrentMaimImage] = useState<string>("")
+
     const plusCount = () => {
         setCurrentCount(++currentCount);
         // 如果库存为0
         if (detailInfo.stock === 0) {
             setCurrentCount(0);
+            helper.showMessage("没有多余的库存啦～");
             return;
         }
         // 如果大于库存
         if (currentCount > detailInfo.stock) {
             setCurrentCount(detailInfo.stock);
-            helper.showMessage("没这么多库存啦～")
+            helper.showMessage("没这么多库存啦～");
+            return;
         }
     }
 
@@ -65,14 +72,29 @@ const ProductDetail: React.FC = () => {
         setCurrentCount(--currentCount);
     }
 
+    const showCurrentImage = (item: string, index: number) => {
+        setCurrentChooseIndex(index);
+        let showURL = detailInfo.imageHost + item;
+        setCurrentMaimImage(showURL);
+    }
+
     const subImageList = (urls: string) => {
         if (urls.length > 0) {
             let urlsArray = urls.split(",");
             return urlsArray.map((item, index) => {
-                return <Image key={index} preview={false}  className="mainImage" src={detailInfo.imageHost + item} />
+                return <Image key={index} preview={false}
+                              onMouseEnter={() => showCurrentImage(item, index)}
+                              onClick={() => showCurrentImage(item, index)}
+                              className={["mainImage ", currentChooseIndex === index ? "chooseBorderStyle" : ""].join("")}
+                              src={detailInfo.imageHost + item} />
             });
         }
-        return <div>图片</div>
+        return <div>这里是图片～</div>
+    }
+
+    // 添加购物车逻辑
+    const addBasketButton = () => {
+
     }
 
     return <Fragment>
@@ -80,7 +102,7 @@ const ProductDetail: React.FC = () => {
             <NavigationHeader title={Constants.NavigationText.DETAIL} />
             <div className="detailWrap">
                 <div className="imageContainer">
-                    <Image preview={false}  className="mainImage" src={detailInfo.imageHost + detailInfo.mainImage} />
+                    <Image width="100%" preview={false}  className="mainImage" src={currentMainImage} />
                     <div className="thumbnailWrap">
                         <div className="nailItem">
                             {
@@ -112,11 +134,13 @@ const ProductDetail: React.FC = () => {
                         </div>
                     </div>
                     <div className="addBasketButton">
-                        <div className="btnAddCart">加入购物车</div>
+                        <div className="btnAddCart" onClick={addBasketButton}>加入购物车</div>
                     </div>
                 </div>
-                <div className="detailContentBottom">
-
+            </div>
+            <div className="detailContentBottom">
+                <div className="detailInfoTitle">商品详情</div>
+                <div className="informationDetailProduct" dangerouslySetInnerHTML={{__html: detailInfo.detail}}>
                 </div>
             </div>
         </div>
