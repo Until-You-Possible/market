@@ -1,6 +1,7 @@
 // 定义产品相关的数据类型
 
 import { ParsedQuery } from "query-string";
+import exp from "constants";
 
 export {}
 
@@ -55,4 +56,23 @@ export interface searchTermType {
 
 export interface PageTile {
     title: string
+}
+
+export interface detailInformationType {
+    item?            : string;
+    categoryId       : number,
+    createTime       : string | null,
+    detail           : string,
+    id               : number,
+    imageHost        : string,
+    mainImage        : string,
+    name             : string,
+    parentCategoryId : number,
+    price            : number,
+    status           : number,
+    stock            : number,
+    subImages        : string,
+    subtitle         : string,
+    updateTime       : string
+
 }

@@ -120,6 +120,7 @@ ant-radio-button-wrapper:hover {
     margin-top: 5px;
     margin-right: -10px;
     overflow: hidden;
+    display: flex;
 }
 
 .thumbnailWrap .nailItem {
@@ -187,4 +188,50 @@ ant-radio-button-wrapper:hover {
     outline: none;
     cursor: pointer;
     text-decoration: none;
+}
+.chooseCountContainer {
+    position: relative;
+    margin-top: 20px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+.chooseCountContainer .label {
+    display: inline-block;
+    width: 50px;
+    color: #999;
+}
+
+.chooseCountContainer .currentCount {
+    height: 36px;
+    line-height: 36px;
+    font-size: 15px;
+    width: 45px;
+    text-align: center;
+    outline: none;
+    border: 1px solid #aaa;
+    margin-right: 10px;
+}
+
+.addOrMinusCount {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 36px;
+}
+
+.btnChangeCount {
+    display: block;
+    width: 20px;
+    height: 15px;
+    line-height: 15px;
+    font-size: 10px;
+    text-align: center;
+    border: 1px solid #aaa;
+    background: #fff;
+    cursor: pointer;
+}
+
+.detailContentBottom {
+    margin-top: 15px;
 }

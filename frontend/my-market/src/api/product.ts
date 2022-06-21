@@ -20,10 +20,10 @@ class ProductApi {
 
     /**
      * get product detail
-     * @param productId
+     * @param id
      */
-    async fetchProductDetail(productId: string): Promise<any> {
-        return await http.get(this.productDetailURL);
+    async fetchProductDetail(id: string): Promise<any> {
+        return await http.get(this.productDetailURL, {params: { productId: id }});
     }
 
 }

@@ -82,14 +82,14 @@ const ProductList: React.FC = () => {
     }
 
     const goToDetail = (id: number) => {
-        navigation("/home/productDetail?categoryId=" +  id);
+        navigation("/home/productDetail?productId=" +  id);
     }
 
     // 列表的渲染
     const renderProductList = () => {
         if (productData.length) {
             return productData.map((item, index) => {
-                return <div className="listItem" key={index} onClick={() => goToDetail(item.categoryId)}>
+                return <div className="listItem" key={index} onClick={() => goToDetail(item.id)}>
                     <div className="itemImage">
                         <Image onError={imageError}
                                fallback={require("../../img/failImage.jpeg")}
