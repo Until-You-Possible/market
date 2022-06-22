@@ -2,9 +2,10 @@
 
 export namespace Constants {
     export enum Status {
-        SUCCESS  = 0,
-        FAIL     = 1,
-        FETCHING = 2
+        SUCCESS    = 0,
+        FAIL       = 1,
+        FETCHING   = 2,
+        NEED_LOGIN = 10
     }
     export enum ConstantString {
         USERNAME = "username",
@@ -20,7 +21,8 @@ export namespace Constants {
     }
     export enum SuccessPageType {
         RESETPASSWORD = "resetPasswordSuccess",
-        REGISTER      = "registerSuccess"
+        REGISTER      = "registerSuccess",
+        ADDBASKET     = "addBasketSuccess"
     }
     export enum SearchOrderBy {
         DEFAULT  = "default",
@@ -33,6 +35,7 @@ export namespace Constants {
     export enum ProductInfoType {
         PRODUCTLIST   = "productList",
         PRODUCTDETAIL = "productDetail",
+        CART          = "cart",
         NODATA        = "暂无查询数据"
     }
     export enum ConditionStatus {

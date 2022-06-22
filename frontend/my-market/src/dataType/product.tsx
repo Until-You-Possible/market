@@ -74,5 +74,10 @@ export interface detailInformationType {
     subImages        : string,
     subtitle         : string,
     updateTime       : string
+}
 
+
+export interface CartProductType {
+    productId : number,
+    count     : number
 }

@@ -18,6 +18,17 @@ const RegisterSuccess: React.FC = () => {
         if (currentType === Constants.SuccessPageType.REGISTER) {
             return <h1>恭喜您，注册成功</h1>
         }
+        if (currentType === Constants.SuccessPageType.ADDBASKET) {
+            return <h1>恭喜您，添加购物车成功</h1>
+        }
+    }
+
+    const differentSuccessButton = (currentType: Array<string | null> | string | null) => {
+        if (currentType === Constants.SuccessPageType.ADDBASKET) {
+            return  <Link to="/cart">立即去购物车查看</Link>
+        }
+        return  <Link to="/login">立即去登陆</Link>
+
     }
 
 
@@ -28,7 +39,9 @@ const RegisterSuccess: React.FC = () => {
             }
         </div>
         <Button className="registerSuccessLoginButton">
-            <Link to="/login">立即去登陆</Link>
+            {
+                differentSuccessButton(currentType)
+            }
         </Button>
     </div>
 }

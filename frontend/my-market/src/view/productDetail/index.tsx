@@ -4,14 +4,17 @@ import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Constants } from "../../model/constant";
 import { Image } from "antd";
 import { productApi } from "../../api/product";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
-import { detailInformationType } from "../../dataType/product";
+import {CartProductType, detailInformationType} from "../../dataType/product";
+import {cartApi} from "../../api/cart";
 
 const ProductDetail: React.FC = () => {
 
     const location = useLocation();
+
+    const navigation = useNavigate();
 
     const paramsId = qs.parse(location.search).productId as string;
 
@@ -94,7 +97,24 @@ const ProductDetail: React.FC = () => {
 
     // 添加购物车逻辑
     const addBasketButton = () => {
+        let currentStock = detailInfo.stock;
+        if (currentStock === 0) {
+            helper.showMessage("添加购物车的数量不能为0", Constants.AlertMessage.WARN);
+        }
+        if (currentCount === 0) {
+            helper.showMessage("请选择需要添加的数量(不能为0)", Constants.AlertMessage.WARN);
+        }
 
+        let infoProduct: CartProductType = {
+            productId : detailInfo.id,
+            count     : currentCount
+        }
+
+        cartApi.addBasket(infoProduct).then(res => {
+            if (helper.successResponse(res)) {
+                navigation("/resultSuccess?successPageType=" + Constants.SuccessPageType.ADDBASKET);
+            }
+        })
     }
 
     return <Fragment>
