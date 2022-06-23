@@ -79,3 +79,11 @@ export interface CartProductType {
     productId : number,
     count     : number
 }
+
+export interface CartGoodsType {
+    id: number,
+    productName: string,
+    productPrice: number,
+    quantity: number,
+    productTotalPrice: number
+}

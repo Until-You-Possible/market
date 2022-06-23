@@ -12,7 +12,7 @@ class Cart {
 
     private addCart       : string = "/cart/add.do";
 
-    private getCartList   : string = "/cart/list.do";
+    private cartList   : string = "/cart/list.do";
 
     private selectCart    : string = "/cart/select.do";
 
@@ -36,6 +36,13 @@ class Cart {
      */
     public addBasket (productInfo: CartProductType): Promise<any> {
         return http.post(this.addCart, productInfo);
+    }
+
+    /**
+     * 获取购物车列表
+     */
+    async getCartList (): Promise<any> {
+        return await http.get(this.cartList);
     }
 
 

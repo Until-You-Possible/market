@@ -59,7 +59,9 @@ const HavHeader:React.FC = () => {
                     </Col>
             }
             <Col className="headerCartWrap" span={12}>
-                <div><ShoppingCartOutlined style={{marginRight: "4px"}} />购物车({cartNumber})</div>
+                <div><ShoppingCartOutlined style={{marginRight: "4px"}} />
+                    <Link to="/home/cart">购物车({cartNumber})</Link> 
+                </div>
                 <div className="uiMarginLeft">我的订单</div>
                 <div className="uiMarginLeft userInfoWrapperHeader">
                     <Link to="/home/personalInfo">个人中心</Link>
