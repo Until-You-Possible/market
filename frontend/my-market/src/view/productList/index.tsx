@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import { Pagination, Radio, Image, Empty, Spin } from "antd";
 import { Constants } from "../../model/constant";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -28,9 +28,9 @@ const ProductList: React.FC = () => {
     const onChoose  = (value: string) => {
         setCurrentButton(value);
         if (value === Constants.productListOrderEnum.RECOMMEND) {
-            getListData(Constants.SearchOrderByEnum.DEFAULT);
+            fetchListData(Constants.SearchOrderByEnum.DEFAULT);
         } else {
-            getListData(Constants.SearchOrderByEnum.PRICEASE);
+            fetchListData(Constants.SearchOrderByEnum.PRICEASE);
         }
     }
 
@@ -38,20 +38,15 @@ const ProductList: React.FC = () => {
 
     let keyword = qs.parse(location.search).keyword;
 
-    useEffect(() => {
-        if (keyword) {
-            getListData(Constants.SearchOrderByEnum.DEFAULT);
-        }
-        // 重置列表函数
-        resetListParams()
-    }, [keyword]);
+    let categoryId = qs.parse(location.search).categoryId;
 
-    const getListData = (orderType?: string, pageNum?:number) => {
+    const fetchListData = useCallback((orderType?: string, pageNum?:number) => {
         const params: SearchKeywordType = {
-            pageNum  : pageNum || 1,
-            pageSize : 10,
-            orderBy  : orderType || Constants.SearchOrderByEnum.DEFAULT,
-            keyword  : keyword || ""
+            pageNum    : pageNum || 1,
+            pageSize   : 10,
+            orderBy    : orderType || Constants.SearchOrderByEnum.DEFAULT,
+            keyword    : keyword || "",
+            categoryId : categoryId || ""
         }
         setLoading(false);
         setTimeout(() => {
@@ -63,11 +58,18 @@ const ProductList: React.FC = () => {
                 }
             });
         }, 2000)
-    }
+    }, [keyword, categoryId]);
+
+    useEffect(() => {
+        // 获取列表
+        fetchListData();
+        // 重置列表
+        resetListParams()
+    }, [fetchListData]);
 
     const paginationFunc = (page: number) => {
         setCurrentPage(page);
-        getListData(Constants.SearchOrderByEnum.DEFAULT, page);
+        fetchListData(Constants.SearchOrderByEnum.DEFAULT, page);
     }
 
     const imageError = (event: any) => {

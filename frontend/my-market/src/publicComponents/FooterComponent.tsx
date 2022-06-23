@@ -10,7 +10,11 @@ const footerStyle:React.CSSProperties = {
     color      : "#CF002C",
     fontWeight : "700",
     border     : "1px solid",
-    background : "#fff"
+    background : "#fff",
+    position   : "fixed",
+    width      : "100%",
+    bottom     : 0,
+    left       : 0
 }
 
 const iconStyle: React.CSSProperties = {

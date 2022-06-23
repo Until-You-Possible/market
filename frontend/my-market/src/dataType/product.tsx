@@ -1,15 +1,13 @@
 // 定义产品相关的数据类型
 
-import { ParsedQuery } from "query-string";
-import exp from "constants";
-
 export {}
 
 export interface SearchKeywordType {
-    pageNum  : number,
-    pageSize : number,
-    orderBy  : string | undefined,
-    keyword  :  string | (string | null)[] | null
+    pageNum     : number,
+    pageSize    : number,
+    categoryId? : string | (string | null)[] | null,
+    orderBy     : string | undefined,
+    keyword     : string | (string | null)[] | null
 }
 
 

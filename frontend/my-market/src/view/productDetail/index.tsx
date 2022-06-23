@@ -1,5 +1,5 @@
 
-import React, { Fragment, useEffect, useState} from "react";
+import React, {Fragment, useCallback, useEffect, useState} from "react";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Constants } from "../../model/constant";
 import { Image } from "antd";
@@ -37,15 +37,19 @@ const ProductDetail: React.FC = () => {
         updateTime       : ""
     });
 
-    // 获取detail的基本信息
-    useEffect(() => {
+    const fetchDetailData = useCallback(() => {
         productApi.fetchProductDetail(paramsId).then(res => {
             if (helper.successResponse(res)) {
                 setDetailInfo(res.data);
                 setCurrentMaimImage(res.data.imageHost + res.data.mainImage);
             }
         });
-    }, []);
+    }, [paramsId]);
+
+    // 获取detail的基本信息
+    useEffect(() => {
+        fetchDetailData();
+    }, [fetchDetailData]);
 
     let [currentCount, setCurrentCount] = useState<number>(0);
 
@@ -115,6 +119,9 @@ const ProductDetail: React.FC = () => {
         cartApi.addBasket(infoProduct).then(res => {
             if (helper.successResponse(res)) {
                 navigation("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.ADDBASKET);
+            }
+            if (helper.needToLogin(res)) {
+                navigation("/login");
             }
         })
     }

@@ -2,6 +2,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { message } from 'antd';
 import qs from "qs";
+import { Constants } from "../model/constant";
 
 
 // 相关HTTP码定义 (如果是自定义的码 可以单独维护)
@@ -43,7 +44,7 @@ const errorFun = (info: string) => {
 };
 
 class Http {
-    private  instance: AxiosInstance | null = null;
+    private  instance : AxiosInstance | null = null;
     private get Http(): AxiosInstance {
         return this.instance != null ? this.instance : this.initHttp();
     }
@@ -57,7 +58,7 @@ class Http {
         http.interceptors.request.use(injectToken, (error) => Promise.reject(error));
 
         http.interceptors.response.use((response) => {
-            if (response.data.status === 0) {
+            if (response.data.status === Constants.StatusEnum.SUCCESS || response.data.status === Constants.StatusEnum.NEED_LOGIN) {
                 return response.data;
             }
             return Http.handleError(response.data)

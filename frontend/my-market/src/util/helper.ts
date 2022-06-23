@@ -35,6 +35,10 @@ class Helper {
     public successResponse(response: any) {
         return response.status === Constants.StatusEnum.SUCCESS
     }
+    // 需要登陆
+    public needToLogin(response: any) {
+        return response.status === Constants.StatusEnum.NEED_LOGIN
+    }
 }
 
 

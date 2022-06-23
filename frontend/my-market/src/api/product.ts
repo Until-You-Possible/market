@@ -1,7 +1,7 @@
 // 关于product接口
 
 import { http } from "../util/http";
-import {ProductResultType, SearchKeywordType} from "../dataType/product";
+import { ProductResultType, SearchKeywordType } from "../dataType/product";
 
 
 
@@ -14,16 +14,16 @@ class ProductApi {
     /**
      * get product list
      */
-    async fetchProductList(params: SearchKeywordType): Promise<any> {
-        return await http.get<ProductResultType>(this.productListURL, { params: params });
+    public fetchProductList(params: SearchKeywordType): Promise<any> {
+        return  http.get<ProductResultType>(this.productListURL, { params: params });
     }
 
     /**
      * get product detail
      * @param id
      */
-    async fetchProductDetail(id: string): Promise<any> {
-        return await http.get(this.productDetailURL, {params: { productId: id }});
+    public fetchProductDetail(id: string): Promise<any> {
+        return http.get(this.productDetailURL, {params: { productId: id }});
     }
 
 }

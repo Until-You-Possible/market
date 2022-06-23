@@ -9,7 +9,7 @@ const Products:React.FC = () =>   {
     const navigation = useNavigate();
 
     const goToDetail = (id: string) => {
-        navigation("/home/productDetail?categoryId=" +  id);
+        navigation("/home/productList?categoryId=" +  id);
     }
 
     return (
