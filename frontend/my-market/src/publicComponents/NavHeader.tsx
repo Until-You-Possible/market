@@ -38,6 +38,7 @@ const HavHeader:React.FC = () => {
     const logOut = () => {
          userApi.logOut().then((res) => {
              if (helper.successResponse(res)) {
+                 helper.showMessage("已经退出，欢迎下次再来～");
                  setUserInfo("");
              }
         });
@@ -60,7 +61,9 @@ const HavHeader:React.FC = () => {
             <Col className="headerCartWrap" span={12}>
                 <div><ShoppingCartOutlined style={{marginRight: "4px"}} />购物车({cartNumber})</div>
                 <div className="uiMarginLeft">我的订单</div>
-                <div className="uiMarginLeft">个人中心</div>
+                <div className="uiMarginLeft userInfoWrapperHeader">
+                    <Link to="/home/personalInfo">个人中心</Link>
+                </div>
                 <div className="uiMarginLeft">关于我</div>
             </Col>
         </Row>

@@ -39,7 +39,7 @@ class UserApi {
      * @param userData
      */
     async userLogin(userData: any): Promise<any> {
-        return http.post(this.loginURL, userData);
+        return await http.post(this.loginURL, userData);
     }
 
     /**
@@ -47,7 +47,7 @@ class UserApi {
      * @param existsUserInfo
      */
     async checkUsernameExists(existsUserInfo: CheckUserNameIsExists): Promise<any> {
-        return http.post(this.checkNameValid, existsUserInfo);
+        return await http.post(this.checkNameValid, existsUserInfo);
     }
 
     /**
@@ -55,22 +55,22 @@ class UserApi {
      * @param userRegister
      * @constructor
      */
-    async Register(userRegister: registerUserInfo): Promise<any> {
-        return http.post(this.userRegister, userRegister);
+    async register(userRegister: registerUserInfo): Promise<any> {
+        return await http.post(this.userRegister, userRegister);
     }
 
     /**
      * 检查用户登陆状态
      */
     async checkLoginStatus(): Promise<any> {
-        return http.post(this.checkUserLogin);
+        return await http.post(this.checkUserLogin);
     }
 
     /**
      * check status of user
      */
     async getCurrentUserInfo(): Promise<any> {
-        return http.post(this.userInfoURL);
+        return await http.post(this.userInfoURL);
     }
 
     /**
@@ -78,7 +78,7 @@ class UserApi {
      * @param usernameInfo
      */
     async getUserQuestion(usernameInfo: usernameType): Promise<any> {
-        return http.post(this.userQuestion, usernameInfo);
+        return await http.post(this.userQuestion, usernameInfo);
     }
 
     /**
@@ -86,7 +86,7 @@ class UserApi {
      * @param userInfo
      */
     async getUserQuestionAnswer(userInfo: CheckQuestionType): Promise<any> {
-        return http.post(this.userAnswer, userInfo);
+        return await http.post(this.userAnswer, userInfo);
     }
 
     /**
@@ -94,7 +94,7 @@ class UserApi {
      * @param userInfo
      */
     async resetPassword(userInfo: any): Promise<any> {
-        return http.post(this.setUserPassword, userInfo);
+        return await http.post(this.setUserPassword, userInfo);
     }
 
     /**
@@ -109,7 +109,7 @@ class UserApi {
      * @param userInfo
      */
     async updatePersonalInfo(userInfo: {}): Promise<any> {
-        return http.post(this.updateInfo, userInfo);
+        return await http.post(this.updateInfo, userInfo);
     }
 
 
@@ -118,14 +118,14 @@ class UserApi {
      * @param userInfo
      */
     async updatePasswordLogged(userInfo: {}): Promise<any> {
-        return http.post(this.updatedPassword, userInfo);
+        return await http.post(this.updatedPassword, userInfo);
     }
 
     /**
      * logout
      */
     async logOut(): Promise<LogOutType> {
-        return http.post(this.logOutURL);
+        return await http.post(this.logOutURL);
     }
 }
 

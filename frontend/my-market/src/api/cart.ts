@@ -27,7 +27,7 @@ class Cart {
      * 获取购物车数量
      */
     async getBasketCount (): Promise<CartResult> {
-        return http.post(this.getCartCount);
+        return await http.post(this.getCartCount);
     }
 
     /**
@@ -35,7 +35,7 @@ class Cart {
      * @param productInfo
      */
     async addBasket (productInfo: CartProductType): Promise<any> {
-        return http.post(this.addCart, productInfo);
+        return await http.post(this.addCart, productInfo);
     }
 
 

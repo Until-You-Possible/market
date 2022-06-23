@@ -21,20 +21,20 @@ const ProductDetail: React.FC = () => {
     let [currentChooseIndex, setCurrentChooseIndex] = useState<number>(0);
 
     const [detailInfo, setDetailInfo] = useState<detailInformationType>({
-        categoryId: 0,
-        createTime: "",
-        detail: "",
-        id: 0,
-        imageHost: "",
-        mainImage: "",
-        name: "",
-        parentCategoryId: 0,
-        price: 0,
-        status: 0,
-        stock: 0,
-        subImages: "",
-        subtitle: "",
-        updateTime: ""
+        categoryId       : 0,
+        createTime       : "",
+        detail           : "",
+        id               : 0,
+        imageHost        : "",
+        mainImage        : "",
+        name             : "",
+        parentCategoryId : 0,
+        price            : 0,
+        status           : 0,
+        stock            : 0,
+        subImages        : "",
+        subtitle         : "",
+        updateTime       : ""
     });
 
     // 获取detail的基本信息
@@ -100,9 +100,11 @@ const ProductDetail: React.FC = () => {
         let currentStock = detailInfo.stock;
         if (currentStock === 0) {
             helper.showMessage("添加购物车的数量不能为0", Constants.AlertMessage.WARN);
+            return;
         }
         if (currentCount === 0) {
             helper.showMessage("请选择需要添加的数量(不能为0)", Constants.AlertMessage.WARN);
+            return;
         }
 
         let infoProduct: CartProductType = {

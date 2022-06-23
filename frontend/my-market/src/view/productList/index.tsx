@@ -70,7 +70,6 @@ const ProductList: React.FC = () => {
         getListData(Constants.SearchOrderBy.DEFAULT, page);
     }
 
-    // 如果图片加在失败了 给定一张默认的图片 fallback给定默认字符串即可
     const imageError = (event: any) => {
         console.log("图片加在失败");
     }
@@ -85,7 +84,6 @@ const ProductList: React.FC = () => {
         navigation("/home/productDetail?productId=" +  id);
     }
 
-    // 列表的渲染
     const renderProductList = () => {
         if (productData.length) {
             return productData.map((item, index) => {

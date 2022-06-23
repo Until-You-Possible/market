@@ -22,7 +22,7 @@ const Register: React.FC = () => {
     };
 
     const registerNewAccount = (values: registerUserInfo) => {
-        userApi.Register(values).then(res => {
+        userApi.register(values).then(res => {
             if (helper.successResponse(res)) {
                 helper.showMessage("用户名可用～");
                 setTimeout(() => {
