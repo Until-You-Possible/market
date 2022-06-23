@@ -26,7 +26,7 @@ const Register: React.FC = () => {
             if (helper.successResponse(res)) {
                 helper.showMessage("用户名可用～");
                 setTimeout(() => {
-                    navigate("/resultSuccess?successPageType=" + Constants.SuccessPageType.REGISTER);
+                    navigate("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.REGISTER);
                 }, 1000);
             }
         });
@@ -34,7 +34,7 @@ const Register: React.FC = () => {
 
     // to check if username is exists
     const onBlurCheckName = (event: React.FocusEvent<HTMLInputElement>, type: string | undefined) => {
-        if (type === Constants.ConstantString.USERNAME) {
+        if (type === Constants.ConstantStringEnum.USERNAME) {
             let info: CheckUserNameIsExists = {
                 type: "username",
                 str : event.target.value || ""

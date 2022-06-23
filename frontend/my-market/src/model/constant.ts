@@ -1,17 +1,17 @@
 // 整理常用的常量
 
 export namespace Constants {
-    export enum Status {
+    export enum StatusEnum {
         SUCCESS    = 0,
         FAIL       = 1,
         FETCHING   = 2,
         NEED_LOGIN = 10
     }
-    export enum ConstantString {
+    export enum ConstantStringEnum {
         USERNAME = "username",
         PASSWORD = "password"
     }
-    export enum AlertMessage {
+    export enum AlertMessageEnum {
         SUCCESS = "success",
         ERROR   = "error",
         INFO    = "info",
@@ -19,32 +19,32 @@ export namespace Constants {
         WARN    = "warn",
         LOADING = "loading",
     }
-    export enum SuccessPageType {
+    export enum SuccessPageEnum {
         RESETPASSWORD = "resetPasswordSuccess",
         REGISTER      = "registerSuccess",
         ADDBASKET     = "addBasketSuccess"
     }
-    export enum SearchOrderBy {
+    export enum SearchOrderByEnum {
         DEFAULT  = "default",
         PRICEASE = "price_ase"
     }
-    export enum productListOrder {
+    export enum productListOrderEnum {
         PRICE     = "price",
         RECOMMEND = "recommend"
     }
-    export enum ProductInfoType {
+    export enum ProductInfoEnum {
         PRODUCTLIST   = "productList",
         PRODUCTDETAIL = "productDetail",
         CART          = "cart",
         PERSONALINFO  = "personalInfo",
         NODATA        = "暂无查询数据"
     }
-    export enum ConditionStatus {
+    export enum ConditionStatusEnum {
         ZERO        = 0,
         NEGATIVEONE = -1,
         POSTIVENOE  = 1
     }
-    export enum NavigationText {
+    export enum NavigationTextEnum {
         HOME     = "首页",
         LIST     = "商品列表",
         DETAIL   = "商品详情",

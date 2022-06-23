@@ -7,7 +7,7 @@ import { productApi } from "../../api/product";
 import {useLocation, useNavigate} from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
-import {CartProductType, detailInformationType} from "../../dataType/product";
+import {CartProductType, DetailInformationType} from "../../dataType/product";
 import {cartApi} from "../../api/cart";
 
 const ProductDetail: React.FC = () => {
@@ -20,7 +20,7 @@ const ProductDetail: React.FC = () => {
 
     let [currentChooseIndex, setCurrentChooseIndex] = useState<number>(0);
 
-    const [detailInfo, setDetailInfo] = useState<detailInformationType>({
+    const [detailInfo, setDetailInfo] = useState<DetailInformationType>({
         categoryId       : 0,
         createTime       : "",
         detail           : "",
@@ -99,11 +99,11 @@ const ProductDetail: React.FC = () => {
     const addBasketButton = () => {
         let currentStock = detailInfo.stock;
         if (currentStock === 0) {
-            helper.showMessage("添加购物车的数量不能为0", Constants.AlertMessage.WARN);
+            helper.showMessage("添加购物车的数量不能为0", Constants.AlertMessageEnum.WARN);
             return;
         }
         if (currentCount === 0) {
-            helper.showMessage("请选择需要添加的数量(不能为0)", Constants.AlertMessage.WARN);
+            helper.showMessage("请选择需要添加的数量(不能为0)", Constants.AlertMessageEnum.WARN);
             return;
         }
 
@@ -114,14 +114,14 @@ const ProductDetail: React.FC = () => {
 
         cartApi.addBasket(infoProduct).then(res => {
             if (helper.successResponse(res)) {
-                navigation("/resultSuccess?successPageType=" + Constants.SuccessPageType.ADDBASKET);
+                navigation("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.ADDBASKET);
             }
         })
     }
 
     return <Fragment>
         <div className="wrap productDetailContainer">
-            <NavigationHeader title={Constants.NavigationText.DETAIL} />
+            <NavigationHeader title={Constants.NavigationTextEnum.DETAIL} />
             <div className="detailWrap">
                 <div className="imageContainer">
                     <Image width="100%" preview={false}  className="mainImage" src={currentMainImage} />

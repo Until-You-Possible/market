@@ -50,15 +50,15 @@ export interface ListDataType {
     subtitle   : string
 }
 
-export interface searchTermType {
+export interface SearchTermType {
     searchTerm : string
 }
 
-export interface PageTile {
+export interface PageTileType {
     title: string
 }
 
-export interface detailInformationType {
+export interface DetailInformationType {
     item?            : string;
     categoryId       : number,
     createTime       : string | null,

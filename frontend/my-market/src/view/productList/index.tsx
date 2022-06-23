@@ -12,7 +12,7 @@ import NavigationHeader from "../../publicComponents/NavigationHeader";
 
 const ProductList: React.FC = () => {
 
-    const [currentButton, setCurrentButton] = useState<string>(Constants.productListOrder.RECOMMEND);
+    const [currentButton, setCurrentButton] = useState<string>(Constants.productListOrderEnum.RECOMMEND);
 
     const [currentPage, setCurrentPage] = useState<number>(1)
 
@@ -27,10 +27,10 @@ const ProductList: React.FC = () => {
 
     const onChoose  = (value: string) => {
         setCurrentButton(value);
-        if (value === Constants.productListOrder.RECOMMEND) {
-            getListData(Constants.SearchOrderBy.DEFAULT);
+        if (value === Constants.productListOrderEnum.RECOMMEND) {
+            getListData(Constants.SearchOrderByEnum.DEFAULT);
         } else {
-            getListData(Constants.SearchOrderBy.PRICEASE);
+            getListData(Constants.SearchOrderByEnum.PRICEASE);
         }
     }
 
@@ -40,7 +40,7 @@ const ProductList: React.FC = () => {
 
     useEffect(() => {
         if (keyword) {
-            getListData(Constants.SearchOrderBy.DEFAULT);
+            getListData(Constants.SearchOrderByEnum.DEFAULT);
         }
         // 重置列表函数
         resetListParams()
@@ -50,7 +50,7 @@ const ProductList: React.FC = () => {
         const params: SearchKeywordType = {
             pageNum  : pageNum || 1,
             pageSize : 10,
-            orderBy  : orderType || Constants.SearchOrderBy.DEFAULT,
+            orderBy  : orderType || Constants.SearchOrderByEnum.DEFAULT,
             keyword  : keyword || ""
         }
         setLoading(false);
@@ -67,7 +67,7 @@ const ProductList: React.FC = () => {
 
     const paginationFunc = (page: number) => {
         setCurrentPage(page);
-        getListData(Constants.SearchOrderBy.DEFAULT, page);
+        getListData(Constants.SearchOrderByEnum.DEFAULT, page);
     }
 
     const imageError = (event: any) => {
@@ -76,7 +76,7 @@ const ProductList: React.FC = () => {
 
     const resetListParams = () => {
         setTotal(0);
-        setCurrentButton(Constants.productListOrder.RECOMMEND);
+        setCurrentButton(Constants.productListOrderEnum.RECOMMEND);
         setCurrentPage(1);
     }
 
@@ -104,18 +104,18 @@ const ProductList: React.FC = () => {
             });
         }
         if (!productData.length && loading) {
-            return <Empty description={Constants.ProductInfoType.NODATA} />
+            return <Empty description={Constants.ProductInfoEnum.NODATA} />
         }
     }
 
     return <div className="wrap productListWrap">
         <div className="breadcrumbContainer">
-            <NavigationHeader title={Constants.NavigationText.LIST}/>
+            <NavigationHeader title={Constants.NavigationTextEnum.LIST}/>
         </div>
         <div className="buttonWrapProductList">
             <Radio.Group buttonStyle="solid" value={currentButton} onChange={e => onChoose(e.target.value)}>
-                <Radio.Button value={Constants.productListOrder.RECOMMEND}>智能推荐</Radio.Button>
-                <Radio.Button value={Constants.productListOrder.PRICE}>价格</Radio.Button>
+                <Radio.Button value={Constants.productListOrderEnum.RECOMMEND}>智能推荐</Radio.Button>
+                <Radio.Button value={Constants.productListOrderEnum.PRICE}>价格</Radio.Button>
             </Radio.Group>
         </div>
         <Spin spinning={!loading}>

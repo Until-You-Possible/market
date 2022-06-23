@@ -1,21 +1,21 @@
 import React from "react";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
-import { PageTile } from "../dataType/product";
+import { PageTileType } from "../dataType/product";
 import { Constants } from "../model/constant";
 
 
 const NavigationHeaderStyle: React.CSSProperties = {
-    paddingTop: "10px",
-    paddingBottom: "10px"
+    paddingTop    : "10px",
+    paddingBottom : "10px"
 }
 
-const NavigationHeader: React.FC<PageTile> = (props) => {
+const NavigationHeader: React.FC<PageTileType> = (props) => {
 
     return <div style={NavigationHeaderStyle}>
         <Breadcrumb>
             <Breadcrumb.Item>
-                <Link to="/home">{Constants.NavigationText.HOME}</Link>
+                <Link to="/home">{Constants.NavigationTextEnum.HOME}</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
                 {

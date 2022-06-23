@@ -8,7 +8,7 @@ import NavigationHeader from "../../publicComponents/NavigationHeader";
 const PersonalInfo: React.FC = () => {
     return <Fragment>
         <div className="wrap personalContainer">
-            <NavigationHeader title={Constants.NavigationText.PERSONAL} />
+            <NavigationHeader title={Constants.NavigationTextEnum.PERSONAL} />
         </div>
     </Fragment>
 }

@@ -23,7 +23,7 @@ const ResetPassword:React.FC = () => {
         userApi.resetPassword(dataBody).then(res => {
             if (helper.successResponse(res)) {
                 // 回到成功页面重新登陆
-                navigation("/resultSuccess?successPageType=" + Constants.SuccessPageType.RESETPASSWORD);
+                navigation("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.RESETPASSWORD);
             }
         })
     }

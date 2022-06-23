@@ -1,4 +1,4 @@
-import React, {createContext, Dispatch, Fragment, SetStateAction, useEffect, useState} from "react";
+import React, {createContext, Fragment, useEffect, useState} from "react";
 import NavHeader from "../../publicComponents/NavHeader";
 import SearchComponent from "../../publicComponents/SearchComponent";
 import Category from "../../publicComponents/Category";
@@ -26,11 +26,11 @@ function Home() {
     const [categoryKey, setCategoryKey] = useState<string>("");
 
     const showDifferentComp = (location: any) => {
-        let listExist = [Constants.ProductInfoType.PRODUCTLIST, Constants.ProductInfoType.CART,
-            Constants.ProductInfoType.PERSONALINFO,
-            Constants.ProductInfoType.PRODUCTDETAIL];
+        let listExist = [Constants.ProductInfoEnum.PRODUCTLIST, Constants.ProductInfoEnum.CART,
+            Constants.ProductInfoEnum.PERSONALINFO,
+            Constants.ProductInfoEnum.PRODUCTDETAIL];
         let isExist = listExist.filter(v => location.pathname.includes(v));
-        if (isExist.length > Constants.ConditionStatus.ZERO) {
+        if (isExist.length > Constants.ConditionStatusEnum.ZERO) {
             return null;
         }
         return <Fragment>

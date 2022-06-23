@@ -11,19 +11,19 @@ class Helper {
     // 默认 success
     public showMessage(content: string, type?: string, duration?: number | 3) {
         switch (type) {
-            case Constants.AlertMessage.SUCCESS:
+            case Constants.AlertMessageEnum.SUCCESS:
                 message.success(content, duration).then( r => r);
                 break;
-            case Constants.AlertMessage.ERROR:
+            case Constants.AlertMessageEnum.ERROR:
                 message.success(content, duration).then( r => r);
                 break;
-            case Constants.AlertMessage.WARN:
+            case Constants.AlertMessageEnum.WARN:
                 message.warn(content, duration).then( r => r);
                 break;
-            case Constants.AlertMessage.WARNING:
+            case Constants.AlertMessageEnum.WARNING:
                 message.warning(content, duration).then( r => r);
                 break;
-            case Constants.AlertMessage.LOADING:
+            case Constants.AlertMessageEnum.LOADING:
                 message.loading(content, duration).then( r => r);
                 break;
             default:
@@ -33,7 +33,7 @@ class Helper {
 
     // 成功状态
     public successResponse(response: any) {
-        return response.status === Constants.Status.SUCCESS
+        return response.status === Constants.StatusEnum.SUCCESS
     }
 }
 
