@@ -48,6 +48,7 @@ export namespace Constants {
         HOME     = "首页",
         LIST     = "商品列表",
         DETAIL   = "商品详情",
+        CART     = "购物车",
         PERSONAL = "个人中心"
     }
 }

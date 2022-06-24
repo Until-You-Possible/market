@@ -49,7 +49,7 @@ class Cart {
     /** 
      * 更新购物车列表
     */
-    updateCart (data:any): Promise<any> {
+    updateCart (data:any): Promise<interfaceDataType> {
         return http.post(this.updateCartURL,data);
     }
 
