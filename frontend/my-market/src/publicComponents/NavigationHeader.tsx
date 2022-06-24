@@ -7,7 +7,9 @@ import { Constants } from "../model/constant";
 
 const NavigationHeaderStyle: React.CSSProperties = {
     paddingTop    : "10px",
-    paddingBottom : "10px"
+    paddingBottom : "10px",
+    borderTop     : "2px solid #CF002C",
+    marginTop     : "30px"
 }
 
 const NavigationHeader: React.FC<PageTileType> = (props) => {

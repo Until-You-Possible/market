@@ -284,3 +284,10 @@ export interface setPasswordType {
     passwordNew : string,
     forgetToken : string
 }
+
+export type UpdatedUserInfoType = {
+    phone    : number,
+    email    : string,
+    question : string,
+    answer   : string,
+}
