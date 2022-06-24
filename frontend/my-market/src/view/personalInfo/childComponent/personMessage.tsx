@@ -3,6 +3,7 @@ import { Button, Card, Form, Input, Spin } from "antd";
 import { userApi } from "../../../api/user";
 import { helper } from "../../../util/helper";
 import { UpdatedUserInfoType } from "../../../dataType/userType";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const buttonStyle: CSSProperties = {
     width : "100%",
@@ -11,6 +12,8 @@ const buttonStyle: CSSProperties = {
 const PersonMessage: React.FC = () => {
 
     const [form] = Form.useForm();
+
+    const navigation = useNavigate();
 
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -23,6 +26,9 @@ const PersonMessage: React.FC = () => {
                 if (helper.successResponse(res)) {
                     form.setFieldsValue(res.data);
                     setLoading(false);
+                }
+                if (helper.needToLogin(res)) {
+                    navigation("/login");
                 }
             });
         }, 1500);

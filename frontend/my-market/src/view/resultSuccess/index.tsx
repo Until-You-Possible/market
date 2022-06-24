@@ -21,6 +21,9 @@ const RegisterSuccess: React.FC = () => {
         if (currentType === Constants.SuccessPageEnum.ADDBASKET) {
             return <h1>恭喜您，添加购物车成功</h1>
         }
+        if (currentType === Constants.SuccessPageEnum.UPDATEPASSWORD) {
+            return <h1>密码修改成功～请重新登陆</h1>
+        }
     }
 
     const differentSuccessButton = (currentType: Array<string | null> | string | null) => {

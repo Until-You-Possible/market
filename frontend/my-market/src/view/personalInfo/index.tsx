@@ -1,4 +1,4 @@
-import React, {CSSProperties, Fragment, useState} from "react";
+import React, { CSSProperties, Fragment, useState } from "react";
 import { Constants } from "../../model/constant";
 import "../../css/personalInfo.css";
 import NavigationHeader from "../../publicComponents/NavigationHeader";

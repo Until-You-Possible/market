@@ -20,9 +20,10 @@ export namespace Constants {
         LOADING = "loading",
     }
     export enum SuccessPageEnum {
-        RESETPASSWORD = "resetPasswordSuccess",
-        REGISTER      = "registerSuccess",
-        ADDBASKET     = "addBasketSuccess"
+        RESETPASSWORD  = "resetPasswordSuccess",
+        REGISTER       = "registerSuccess",
+        ADDBASKET     = "addBasketSuccess",
+        UPDATEPASSWORD = "updatePasswordSuccess"
     }
     export enum SearchOrderByEnum {
         DEFAULT  = "default",

@@ -9,6 +9,7 @@ import {
     usernameType
 } from "../dataType/userType";
 import { interfaceDataType } from "../dataType/publicDataType";
+import {passwordInfoType} from "../view/personalInfo/childComponent/updatePassword";
 
 class UserApi {
     // URLs
@@ -118,7 +119,7 @@ class UserApi {
      * update password when user logged
      * @param userInfo
      */
-    public updatePasswordLogged(userInfo: UpdatedUserInfoType): Promise<interfaceDataType> {
+    public updatePasswordLogged(userInfo: passwordInfoType): Promise<interfaceDataType> {
         return http.post(this.updatedPassword, userInfo);
     }
 

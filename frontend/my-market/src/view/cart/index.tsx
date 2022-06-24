@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Image, Table, InputNumber, Checkbox, Button } from "antd";
-import { Link } from "react-router-dom";
+import React, {CSSProperties, Fragment, useEffect, useState} from "react";
+import { Button, Checkbox, Image, InputNumber, Table } from "antd";
+import { Link} from "react-router-dom";
 import { CartGoodsType } from "../../dataType/product";
 import { helper } from "../../util/helper";
 import type { ColumnsType } from "antd/lib/table";
@@ -21,6 +21,10 @@ interface DataType {
 
 const baseURL = "http://img.happymmall.com/";
 
+const tableWrapStyle: CSSProperties = {
+    padding: "20px",
+    background: "#fff"
+}
 
 
 const Cart: React.FC = () => {
@@ -29,31 +33,36 @@ const Cart: React.FC = () => {
         {
             title : "商品信息",
             dataIndex : "productName",
+            width: 480,
             key: "productName",
+            ellipsis: true,
             render: (value: string,record:any,index:number) =>{
                 return <Fragment>
                             <Image width={80} src={`${baseURL}${record.productMainImage}`}/>
                             <Link className="registerLink" to={`/home/productDetail?productId=${record.productId}`}>{value}</Link>
                         </Fragment>
-    
+
             }
         },
         {
             title : "单价",
             dataIndex : "productPrice",
-            key : "productPrice"
+            key : "productPrice",
+            align: 'center'
         },
         {
             title : "数量",
             dataIndex : "quantity",
             key : "quantity",
+            align: 'center',
             render(value, record, index) {
-                return <InputNumber className="input-number" min={0} max={record.productStock} key={record.productId} 
+                return <InputNumber className="input-number" min={0} max={record.productStock} key={record.productId}
                 onChange={((value)=>{changeProductNum(value,record)})} defaultValue={value} />
             },
         },
         {
             title : "合计",
+            align: 'center',
             dataIndex : "productTotalPrice",
             key : "productTotalPrice"
         }
@@ -88,10 +97,6 @@ const Cart: React.FC = () => {
             }
         })
     };
-    
-    
-
-    
 
     const onSelectChange = (newSelectedRowKeys: React.Key[]) =>{
         setSelectedRowKeys(newSelectedRowKeys);
@@ -107,19 +112,18 @@ const Cart: React.FC = () => {
     }
 
     const formatCartTableFooter = ()=>{
-        const ElementFooter = <Fragment>
+        return <Fragment>
             <Checkbox onChange={onChangeAllCart}>全部选中</Checkbox>
-            <Button type="text"   icon={<DeleteOutlined />}>全部删除</Button>
-        </Fragment>
-        return ElementFooter;
+            <Button type="text" icon={<DeleteOutlined/>}>全部删除</Button>
+        </Fragment>;
     };
     return  <div className=" wrap productWrap">
                 <NavigationHeader title={Constants.NavigationTextEnum.CART} />
-                <div>
+                <div style={tableWrapStyle}>
                     <Table rowSelection={rowSelection}
                            dataSource={dataSource}
                            rowKey={(item) => item.id}
-                           columns={columns} 
+                           columns={columns}
                            footer={()=>formatCartTableFooter()}
                            />
                 </div>
