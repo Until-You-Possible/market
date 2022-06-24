@@ -41,8 +41,8 @@ class Cart {
     /**
      * 获取购物车列表
      */
-    async getCartList (): Promise<any> {
-        return await http.get(this.cartList);
+    getCartList (): Promise<any> {
+        return  http.get(this.cartList);
     }
 
 

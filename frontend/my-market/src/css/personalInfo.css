@@ -3,3 +3,11 @@
 .personalContainer {
     min-height: 300px;
 }
+
+.ant-tabs-content-holder {
+    background: #ffffff;
+}
+
+.ant-tabs-nav-list .ant-tabs-tab-btn {
+    width: 100%;
+}

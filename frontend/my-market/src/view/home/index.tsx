@@ -1,4 +1,4 @@
-import React, {createContext, Fragment, useEffect, useState} from "react";
+import React, {createContext, Fragment, useEffect, useState } from "react";
 import NavHeader from "../../publicComponents/NavHeader";
 import SearchComponent from "../../publicComponents/SearchComponent";
 import Category from "../../publicComponents/Category";
