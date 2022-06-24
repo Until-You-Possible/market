@@ -82,6 +82,8 @@ export interface CartProductType {
 
 export interface CartGoodsType {
     id: number,
+    productId: number,
+    productStock: number;
     productName: string,
     productPrice: number,
     quantity: number,

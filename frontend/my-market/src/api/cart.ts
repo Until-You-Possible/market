@@ -18,7 +18,7 @@ class Cart {
 
     private unSelectCart  : string = "/cart/un_select_all.do";
 
-    private updateCart    : string = "/cart/update.do";
+    private updateCartURL    : string = "/cart/update.do";
 
     private deleteCart    : string = "/cart/delete_product.do";
 
@@ -43,6 +43,13 @@ class Cart {
      */
     getCartList (): Promise<any> {
         return  http.get(this.cartList);
+    }
+
+    /** 
+     * 更新购物车列表
+    */
+    updateCart (data:any): Promise<any> {
+        return http.post(this.updateCartURL,data);
     }
 
 

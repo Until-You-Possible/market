@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Image, Table } from "antd";
+import { Image, Table, InputNumber } from "antd";
 import { Link } from "react-router-dom";
 import { CartGoodsType } from "../../dataType/product";
 import { helper } from "../../util/helper";
@@ -8,6 +8,8 @@ import { cartApi } from "../../api/cart";
 
 interface DataType {
     id: number,
+    productId: number,
+    productStock: number,
     productName: string,
     productPrice: number,
     quantity: number,
@@ -15,6 +17,8 @@ interface DataType {
 }
 
 const baseURL = "http://img.happymmall.com/";
+
+
 
 const columns: ColumnsType<DataType> | undefined = [
     {
@@ -37,7 +41,11 @@ const columns: ColumnsType<DataType> | undefined = [
     {
         title : "数量",
         dataIndex : "quantity",
-        key : "quantity"
+        key : "quantity",
+        render(value, record, index) {
+            return <InputNumber className="input-number" min={0} max={record.productStock} key={record.productId} 
+            onChange={((value)=>{changeProductNum(value,record)})} defaultValue={value} />
+        },
     },
     {
         title : "合计",
@@ -59,6 +67,14 @@ const Cart: React.FC = () => {
             }
         });
     },[]);
+
+    const changeProductNum = (value: number,record:DataType)=>{
+        const updateDataObj = {
+            productId: record.productId,
+            count: value
+        };
+        cartApi.updateCart(updateDataObj);
+    };
 
     const onSelectChange = (newSelectedRowKeys: React.Key[]) =>{
         setSelectedRowKeys(newSelectedRowKeys);

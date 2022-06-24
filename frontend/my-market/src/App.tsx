@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.min.css'; // or 'antd/dist/antd.less'
 import './css/App.css';
+import './css/public.less';
 import {
     BrowserRouter as Router,
     Navigate,
