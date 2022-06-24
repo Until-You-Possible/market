@@ -2,6 +2,7 @@
 
 import { http } from "../util/http";
 import { ProductResultType, SearchKeywordType } from "../dataType/product";
+import {interfaceDataType} from "../dataType/publicDataType";
 
 
 
@@ -14,7 +15,7 @@ class ProductApi {
     /**
      * get product list
      */
-    public fetchProductList(params: SearchKeywordType): Promise<any> {
+    public fetchProductList(params: SearchKeywordType): Promise<interfaceDataType> {
         return  http.get<ProductResultType>(this.productListURL, { params: params });
     }
 
@@ -22,7 +23,7 @@ class ProductApi {
      * get product detail
      * @param id
      */
-    public fetchProductDetail(id: string): Promise<any> {
+    public fetchProductDetail(id: string): Promise<interfaceDataType> {
         return http.get(this.productDetailURL, {params: { productId: id }});
     }
 
