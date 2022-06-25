@@ -2,9 +2,8 @@
 
 
 import { http } from "../util/http";
-import { CartResult } from "../view/home/homeType";
-import { CartProductType } from "../dataType/product";
-import {interfaceDataType} from "../dataType/publicDataType";
+import { CartProductType } from "../dataType/productInfoType";
+import { InterfaceDataType } from "../dataType/publicDataType";
 
 class Cart {
 
@@ -27,7 +26,7 @@ class Cart {
     /**
      * 获取购物车数量
      */
-    public getBasketCount (): Promise<interfaceDataType> {
+    public getBasketCount (): Promise<InterfaceDataType> {
         return http.post(this.getCartCount);
     }
 
@@ -35,21 +34,21 @@ class Cart {
      * 添加到购物车
      * @param productInfo
      */
-    public addBasket (productInfo: CartProductType): Promise<interfaceDataType> {
+    public addBasket (productInfo: CartProductType): Promise<InterfaceDataType> {
         return http.post(this.addCart, productInfo);
     }
 
     /**
      * 获取购物车列表
      */
-    getCartList (): Promise<interfaceDataType> {
+    getCartList (): Promise<InterfaceDataType> {
         return  http.get(this.cartList);
     }
 
-    /** 
+    /**
      * 更新购物车列表
     */
-    updateCart (data:any): Promise<interfaceDataType> {
+    updateCart (data:any): Promise<InterfaceDataType> {
         return http.post(this.updateCartURL,data);
     }
 

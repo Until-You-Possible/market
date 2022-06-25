@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import { Pagination, Radio, Image, Empty, Spin } from "antd";
 import { Constants } from "../../model/constant";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ListDataType, SearchKeywordType} from "../../dataType/product";
+import { ListDataType, SearchKeywordType} from "../../dataType/productInfoType";
 import { productApi } from "../../api/product";
 import { helper } from "../../util/helper";
 import qs from "query-string";

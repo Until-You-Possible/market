@@ -7,7 +7,7 @@ import { productApi } from "../../api/product";
 import {useLocation, useNavigate} from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
-import {CartProductType, DetailInformationType} from "../../dataType/product";
+import {CartProductType, DetailInformationType} from "../../dataType/productInfoType";
 import {cartApi} from "../../api/cart";
 
 const ProductDetail: React.FC = () => {

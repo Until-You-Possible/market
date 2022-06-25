@@ -1,7 +1,7 @@
 import React from "react";
 import { Breadcrumb } from "antd";
 import { Link } from "react-router-dom";
-import { PageTileType } from "../dataType/product";
+import { PageTileType } from "../dataType/productInfoType";
 import { Constants } from "../model/constant";
 
 

@@ -5,7 +5,7 @@ import { userApi } from "../../api/user";
 import { Link, useNavigate } from "react-router-dom";
 import { Constants } from "../../model/constant";
 import { helper } from "../../util/helper";
-import { CheckUserNameIsExists, registerItemList, registerUserInfo } from "../../dataType/userType";
+import { CheckUserNameIsExists, registerItemList, registerUserInfo } from "../../dataType/userInfoType";
 
 
 

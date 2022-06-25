@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Button, Form, Input } from "antd";
 import { userApi } from "../../api/user";
-import { CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType } from "../../dataType/userType";
+import { CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType } from "../../dataType/userInfoType";
 import { useNavigate } from "react-router-dom";
 import { helper } from "../../util/helper";
 

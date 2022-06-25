@@ -5,10 +5,10 @@ import {
     CheckQuestionType,
     CheckUserNameIsExists,
     LogOutType,
-    registerUserInfo, UpdatedUserInfoType,
+    registerUserInfo,
     usernameType
-} from "../dataType/userType";
-import { interfaceDataType } from "../dataType/publicDataType";
+} from "../dataType/userInfoType";
+import {InterfaceDataType} from "../dataType/publicDataType";
 import {passwordInfoType} from "../view/personalInfo/childComponent/updatePassword";
 
 class UserApi {
@@ -40,7 +40,7 @@ class UserApi {
      *  user login
      * @param userData
      */
-    public userLogin(userData: any): Promise<interfaceDataType> {
+    public userLogin(userData: any): Promise<InterfaceDataType> {
         return  http.post(this.loginURL, userData);
     }
 
@@ -48,7 +48,7 @@ class UserApi {
      *  check username exists
      * @param existsUserInfo
      */
-    public checkUsernameExists(existsUserInfo: CheckUserNameIsExists): Promise<interfaceDataType> {
+    public checkUsernameExists(existsUserInfo: CheckUserNameIsExists): Promise<InterfaceDataType> {
         return  http.post(this.checkNameValid, existsUserInfo);
     }
 
@@ -57,21 +57,21 @@ class UserApi {
      * @param userRegister
      * @constructor
      */
-    public register(userRegister: registerUserInfo): Promise<interfaceDataType> {
+    public register(userRegister: registerUserInfo): Promise<InterfaceDataType> {
         return http.post(this.userRegister, userRegister);
     }
 
     /**
      * 检查用户登陆状态
      */
-    public checkLoginStatus(): Promise<interfaceDataType> {
+    public checkLoginStatus(): Promise<InterfaceDataType> {
         return http.post(this.checkUserLogin);
     }
 
     /**
      * check status of user
      */
-    public getCurrentUserInfo(): Promise<interfaceDataType> {
+    public getCurrentUserInfo(): Promise<InterfaceDataType> {
         return http.post(this.userInfoURL);
     }
 
@@ -79,7 +79,7 @@ class UserApi {
      * get question for user
      * @param usernameInfo
      */
-    public getUserQuestion(usernameInfo: usernameType): Promise<interfaceDataType> {
+    public getUserQuestion(usernameInfo: usernameType): Promise<InterfaceDataType> {
         return http.post(this.userQuestion, usernameInfo);
     }
 
@@ -87,7 +87,7 @@ class UserApi {
      * get answer for last question
      * @param userInfo
      */
-    public getUserQuestionAnswer(userInfo: CheckQuestionType): Promise<interfaceDataType> {
+    public getUserQuestionAnswer(userInfo: CheckQuestionType): Promise<InterfaceDataType> {
         return http.post(this.userAnswer, userInfo);
     }
 
@@ -95,7 +95,7 @@ class UserApi {
      * reset the user's password
      * @param userInfo
      */
-    public resetPassword(userInfo: any): Promise<interfaceDataType> {
+    public resetPassword(userInfo: any): Promise<InterfaceDataType> {
         return http.post(this.setUserPassword, userInfo);
     }
 
@@ -110,7 +110,7 @@ class UserApi {
      * update personal info
      * @param userInfo
      */
-    public updatePersonalInfo(userInfo: {}): Promise<interfaceDataType> {
+    public updatePersonalInfo(userInfo: {}): Promise<InterfaceDataType> {
         return http.post(this.updateInfo, userInfo);
     }
 
@@ -119,7 +119,7 @@ class UserApi {
      * update password when user logged
      * @param userInfo
      */
-    public updatePasswordLogged(userInfo: passwordInfoType): Promise<interfaceDataType> {
+    public updatePasswordLogged(userInfo: passwordInfoType): Promise<InterfaceDataType> {
         return http.post(this.updatedPassword, userInfo);
     }
 

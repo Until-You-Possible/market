@@ -55,9 +55,10 @@ const UpdatePassword: React.FC = () => {
                 <Spin spinning={loading}>
                     <Form
                         name="basic"
-                        labelCol={{ span: 2 }}
+                        size="large"
+                        labelCol={{ span: 4 }}
                         wrapperCol={{ span: 12 }}
-                        initialValues={{ remember: true }}
+                        initialValues={{ remember: false }}
                         onFinish={onFinish}
                         autoComplete="off"
                     >
@@ -82,7 +83,7 @@ const UpdatePassword: React.FC = () => {
                         >
                             <Input  />
                         </Form.Item>
-                        <Form.Item wrapperCol={{ offset: 2, span: 12 }}>
+                        <Form.Item wrapperCol={{ offset: 4, span: 12 }}>
                             <Button style={buttonStyle} type="primary" htmlType="submit">
                                 提交修改
                             </Button>

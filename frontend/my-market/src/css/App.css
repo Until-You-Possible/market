@@ -45,3 +45,11 @@
 .input-number{
   width: 100px;
 }
+
+.ant-tabs-tabpane {
+padding-left: 0 !important;
+}
+
+.ant-row {
+  align-items: center;
+}

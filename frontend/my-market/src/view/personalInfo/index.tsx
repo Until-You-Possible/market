@@ -4,7 +4,7 @@ import "../../css/personalInfo.css";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Tabs } from "antd";
 import PersonMessage from "./childComponent/personMessage";
-import MyOrder from "../myOrder";
+import MyOrder from "./childComponent/myOrder";
 import UpdatePassword from "./childComponent/updatePassword";
 
 type TabPosition = 'left' | 'right' | 'top' | 'bottom';
@@ -18,7 +18,7 @@ const tabBarStyleCss:CSSProperties = {
 type tabDataType = {
     tabName : string,
     key     : string,
-    content : any
+    content : React.ReactNode
 }
 
 
@@ -49,7 +49,7 @@ const PersonalInfo: React.FC = () => {
         <div className="wrap personalContainer">
             <NavigationHeader title={Constants.NavigationTextEnum.PERSONAL} />
             <div>
-                <Tabs tabBarStyle={tabBarStyleCss} type="card" defaultActiveKey="1" tabPosition={mode} style={{ height: 420 }}>
+                <Tabs tabBarStyle={tabBarStyleCss} type="card" defaultActiveKey="2" tabPosition={mode} style={{ height: 420 }}>
                     {
                         tabArray[0].map(item => {
                             return (

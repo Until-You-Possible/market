@@ -1,7 +1,7 @@
 export {}
 
 
-export type interfaceDataType= {
+export type InterfaceDataType= {
     status        : number,
     [key: string] : any
 }

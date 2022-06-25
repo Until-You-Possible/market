@@ -1,7 +1,7 @@
 import React, {CSSProperties, Fragment, useEffect, useState} from "react";
 import { Button, Checkbox, Image, InputNumber, Table } from "antd";
 import { Link} from "react-router-dom";
-import { CartGoodsType } from "../../dataType/product";
+import { CartGoodsType } from "../../dataType/productInfoType";
 import { helper } from "../../util/helper";
 import type { ColumnsType } from "antd/lib/table";
 import { cartApi } from "../../api/cart";

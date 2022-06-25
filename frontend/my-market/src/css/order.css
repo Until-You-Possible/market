@@ -1,0 +1,11 @@
+.orderListWrapper {
+    margin-top: 10px;
+}
+
+.orderListWrapper .ant-table-tbody>tr>td, .ant-table-thead>tr>th, .ant-table tfoot>tr>td, .ant-table tfoot>tr>th {
+    padding: 10px;
+}
+
+ .ant-tabs {
+    height: auto !important;
+}

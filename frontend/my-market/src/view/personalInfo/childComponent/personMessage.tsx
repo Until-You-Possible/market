@@ -2,8 +2,8 @@ import React, { CSSProperties, Fragment, useEffect, useState } from "react";
 import { Button, Card, Form, Input, Spin } from "antd";
 import { userApi } from "../../../api/user";
 import { helper } from "../../../util/helper";
-import { UpdatedUserInfoType } from "../../../dataType/userType";
-import {useLocation, useNavigate} from "react-router-dom";
+import { UpdatedUserInfoType } from "../../../dataType/userInfoType";
+import { useNavigate} from "react-router-dom";
 
 const buttonStyle: CSSProperties = {
     width : "100%",
@@ -32,7 +32,7 @@ const PersonMessage: React.FC = () => {
                 }
             });
         }, 1500);
-    }, []);
+    }, [form, navigation]);
 
     const onFinish = (values: any) => {
         if (currentDisabledStatus) {
@@ -66,7 +66,8 @@ const PersonMessage: React.FC = () => {
                     <Spin spinning={loading}>
                         <Form
                             name="basic"
-                            labelCol={{ span: 2 }}
+                            size="large"
+                            labelCol={{ span: 3 }}
                             wrapperCol={{ span: 12 }}
                             form={form}
                             initialValues={{ remember: true }}
@@ -114,7 +115,7 @@ const PersonMessage: React.FC = () => {
                             </Form.Item>
 
 
-                            <Form.Item wrapperCol={{ offset: 2, span: 12 }}>
+                            <Form.Item wrapperCol={{ offset: 3, span: 12 }}>
                                 <Button style={buttonStyle} type="primary" htmlType="submit">
                                     {
                                         currentDisabledStatus ? "编辑" : "提交修改"

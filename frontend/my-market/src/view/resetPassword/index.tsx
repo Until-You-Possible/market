@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
-import { ILocation, setPasswordItemList, setPasswordType } from "../../dataType/userType";
+import { ILocation, setPasswordItemList, setPasswordType } from "../../dataType/userInfoType";
 import { NavigateFunction, useLocation, useNavigate } from "react-router-dom";
 import { userApi } from "../../api/user";
 import { Constants } from "../../model/constant";

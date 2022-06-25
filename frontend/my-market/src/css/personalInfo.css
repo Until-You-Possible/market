@@ -2,6 +2,7 @@
 
 .personalContainer {
     min-height: 300px;
+    padding-bottom: 100px;
 }
 
 .ant-tabs-content-holder {
