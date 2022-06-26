@@ -9,3 +9,25 @@
  .ant-tabs {
     height: auto !important;
 }
+ .basicInfoShow {
+     line-height: 30px;
+     height: 30px;
+ }
+
+ .basicInfoShow .titleSpan {
+     width: 100px;
+     display: inline-block;
+     text-align: justify;
+ }
+ .orderDetailContainer {
+     padding-bottom: 100px;
+ }
+
+ .orderDetailContainer .ant-table-footer {
+     text-align: right;
+ }
+
+ .totalPriceOrder {
+     font-weight: 700;
+     color: #c60023;
+ }

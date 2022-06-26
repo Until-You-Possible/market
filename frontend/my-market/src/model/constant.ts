@@ -38,6 +38,7 @@ export namespace Constants {
         PRODUCTDETAIL = "productDetail",
         CART          = "cart",
         PERSONALINFO  = "personalInfo",
+        ORDERDETAIL   = "orderDetail",
         NODATA        = "暂无查询数据"
     }
     export enum ConditionStatusEnum {
@@ -46,10 +47,11 @@ export namespace Constants {
         POSTIVENOE  = 1
     }
     export enum NavigationTextEnum {
-        HOME     = "首页",
-        LIST     = "商品列表",
-        DETAIL   = "商品详情",
-        CART     = "购物车",
-        PERSONAL = "个人中心"
+        HOME        = "首页",
+        LIST        = "商品列表",
+        DETAIL      = "商品详情",
+        CART        = "购物车",
+        PERSONAL    = "个人中心",
+        ORDERDETAIL = "订单详情"
     }
 }

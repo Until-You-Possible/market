@@ -17,8 +17,28 @@ class Order {
     // 取消订单
     private cancelOrder    : string = "/order/cancel.do";
 
+    /**
+     * 获取订单列表
+     * @param params
+     */
     public getOrderList(params: any): Promise<InterfaceDataType> {
-        return http.get(this.orderList, {params: params});
+        return http.get(this.orderList, { params: params});
+    }
+
+    /**
+     * 获取订单详情
+     * @param orderNo
+     */
+    public getOrderDetail(orderNo: { orderNo: Array<string | null> | string }): Promise<InterfaceDataType> {
+        return http.get(this.orderDetail,{ params: orderNo})
+    }
+
+    /**
+     *
+     * @param paramsObject
+     */
+    public postCancelOrder(paramsObject: any): Promise<InterfaceDataType> {
+        return http.post(this.cancelOrder, paramsObject);
     }
 
 }

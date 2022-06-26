@@ -1,11 +1,11 @@
-import React, {CSSProperties, Fragment, useEffect, useState} from "react";
-import {Button, Card, Col, Image, Row, Spin, Table} from "antd";
-import {orderApi} from "../../../api/order";
-import {helper} from "../../../util/helper";
-import {orderOverAllDataType} from "../../../dataType/orderInfoType";
-import {ColumnsType} from "antd/lib/table";
+import React, { CSSProperties, Fragment, useEffect, useState } from "react";
+import { Button, Card, Col, Image, Row, Spin, Table } from "antd";
+import { orderApi } from "../../../api/order";
+import { helper } from "../../../util/helper";
+import { ColumnsType } from "antd/lib/table";
 import "../../../css/order.css";
-import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {OrderOverAllDataType} from "../../../dataType/orderInfoType";
 
 
 const orderInfoStyle: CSSProperties = {
@@ -36,7 +36,7 @@ interface DataType  {
     productId    : number,
     productImage : string,
     productName  : string,
-    quantity     : 7,
+    quantity     : number,
     totalPrice   : number
 }
 
@@ -75,8 +75,10 @@ const MyOrder: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(false);
 
+    const navigate = useNavigate();
+
     // 订单信息
-    const [orderMessage, setOrderMessage] = useState<orderOverAllDataType | undefined>();
+    const [orderMessage, setOrderMessage] = useState<OrderOverAllDataType | undefined>();
 
     useEffect(() => {
         //获取订单信息
@@ -90,12 +92,15 @@ const MyOrder: React.FC = () => {
             setLoading(false);
             if (helper.successResponse(res)) {
                 setOrderMessage(res.data.list[0]);
-
-                console.log("order res", res);
             }
-        })
+        });
 
-    }, [])
+    }, []);
+
+    const checkOrderDetail = () => {
+        const orderNumber = orderMessage?.orderNo;
+        navigate("/home/orderDetail?orderNumber=" + orderNumber);
+    }
 
     return <Fragment>
         <div>
@@ -121,12 +126,15 @@ const MyOrder: React.FC = () => {
                                 订单总价: {orderMessage?.payment}
                             </Col>
                             <Col span={8}>
-                                <Button type="primary">查看详情</Button>
+                                <Button type="primary" onClick={checkOrderDetail}>查看详情</Button>
                             </Col>
                         </Row>
                     </div>
                     <div className="orderListWrapper">
-                        <Table columns={orderColumns} dataSource={orderMessage?.orderItemVoList} />
+                        <Table columns={orderColumns}
+                               dataSource={orderMessage?.orderItemVoList}
+                               pagination={false}
+                        />
                     </div>
                 </Spin>
             </Card>

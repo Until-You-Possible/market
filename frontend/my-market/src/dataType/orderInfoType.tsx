@@ -1,7 +1,7 @@
 export {}
 
 
-export type orderOverAllDataType = {
+export type OrderOverAllDataType = {
     closeTime       : string,
     createTime      : string,
     endTime         : string,

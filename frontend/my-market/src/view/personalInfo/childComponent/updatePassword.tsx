@@ -3,7 +3,7 @@ import { Button, Card, Form, Input, Spin } from "antd";
 import { helper } from "../../../util/helper";
 import { userApi } from "../../../api/user";
 import { useNavigate } from "react-router-dom";
-import {Constants} from "../../../model/constant";
+import { Constants } from "../../../model/constant";
 
 const buttonStyle: CSSProperties = {
     width : "100%",
