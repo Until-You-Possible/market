@@ -39,6 +39,7 @@ export namespace Constants {
         CART          = "cart",
         PERSONALINFO  = "personalInfo",
         ORDERDETAIL   = "orderDetail",
+        PAYMENT       = "payment",
         NODATA        = "暂无查询数据"
     }
     export enum ConditionStatusEnum {

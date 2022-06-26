@@ -3,7 +3,7 @@ import { Constants } from "../../model/constant";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Button, Card, Image, Popconfirm, Space, Spin, Table } from "antd";
 import { orderApi } from "../../api/order";
-import { useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
 import { OrderOverAllDataType } from "../../dataType/orderInfoType";
@@ -73,7 +73,9 @@ const OrderDetail: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(true);
 
-    const [orderDetailInfo, setOrderDetailInfo] = useState<OrderOverAllDataType>()
+    const [orderDetailInfo, setOrderDetailInfo] = useState<OrderOverAllDataType>();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -84,11 +86,14 @@ const OrderDetail: React.FC = () => {
                     if(helper.successResponse(res)) {
                         setOrderDetailInfo(res.data);
                     }
+                    if (helper.needToLogin(res)) {
+                        navigate("/home");
+                    }
                 });
             }, 1500);
         }
 
-    }, [orderNo]);
+    }, [orderNo, navigate]);
 
     const footerFunc = (item: OrderOverAllDataType | undefined) => {
         return <Fragment>
@@ -107,6 +112,10 @@ const OrderDetail: React.FC = () => {
                 helper.showMessage("订单已经取消成功～");
             }
         });
+    }
+
+    const goPayment = () => {
+        navigate("/home/payment?orderNumber=" + orderNo);
     }
 
     return <Fragment>
@@ -138,7 +147,7 @@ const OrderDetail: React.FC = () => {
                    </div>
                     <div>
                         <Space size={'small'}>
-                            <Button type="primary">去支付</Button>
+                            <Button type="primary" onClick={goPayment}>去支付</Button>
                             <Popconfirm
                                 title="确认要取消这个订单吗?"
                                 onConfirm={confirmCancelOrder}

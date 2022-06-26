@@ -16,6 +16,7 @@ import { Constants } from "../../model/constant";
 import Cart from "../cart";
 import PersonalInfo from "../personalInfo";
 import OrderDetail from "../orderDetail";
+import Payment from "../payment";
 
 export const Context = createContext<string>("");
 
@@ -29,6 +30,7 @@ function Home() {
     const showDifferentComp = (location: any) => {
         let listExist = [Constants.ProductInfoEnum.PRODUCTLIST, Constants.ProductInfoEnum.CART,
             Constants.ProductInfoEnum.ORDERDETAIL,
+            Constants.ProductInfoEnum.PAYMENT,
             Constants.ProductInfoEnum.PERSONALINFO,
             Constants.ProductInfoEnum.PRODUCTDETAIL];
         let isExist = listExist.filter(v => location.pathname.includes(v));
@@ -66,6 +68,7 @@ function Home() {
                 <Route path="/cart" element={<Cart />}/>
                 <Route path="/personalInfo" element={<PersonalInfo />}/>
                 <Route path="/orderDetail" element={<OrderDetail />}/>
+                <Route path="/payment" element={<Payment />}/>
             </Routes>
             <FooterComponent />
         </div>
