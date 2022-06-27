@@ -2,7 +2,7 @@
 
 import { http } from "../util/http";
 import { ProductResultType, SearchKeywordType } from "../dataType/productInfoType";
-import {InterfaceDataType} from "../dataType/publicDataType";
+import { InterfaceDataType } from "../dataType/publicDataType";
 
 
 

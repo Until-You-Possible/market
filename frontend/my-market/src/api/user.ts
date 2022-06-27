@@ -8,31 +8,31 @@ import {
     registerUserInfo,
     usernameType
 } from "../dataType/userInfoType";
-import {InterfaceDataType} from "../dataType/publicDataType";
-import {passwordInfoType} from "../view/personalInfo/childComponent/updatePassword";
+import { InterfaceDataType } from "../dataType/publicDataType";
+import { passwordInfoType } from "../view/personalInfo/childComponent/updatePassword";
 
 class UserApi {
     // URLs
     // login
     private loginURL        : string = "/user/login.do";
     // 检查用户名是否存在(有效)
-    private checkNameValid  : string = "/user/check_valid.do";
+    private checkNameValidURL  : string = "/user/check_valid.do";
     // register
-    private  userRegister   : string = "/user/register.do";
+    private  userRegisterURL   : string = "/user/register.do";
     // 检查登陆状态
-    private checkUserLogin     : string = "/user/get_user_info.do";
+    private checkUserLoginURL     : string = "/user/get_user_info.do";
     // get user's question
-    private  userQuestion   : string = "/user/forget_get_question.do";
+    private  userQuestionURL   : string = "/user/forget_get_question.do";
     // check the answer for last question
-    private  userAnswer     : string = "/user/forget_check_answer.do";
+    private  userAnswerURL     : string = "/user/forget_check_answer.do";
     // reset the password
-    private  setUserPassword: string = "/user/forget_reset_password.do";
+    private  setUserPasswordURL: string = "/user/forget_reset_password.do";
     // get user info
     private userInfoURL     : string = "/user/get_information.do";
     // update personal info
-    private updateInfo      : string = "/user/update_information.do";
+    private updateInfoURL      : string = "/user/update_information.do";
     // update password when you logged
-    private updatedPassword : string = "/user/reset_password.do";
+    private updatedPasswordURL : string = "/user/reset_password.do";
     // log out
     private logOutURL       : string = "/user/logout.do";
 
@@ -49,7 +49,7 @@ class UserApi {
      * @param existsUserInfo
      */
     public checkUsernameExists(existsUserInfo: CheckUserNameIsExists): Promise<InterfaceDataType> {
-        return  http.post(this.checkNameValid, existsUserInfo);
+        return  http.post(this.checkNameValidURL, existsUserInfo);
     }
 
     /**
@@ -58,14 +58,14 @@ class UserApi {
      * @constructor
      */
     public register(userRegister: registerUserInfo): Promise<InterfaceDataType> {
-        return http.post(this.userRegister, userRegister);
+        return http.post(this.userRegisterURL, userRegister);
     }
 
     /**
      * 检查用户登陆状态
      */
     public checkLoginStatus(): Promise<InterfaceDataType> {
-        return http.post(this.checkUserLogin);
+        return http.post(this.checkUserLoginURL);
     }
 
     /**
@@ -80,7 +80,7 @@ class UserApi {
      * @param usernameInfo
      */
     public getUserQuestion(usernameInfo: usernameType): Promise<InterfaceDataType> {
-        return http.post(this.userQuestion, usernameInfo);
+        return http.post(this.userQuestionURL, usernameInfo);
     }
 
     /**
@@ -88,7 +88,7 @@ class UserApi {
      * @param userInfo
      */
     public getUserQuestionAnswer(userInfo: CheckQuestionType): Promise<InterfaceDataType> {
-        return http.post(this.userAnswer, userInfo);
+        return http.post(this.userAnswerURL, userInfo);
     }
 
     /**
@@ -96,7 +96,7 @@ class UserApi {
      * @param userInfo
      */
     public resetPassword(userInfo: any): Promise<InterfaceDataType> {
-        return http.post(this.setUserPassword, userInfo);
+        return http.post(this.setUserPasswordURL, userInfo);
     }
 
     /**
@@ -111,7 +111,7 @@ class UserApi {
      * @param userInfo
      */
     public updatePersonalInfo(userInfo: {}): Promise<InterfaceDataType> {
-        return http.post(this.updateInfo, userInfo);
+        return http.post(this.updateInfoURL, userInfo);
     }
 
 
@@ -120,7 +120,7 @@ class UserApi {
      * @param userInfo
      */
     public updatePasswordLogged(userInfo: passwordInfoType): Promise<InterfaceDataType> {
-        return http.post(this.updatedPassword, userInfo);
+        return http.post(this.updatedPasswordURL, userInfo);
     }
 
     /**

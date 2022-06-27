@@ -7,22 +7,22 @@ import { http } from "../util/http";
 class Order {
 
     // 获取商品列表
-    private goodsList    : string = "/order/get_order_cart_product.do";
+    private goodsListURL    : string = "/order/get_order_cart_product.do";
     // 提交订单
-    private submitOrder    : string = "/order/create.do";
+    private submitOrderURL    : string = "/order/create.do";
     // 获取订单列表
-    private orderList   : string = "/order/list.do";
+    private orderListURL   : string = "/order/list.do";
     // 获取订单详情
-    private orderDetail : string = "/order/detail.do";
+    private orderDetailURL : string = "/order/detail.do";
     // 取消订单
-    private cancelOrder    : string = "/order/cancel.do";
+    private cancelOrderURL    : string = "/order/cancel.do";
 
     /**
      * 获取订单列表
      * @param params
      */
     public getOrderList(params: any): Promise<InterfaceDataType> {
-        return http.get(this.orderList, { params: params});
+        return http.get(this.orderListURL, { params: params});
     }
 
     /**
@@ -30,7 +30,7 @@ class Order {
      * @param orderNo
      */
     public getOrderDetail(orderNo: { orderNo: Array<string | null> | string }): Promise<InterfaceDataType> {
-        return http.get(this.orderDetail,{ params: orderNo})
+        return http.get(this.orderDetailURL,{ params: orderNo})
     }
 
     /**
@@ -38,7 +38,7 @@ class Order {
      * @param paramsObject
      */
     public postCancelOrder(paramsObject: any): Promise<InterfaceDataType> {
-        return http.post(this.cancelOrder, paramsObject);
+        return http.post(this.cancelOrderURL, paramsObject);
     }
 
 }

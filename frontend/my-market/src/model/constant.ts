@@ -53,6 +53,7 @@ export namespace Constants {
         DETAIL      = "商品详情",
         CART        = "购物车",
         PERSONAL    = "个人中心",
-        ORDERDETAIL = "订单详情"
+        ORDERDETAIL = "订单详情",
+        PAYMENT     = "订单支付"
     }
 }

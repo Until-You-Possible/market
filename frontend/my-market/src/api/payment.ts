@@ -7,7 +7,7 @@ class Payment {
     private paymentURL    : string = "/order/pay.do";
 
     // 支付状态
-    private paymentStatus : string = "/order/query_order_pay_status.do";
+    private paymentStatusURL : string = "/order/query_order_pay_status.do";
 
     /**
      * 获取订单支付信息
@@ -22,7 +22,7 @@ class Payment {
      * @param orderInfo
      */
     public getPaymentStatus (orderInfo: any): Promise<InterfaceDataType> {
-        return http.post(this.paymentStatus, orderInfo)
+        return http.post(this.paymentStatusURL, orderInfo)
     }
 
 

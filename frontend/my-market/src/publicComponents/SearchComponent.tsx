@@ -1,10 +1,9 @@
 
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect } from "react";
 import Search from "antd/es/input/Search";
 import { Col, Row } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../view/home";
-import qs from "query-string";
 
 const SearchComponent:React.FC = (props) =>  {
 
@@ -23,7 +22,7 @@ const SearchComponent:React.FC = (props) =>  {
     // const location = useLocation();
     // const currentKeyword = qs.parse(location.search).keyword as string;
 
-    console.log("contextValue", contextValue);
+    console.log("contextValue");
 
     useEffect(() => {
 
