@@ -1,9 +1,9 @@
 
 import React, { useContext, useEffect } from "react";
-import Search from "antd/es/input/Search";
 import { Col, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../view/home";
+import Search from "antd/lib/input/Search";
 
 const SearchComponent:React.FC = (props) =>  {
 

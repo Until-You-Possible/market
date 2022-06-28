@@ -6,7 +6,7 @@ import { helper } from "../../util/helper";
 import { Constants } from "../../model/constant";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { QRCodeSVG } from "qrcode.react";
-import {Spin} from "antd";
+import { Spin } from "antd";
 
 const qrStyle: CSSProperties = {
     textAlign: "center",
