@@ -40,6 +40,7 @@ export namespace Constants {
         PERSONALINFO  = "personalInfo",
         ORDERDETAIL   = "orderDetail",
         PAYMENT       = "payment",
+        ORDERLIST     = "orderList",
         NODATA        = "暂无查询数据"
     }
     export enum ConditionStatusEnum {

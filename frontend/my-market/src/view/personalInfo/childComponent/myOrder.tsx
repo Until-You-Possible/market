@@ -133,6 +133,7 @@ const MyOrder: React.FC = () => {
                     <div className="orderListWrapper">
                         <Table columns={orderColumns}
                                dataSource={orderMessage?.orderItemVoList}
+                               rowKey={(item) => item.orderNo }
                                pagination={false}
                         />
                     </div>

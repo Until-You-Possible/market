@@ -52,14 +52,19 @@ const Payment: React.FC = () => {
                 navigate("/login");
             }
 
+        }).catch(err => {
+            setLoading(false);
         });
         // 轮询接口状态(限定时间内支付)kai
         paymentApi.getPaymentStatus(dataInfo).then(res => {
+            if (helper.successResponse(res)) {
+                helper.successResponse("支付成功～");
+                return;
+            }
             console.log("resss", res);
         });
 
     }, [orderNo, navigate]);
-    console.log("loading", loading);
 
 
     console.log("qrURL", qrURL);

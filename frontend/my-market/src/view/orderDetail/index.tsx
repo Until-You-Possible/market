@@ -163,6 +163,7 @@ const OrderDetail: React.FC = () => {
                 <Card style={goodsInfoStyle} title="商品清单" bordered={false}>
                     <Table columns={orderColumns}
                            dataSource={orderDetailInfo?.orderItemVoList}
+                           rowKey={(item) => item.productId }
                            footer={(item) => footerFunc(orderDetailInfo)}
                            pagination={false}
                     />
