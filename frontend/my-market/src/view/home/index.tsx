@@ -29,12 +29,15 @@ function Home() {
     const [categoryKey, setCategoryKey] = useState<string>("");
 
     const showDifferentComp = (location: any) => {
-        let listExist = [Constants.ProductInfoEnum.PRODUCTLIST, Constants.ProductInfoEnum.CART,
+        let listExist = [
+            Constants.ProductInfoEnum.PRODUCTLIST,
+            Constants.ProductInfoEnum.CART,
             Constants.ProductInfoEnum.ORDERDETAIL,
             Constants.ProductInfoEnum.PAYMENT,
             Constants.ProductInfoEnum.PERSONALINFO,
             Constants.ProductInfoEnum.ORDERLIST,
-            Constants.ProductInfoEnum.PRODUCTDETAIL];
+            Constants.ProductInfoEnum.PRODUCTDETAIL
+        ];
         let isExist = listExist.filter(v => location.pathname.includes(v));
         if (isExist.length > Constants.ConditionStatusEnum.ZERO) {
             return null;

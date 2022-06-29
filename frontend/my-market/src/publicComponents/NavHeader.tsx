@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState } from "react";
-import {Row, Col } from "antd";
+import { Row, Col } from "antd";
 import "../css/navHeader.css"
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { userApi } from "../api/user";
 import { cartApi } from "../api/cart";
 import {helper} from "../util/helper";
+import { Constants } from "../model/constant";
 
 const HavHeader:React.FC = () => {
 
@@ -21,7 +22,7 @@ const HavHeader:React.FC = () => {
             if (helper.successResponse(res)) {
                 // 获取用户信息
                 userApi.getCurrentUserInfo().then(res => {
-                    setUserInfo(res.data.username)
+                    setUserInfo(res.data.username);
                 });
             }
         });
@@ -63,7 +64,11 @@ const HavHeader:React.FC = () => {
                     <Link to="/home/cart">购物车({cartNumber})</Link>
                 </div>
                 <div className="uiMarginLeft">
-                    <Link to="/home/orderList">我的订单</Link>
+                    <Link to ={
+                        {
+                            pathname: "/home/personalInfo?tabIndex=" + Constants.PersonInfoTabEnum.ORDER,
+                        }
+                    }>我的订单</Link>
                 </div>
                 <div className="uiMarginLeft userInfoWrapperHeader">
                     <Link to="/home/personalInfo">个人中心</Link>

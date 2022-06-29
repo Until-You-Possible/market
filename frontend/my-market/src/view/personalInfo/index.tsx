@@ -1,4 +1,4 @@
-import React, { CSSProperties, Fragment, useState } from "react";
+import React, {CSSProperties, Fragment, useEffect, useState} from "react";
 import { Constants } from "../../model/constant";
 import "../../css/personalInfo.css";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
@@ -6,6 +6,8 @@ import { Tabs } from "antd";
 import PersonMessage from "./childComponent/personMessage";
 import MyOrder from "./childComponent/myOrder";
 import UpdatePassword from "./childComponent/updatePassword";
+import { useLocation } from "react-router-dom";
+import qs from "query-string";
 
 type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 const { TabPane } = Tabs;
@@ -25,7 +27,9 @@ type tabDataType = {
 
 const PersonalInfo: React.FC = () => {
 
-    const [mode] = useState<TabPosition>('left');
+    const [ mode ] = useState<TabPosition>('left');
+
+    const [ initTab, setInitTab ] = useState<string | undefined>("1");
 
     let tabArray = useState<Array<tabDataType>>([
         {
@@ -45,15 +49,40 @@ const PersonalInfo: React.FC = () => {
         }
     ]);
 
-    return <Fragment>
+    const location = useLocation();
+
+    const tabIndex = qs.parse(location.search).tabIndex as string;
+
+    useEffect(() => {
+
+        if (tabIndex) {
+            setInitTab(tabIndex);
+        } else {
+            setInitTab(String(Constants.PersonInfoTabEnum.INDIVIDUAL));
+        }
+
+    }, [tabIndex]);
+
+    const onTabClickInfo = (key: string) => {
+        setInitTab(key);
+    }
+
+    return <Fragment>s
         <div className="wrap personalContainer">
             <NavigationHeader title={Constants.NavigationTextEnum.PERSONAL} />
             <div>
-                <Tabs tabBarStyle={tabBarStyleCss} type="card" defaultActiveKey="2" tabPosition={mode} style={{ height: 420 }}>
+                <Tabs tabBarStyle={tabBarStyleCss}
+                      type="card"
+                      activeKey={initTab}
+                      onTabClick={onTabClickInfo}
+                      defaultActiveKey={String(Constants.PersonInfoTabEnum.INDIVIDUAL)}
+                      tabPosition={mode}
+                      style={{ height: 420 }}>
                     {
                         tabArray[0].map(item => {
                             return (
-                                <TabPane tab={item.tabName} key={item.key} >
+                                <TabPane tab={item.tabName}
+                                         key={item.key} >
                                     {item.content}
                                 </TabPane>
                             )

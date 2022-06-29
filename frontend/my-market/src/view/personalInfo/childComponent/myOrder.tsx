@@ -5,12 +5,17 @@ import { helper } from "../../../util/helper";
 import { ColumnsType } from "antd/lib/table";
 import "../../../css/order.css";
 import { useNavigate } from "react-router-dom";
-import {OrderOverAllDataType} from "../../../dataType/orderInfoType";
+import { OrderOverAllDataType } from "../../../dataType/orderInfoType";
 
 
 const orderInfoStyle: CSSProperties = {
     background : "#eee",
     padding    : "16px"
+}
+
+const orderBlockInfo: CSSProperties = {
+    marginBottom: "20px",
+    border: "1px solid #eee"
 }
 
 const spanStyleTitle: CSSProperties = {
@@ -78,7 +83,7 @@ const MyOrder: React.FC = () => {
     const navigate = useNavigate();
 
     // 订单信息
-    const [orderMessage, setOrderMessage] = useState<OrderOverAllDataType | undefined>();
+    let [orderMessage, setOrderMessage] = useState<Array<OrderOverAllDataType>>([]);
 
     useEffect(() => {
         //获取订单信息
@@ -91,14 +96,17 @@ const MyOrder: React.FC = () => {
         orderApi.getOrderList(params).then(res => {
             setLoading(false);
             if (helper.successResponse(res)) {
-                setOrderMessage(res.data.list[0]);
+                setOrderMessage(res.data.list);
+            }
+            if (helper.needToLogin(res)) {
+                navigate("/home");
             }
         });
 
-    }, []);
+    }, [navigate]);
 
-    const checkOrderDetail = () => {
-        const orderNumber = orderMessage?.orderNo;
+    const checkOrderDetail = (event: React.MouseEvent<HTMLElement>, item: any) => {
+        const orderNumber = item.orderNo;
         navigate("/home/orderDetail?orderNumber=" + orderNumber);
     }
 
@@ -106,37 +114,44 @@ const MyOrder: React.FC = () => {
         <div>
             <Card title="我的订单" bordered={false}>
                 <Spin spinning={loading}>
-                    <div style={orderInfoStyle}>
-                        <Row>
-                            <Col span={8}>
-                                订单号:{ orderMessage?.orderNo }
-                            </Col>
-                            <Col span={8}>{ orderMessage?.createTime }
-                            </Col>
-                            <Col span={8}>
-                                收件人:{ orderMessage?.receiverName }
-                            </Col>
+                    {
+                        orderMessage && orderMessage.map((item, index) => {
+                            return <div key={index} style={orderBlockInfo}>
+                                <div style={orderInfoStyle}>
+                                    <Row>
+                                        <Col span={8}>
+                                            订单号:{ item.orderNo }
+                                        </Col>
+                                        <Col span={8}>{ item.createTime }
+                                        </Col>
+                                        <Col span={8}>
+                                            收件人:{ item.receiverName }
+                                        </Col>
 
-                        </Row>
-                        <Row style={secondRowStyle}>
-                            <Col span={8}>
-                                订单状态: {orderMessage?.statusDesc}
-                            </Col>
-                            <Col span={8}>
-                                订单总价: {orderMessage?.payment}
-                            </Col>
-                            <Col span={8}>
-                                <Button type="primary" onClick={checkOrderDetail}>查看详情</Button>
-                            </Col>
-                        </Row>
-                    </div>
-                    <div className="orderListWrapper">
-                        <Table columns={orderColumns}
-                               dataSource={orderMessage?.orderItemVoList}
-                               rowKey={(item) => item.orderNo }
-                               pagination={false}
-                        />
-                    </div>
+                                    </Row>
+                                    <Row style={secondRowStyle}>
+                                        <Col span={8}>
+                                            订单状态: {item.statusDesc}
+                                        </Col>
+                                        <Col span={8}>
+                                            订单总价: {item.payment}
+                                        </Col>
+                                        <Col span={8}>
+                                            <Button type="primary" onClick={(event) => checkOrderDetail(event, item)}>查看详情</Button>
+                                        </Col>
+                                    </Row>
+                                </div>
+                                <div className="orderListWrapper">
+                                    <Table columns={orderColumns}
+                                           dataSource={item.orderItemVoList}
+                                           rowKey={(item) => item.productId }
+                                           pagination={false}
+                                    />
+                                </div>
+                            </div>
+
+                        })
+                    }
                 </Spin>
             </Card>
         </div>

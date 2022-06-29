@@ -4,7 +4,6 @@ export namespace Constants {
     export enum StatusEnum {
         SUCCESS    = 0,
         FAIL       = 1,
-        FETCHING   = 2,
         NEED_LOGIN = 10
     }
     export enum ConstantStringEnum {
@@ -22,7 +21,7 @@ export namespace Constants {
     export enum SuccessPageEnum {
         RESETPASSWORD  = "resetPasswordSuccess",
         REGISTER       = "registerSuccess",
-        ADDBASKET     = "addBasketSuccess",
+        ADDBASKET      = "addBasketSuccess",
         UPDATEPASSWORD = "updatePasswordSuccess"
     }
     export enum SearchOrderByEnum {
@@ -56,5 +55,10 @@ export namespace Constants {
         PERSONAL    = "个人中心",
         ORDERDETAIL = "订单详情",
         PAYMENT     = "订单支付"
+    }
+    export enum PersonInfoTabEnum {
+        INDIVIDUAL  = 1,
+        ORDER       = 2,
+        PASSWORD    = 3
     }
 }

@@ -1,20 +1,20 @@
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Col, Row } from "antd";
-import { useNavigate } from "react-router-dom";
 import { Context } from "../view/home";
 import Search from "antd/lib/input/Search";
+import useSelfNavigate from "../hooks/useSelfNavigate";
 
 const SearchComponent:React.FC = (props) =>  {
 
-    const navigation = useNavigate();
-
     const contextValue = useContext(Context);
 
+    const [ navigatePage ] = useSelfNavigate();
 
     const onSearch = (value: string) => {
         if (value) {
-            navigation("/home/productList?keyword=" + value);
+            const url = "/home/productList?keyword=" + value;
+            navigatePage(url);
         }
     }
 
@@ -22,11 +22,7 @@ const SearchComponent:React.FC = (props) =>  {
     // const location = useLocation();
     // const currentKeyword = qs.parse(location.search).keyword as string;
 
-    console.log("contextValue");
-
-    useEffect(() => {
-
-    }, []);
+    // console.log("contextValue");
 
     return <div>
         <Row>

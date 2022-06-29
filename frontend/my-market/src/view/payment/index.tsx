@@ -1,5 +1,5 @@
 import React, {CSSProperties, Fragment, useEffect, useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import qs from "query-string";
 import { paymentApi } from "../../api/payment";
 import { helper } from "../../util/helper";
@@ -61,13 +61,11 @@ const Payment: React.FC = () => {
                 helper.successResponse("支付成功～");
                 return;
             }
-            console.log("resss", res);
+            console.log("res", res);
         });
 
     }, [orderNo, navigate]);
 
-
-    console.log("qrURL", qrURL);
     return <Fragment>
         <div className="wrap">
             <NavigationHeader title={Constants.NavigationTextEnum.PAYMENT}/>
