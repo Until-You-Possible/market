@@ -2,14 +2,14 @@ import React from "react";
 import { Col, Row } from "antd";
 import "../css/products.css";
 import productJson from "../mockData/productFloor.json";
-import { useNavigate } from "react-router-dom";
+import useSelfNavigate from "../hooks/useSelfNavigate";
 
 const Products:React.FC = () =>   {
 
-    const navigation = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     const goToDetail = (id: string) => {
-        navigation("/home/productList?categoryId=" +  id);
+        navigatePage("/home/productList?categoryId=" +  id);
     }
 
     return (

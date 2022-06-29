@@ -3,7 +3,7 @@ import {Button, Carousel, Col, Row, Space} from "antd";
 import "../css/category.css";
 import slideList from "../mockData/sliders.json";
 import categoriesList from "../mockData/category.json";
-import { useNavigate } from "react-router-dom";
+import useSelfNavigate from "../hooks/useSelfNavigate";
 
 interface PropsSearch {
     getSearchKeyword: (key: string) => void
@@ -12,21 +12,21 @@ const Category: React.FC<PropsSearch> = (props) => {
 
         const [size] = useState<number>(2);
 
-        const navigate = useNavigate();
+        const [ navigatePage ] = useSelfNavigate();
 
         useEffect( () => {
 
         }, []);
 
         const onCategory = (event: any, keyword: any) => {
-            navigate("/home/productList?keyword=" + keyword);
+            navigatePage("/home/productList?keyword=" + keyword);
             // 将keyword传递到home
             props.getSearchKeyword(keyword);
         }
 
         const judgeSlideImage = (index: number) => {
             return require(`../img/banner/banner${index}.jpg`);
-            
+
         }
 
         return <div className="wrap categoryWrap">

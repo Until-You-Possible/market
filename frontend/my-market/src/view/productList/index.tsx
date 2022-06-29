@@ -2,12 +2,13 @@
 import React, {useCallback, useEffect, useState} from "react";
 import { Pagination, Radio, Image, Empty, Spin } from "antd";
 import { Constants } from "../../model/constant";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { ListDataType, SearchKeywordType} from "../../dataType/productInfoType";
 import { productApi } from "../../api/product";
 import { helper } from "../../util/helper";
 import qs from "query-string";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
+import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 
 const ProductList: React.FC = () => {
@@ -22,7 +23,7 @@ const ProductList: React.FC = () => {
 
     const location = useLocation();
 
-    const navigation = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
 
     const onChoose  = (value: string) => {
@@ -83,7 +84,7 @@ const ProductList: React.FC = () => {
     }
 
     const goToDetail = (id: number) => {
-        navigation("/home/productDetail?productId=" +  id);
+        navigatePage("/home/productDetail?productId=" +  id);
     }
 
     const renderProductList = () => {

@@ -3,7 +3,7 @@ import { Button, Card, Form, Input, Spin } from "antd";
 import { userApi } from "../../../api/user";
 import { helper } from "../../../util/helper";
 import { UpdatedUserInfoType } from "../../../dataType/userInfoType";
-import { useNavigate} from "react-router-dom";
+import useSelfNavigate from "../../../hooks/useSelfNavigate";
 
 const buttonStyle: CSSProperties = {
     width : "100%",
@@ -13,7 +13,7 @@ const PersonMessage: React.FC = () => {
 
     const [form] = Form.useForm();
 
-    const navigation = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -28,11 +28,11 @@ const PersonMessage: React.FC = () => {
                     setLoading(false);
                 }
                 if (helper.needToLogin(res)) {
-                    navigation("/login");
+                    navigatePage("/login");
                 }
             });
         }, 1500);
-    }, [form, navigation]);
+    }, [form, navigatePage]);
 
     const onFinish = (values: any) => {
         if (currentDisabledStatus) {

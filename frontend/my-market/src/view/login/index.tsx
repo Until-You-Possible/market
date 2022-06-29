@@ -1,16 +1,17 @@
 import React from "react";
 import { Form, Input, Button } from 'antd';
 import { userApi } from "../../api/user";
-import {Link, useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../css/login.css";
-import {LoginItemList, userLoginInfo} from "../../dataType/userInfoType";
+import { LoginItemList, userLoginInfo } from "../../dataType/userInfoType";
 import { helper } from "../../util/helper";
+import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 
 
 const Register: React.FC = () => {
 
-    const navigate = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     const onFinish = (values: userLoginInfo) => {
         userLogin(values);
@@ -19,7 +20,7 @@ const Register: React.FC = () => {
     const userLogin = (values: userLoginInfo) => {
         userApi.userLogin(values).then(res => {
             if (helper.successResponse(res)) {
-                navigate("/home");
+                navigatePage("/home");
             }
         });
     }

@@ -1,16 +1,17 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 import { ILocation, setPasswordItemList, setPasswordType } from "../../dataType/userInfoType";
-import { NavigateFunction, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { userApi } from "../../api/user";
 import { Constants } from "../../model/constant";
 import { helper } from "../../util/helper";
+import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 const ResetPassword:React.FC = () => {
 
     const location: ILocation = useLocation();
 
-    const navigation: NavigateFunction  = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     const onFinish = (values: any) => {
 
@@ -23,7 +24,7 @@ const ResetPassword:React.FC = () => {
         userApi.resetPassword(dataBody).then(res => {
             if (helper.successResponse(res)) {
                 // 回到成功页面重新登陆
-                navigation("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.RESETPASSWORD);
+                navigatePage("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.RESETPASSWORD);
             }
         })
     }

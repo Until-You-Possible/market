@@ -3,11 +3,12 @@ import { Constants } from "../../model/constant";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Button, Card, Image, Popconfirm, Space, Spin, Table } from "antd";
 import { orderApi } from "../../api/order";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation } from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
 import { OrderOverAllDataType } from "../../dataType/orderInfoType";
 import { ColumnsType } from "antd/lib/table";
+import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 const goodsInfoStyle: CSSProperties = {
     marginTop: "10px"
@@ -75,7 +76,7 @@ const OrderDetail: React.FC = () => {
 
     const [orderDetailInfo, setOrderDetailInfo] = useState<OrderOverAllDataType>();
 
-    const navigate = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     useEffect(() => {
 
@@ -87,13 +88,13 @@ const OrderDetail: React.FC = () => {
                         setOrderDetailInfo(res.data);
                     }
                     if (helper.needToLogin(res)) {
-                        navigate("/home");
+                        navigatePage("/home");
                     }
                 });
             }, 1500);
         }
 
-    }, [orderNo, navigate]);
+    }, [orderNo, navigatePage]);
 
     const footerFunc = (item: OrderOverAllDataType | undefined) => {
         return <Fragment>
@@ -115,7 +116,7 @@ const OrderDetail: React.FC = () => {
     }
 
     const goPayment = () => {
-        navigate("/home/payment?orderNumber=" + orderNo);
+        navigatePage("/home/payment?orderNumber=" + orderNo);
     }
 
     return <Fragment>

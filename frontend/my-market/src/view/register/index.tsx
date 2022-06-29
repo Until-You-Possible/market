@@ -2,16 +2,18 @@ import React from "react";
 import { Form, Input, Button } from 'antd';
 import "./index.css";
 import { userApi } from "../../api/user";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Constants } from "../../model/constant";
 import { helper } from "../../util/helper";
 import { CheckUserNameIsExists, registerItemList, registerUserInfo } from "../../dataType/userInfoType";
+import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 
 
 const Register: React.FC = () => {
 
-    const navigate = useNavigate();
+
+    const [ navigatePage ] = useSelfNavigate();
 
     const onFinish = (values: registerUserInfo) => {
         // 相关验证通过之后
@@ -26,7 +28,7 @@ const Register: React.FC = () => {
             if (helper.successResponse(res)) {
                 helper.showMessage("用户名可用～");
                 setTimeout(() => {
-                    navigate("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.REGISTER);
+                    navigatePage("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.REGISTER);
                 }, 1000);
             }
         });

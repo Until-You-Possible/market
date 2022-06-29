@@ -4,17 +4,18 @@ import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Constants } from "../../model/constant";
 import { Image } from "antd";
 import { productApi } from "../../api/product";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation } from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
 import {CartProductType, DetailInformationType} from "../../dataType/productInfoType";
-import {cartApi} from "../../api/cart";
+import { cartApi } from "../../api/cart";
+import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 const ProductDetail: React.FC = () => {
 
     const location = useLocation();
 
-    const navigation = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     const paramsId = qs.parse(location.search).productId as string;
 
@@ -118,10 +119,10 @@ const ProductDetail: React.FC = () => {
 
         cartApi.addBasket(infoProduct).then(res => {
             if (helper.successResponse(res)) {
-                navigation("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.ADDBASKET);
+                navigatePage("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.ADDBASKET);
             }
             if (helper.needToLogin(res)) {
-                navigation("/login");
+                navigatePage("/login");
             }
         })
     }

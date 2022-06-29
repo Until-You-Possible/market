@@ -2,8 +2,8 @@ import React, {CSSProperties, Fragment, useState} from "react";
 import { Button, Card, Form, Input, Spin } from "antd";
 import { helper } from "../../../util/helper";
 import { userApi } from "../../../api/user";
-import { useNavigate } from "react-router-dom";
 import { Constants } from "../../../model/constant";
+import useSelfNavigate from "../../../hooks/useSelfNavigate";
 
 const buttonStyle: CSSProperties = {
     width : "100%",
@@ -19,7 +19,7 @@ const UpdatePassword: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(false);
 
-    const navigation = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     const onFinish = (values: passwordInfoType) => {
         const newPassword = values.passwordNew;
@@ -42,7 +42,7 @@ const UpdatePassword: React.FC = () => {
                     helper.showMessage("密码已经更新成功～请重新登陆");
                     setTimeout(() => {
                         // 到成功页面登陆
-                        navigation("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.UPDATEPASSWORD);
+                        navigatePage("/resultSuccess?successPageType=" + Constants.SuccessPageEnum.UPDATEPASSWORD);
                     }, 1000);
                 }
             });

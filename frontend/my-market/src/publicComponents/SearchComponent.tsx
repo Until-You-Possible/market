@@ -13,8 +13,7 @@ const SearchComponent:React.FC = (props) =>  {
 
     const onSearch = (value: string) => {
         if (value) {
-            const url = "/home/productList?keyword=" + value;
-            navigatePage(url);
+            navigatePage("/home/productList?keyword=" + value);
         }
     }
 

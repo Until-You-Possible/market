@@ -1,5 +1,5 @@
-import React, {CSSProperties, Fragment, useEffect, useState} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { CSSProperties, Fragment, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import qs from "query-string";
 import { paymentApi } from "../../api/payment";
 import { helper } from "../../util/helper";
@@ -7,6 +7,7 @@ import { Constants } from "../../model/constant";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { QRCodeSVG } from "qrcode.react";
 import { Spin } from "antd";
+import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 const qrStyle: CSSProperties = {
     textAlign: "center",
@@ -30,7 +31,7 @@ const Payment: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(false);
 
-    const navigate = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     const [qrURL, setQrURL] = useState<string>("");
 
@@ -49,7 +50,7 @@ const Payment: React.FC = () => {
                 setQrURL(res.data.qrUrl);
             }
             if (helper.needToLogin(res)) {
-                navigate("/login");
+                navigatePage("/login");
             }
 
         }).catch(err => {
@@ -64,7 +65,7 @@ const Payment: React.FC = () => {
             console.log("res", res);
         });
 
-    }, [orderNo, navigate]);
+    }, [orderNo, navigatePage]);
 
     return <Fragment>
         <div className="wrap">

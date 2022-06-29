@@ -4,8 +4,8 @@ import { orderApi } from "../../../api/order";
 import { helper } from "../../../util/helper";
 import { ColumnsType } from "antd/lib/table";
 import "../../../css/order.css";
-import { useNavigate } from "react-router-dom";
 import { OrderOverAllDataType } from "../../../dataType/orderInfoType";
+import useSelfNavigate from "../../../hooks/useSelfNavigate";
 
 
 const orderInfoStyle: CSSProperties = {
@@ -80,7 +80,7 @@ const MyOrder: React.FC = () => {
 
     const [loading, setLoading] = useState<boolean>(false);
 
-    const navigate = useNavigate();
+    const [ navigatePage ] = useSelfNavigate();
 
     // 订单信息
     let [orderMessage, setOrderMessage] = useState<Array<OrderOverAllDataType>>([]);
@@ -99,15 +99,15 @@ const MyOrder: React.FC = () => {
                 setOrderMessage(res.data.list);
             }
             if (helper.needToLogin(res)) {
-                navigate("/home");
+                navigatePage("/home");
             }
         });
 
-    }, [navigate]);
+    }, [navigatePage]);
 
     const checkOrderDetail = (event: React.MouseEvent<HTMLElement>, item: any) => {
         const orderNumber = item.orderNo;
-        navigate("/home/orderDetail?orderNumber=" + orderNumber);
+        navigatePage("/home/orderDetail?orderNumber=" + orderNumber);
     }
 
     return <Fragment>
