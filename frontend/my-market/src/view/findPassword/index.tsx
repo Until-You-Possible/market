@@ -1,7 +1,13 @@
 import React, {useState} from "react";
 import { Button, Form, Input } from "antd";
 import { userApi } from "../../api/user";
-import { CheckQuestionType, passwordInfo, passwordItemList, questionItemList, usernameType } from "../../dataType/userInfoType";
+import {
+    CheckQuestionType,
+    passwordInfo,
+    passwordItemList,
+    questionItemList,
+    usernameType
+} from "../../dataType/userInfoType";
 import { useNavigate } from "react-router-dom";
 import { helper } from "../../util/helper";
 
@@ -27,10 +33,10 @@ const FindPassword: React.FC = () => {
         if (question) {
             // 校验问题密码
             if ("answer" in values) {
-                const userMessage: CheckQuestionType = {
-                    username: currentName || "",
-                    question: question,
-                    answer: values.answer
+                const userMessage : CheckQuestionType = {
+                    username      : currentName || "",
+                    question      : question,
+                    answer        : values.answer
                 }
                 userApi.getUserQuestionAnswer(userMessage).then(res => {
                     if (helper.successResponse(res)) {

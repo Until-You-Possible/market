@@ -14,8 +14,8 @@ const orderInfoStyle: CSSProperties = {
 }
 
 const orderBlockInfo: CSSProperties = {
-    marginBottom: "20px",
-    border: "1px solid #eee"
+    marginBottom : "20px",
+    border       : "1px solid #eee"
 }
 
 const spanStyleTitle: CSSProperties = {

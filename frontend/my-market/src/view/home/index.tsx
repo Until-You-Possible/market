@@ -1,4 +1,4 @@
-import React, {createContext, Fragment, useEffect, useState } from "react";
+import React, { createContext, Fragment, useEffect, useState } from "react";
 import NavHeader from "../../publicComponents/NavHeader";
 import SearchComponent from "../../publicComponents/SearchComponent";
 import Category from "../../publicComponents/Category";
@@ -17,7 +17,6 @@ import Cart from "../cart";
 import PersonalInfo from "../personalInfo";
 import OrderDetail from "../orderDetail";
 import Payment from "../payment";
-import OrderList from "../orderList";
 
 export const Context = createContext<string>("");
 
@@ -35,7 +34,6 @@ function Home() {
             Constants.ProductInfoEnum.ORDERDETAIL,
             Constants.ProductInfoEnum.PAYMENT,
             Constants.ProductInfoEnum.PERSONALINFO,
-            Constants.ProductInfoEnum.ORDERLIST,
             Constants.ProductInfoEnum.PRODUCTDETAIL
         ];
         let isExist = listExist.filter(v => location.pathname.includes(v));
@@ -74,7 +72,6 @@ function Home() {
                 <Route path="/personalInfo" element={<PersonalInfo />}/>
                 <Route path="/orderDetail" element={<OrderDetail />}/>
                 <Route path="/payment" element={<Payment />}/>
-                <Route path="/orderList" element={<OrderList />}/>
             </Routes>
             <FooterComponent />
         </div>

@@ -1,5 +1,5 @@
 
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Pagination, Radio, Image, Empty, Spin } from "antd";
 import { Constants } from "../../model/constant";
 import { useLocation } from "react-router-dom";
@@ -130,7 +130,12 @@ const ProductList: React.FC = () => {
         </Spin>
         <div className="paginationWrap">
             {
-                productData.length ? <Pagination onChange={paginationFunc} defaultCurrent={currentPage} total={total} /> : null
+                productData.length ?
+                    <Pagination
+                        onChange={paginationFunc}
+                        defaultCurrent={currentPage}
+                        total={total} />
+                    : null
             }
         </div>
 

@@ -1,4 +1,4 @@
 
-// 关于url可显示的参数，并取参数hooks
+// 传递过来 key 直接返回对应的 value
 
 export {}

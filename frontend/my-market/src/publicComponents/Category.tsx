@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Carousel, Col, Row, Space} from "antd";
+import { Button, Carousel, Col, Row, Space } from "antd";
 import "../css/category.css";
 import slideList from "../mockData/sliders.json";
 import categoriesList from "../mockData/category.json";

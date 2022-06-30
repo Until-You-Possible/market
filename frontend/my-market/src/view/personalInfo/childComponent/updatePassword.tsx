@@ -1,4 +1,4 @@
-import React, {CSSProperties, Fragment, useState} from "react";
+import React, { CSSProperties, Fragment, useState } from "react";
 import { Button, Card, Form, Input, Spin } from "antd";
 import { helper } from "../../../util/helper";
 import { userApi } from "../../../api/user";

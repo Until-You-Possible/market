@@ -10,17 +10,17 @@ import { Spin } from "antd";
 import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 const qrStyle: CSSProperties = {
-    textAlign: "center",
-    minHeight: "300px",
-    paddingBottom: "30px",
-    paddingTop: "30px",
-    background: "#fff"
+    textAlign     : "center",
+    minHeight     : "300px",
+    paddingBottom : "30px",
+    paddingTop    : "30px",
+    background    : "#fff"
 }
 
 const tipTitleStyle:CSSProperties = {
-    fontSize: "20px",
-    fontWeight: "700",
-    lineHeight: "50px"
+    fontSize   : "20px",
+    fontWeight : "700",
+    lineHeight : "50px"
 }
 
 const Payment: React.FC = () => {

@@ -12,7 +12,6 @@ import useSelfNavigate from "../../hooks/useSelfNavigate";
 
 const Register: React.FC = () => {
 
-
     const [ navigatePage ] = useSelfNavigate();
 
     const onFinish = (values: registerUserInfo) => {
@@ -37,9 +36,9 @@ const Register: React.FC = () => {
     // to check if username is exists
     const onBlurCheckName = (event: React.FocusEvent<HTMLInputElement>, type: string | undefined) => {
         if (type === Constants.ConstantStringEnum.USERNAME) {
-            let info: CheckUserNameIsExists = {
-                type: "username",
-                str : event.target.value || ""
+            let info : CheckUserNameIsExists = {
+                type : "username",
+                str  : event.target.value || ""
             }
             userApi.checkUsernameExists(info).then(res => {
                 if (helper.successResponse(res)) {

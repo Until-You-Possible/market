@@ -1,13 +1,13 @@
 
-import React, {Fragment, useCallback, useEffect, useState} from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Constants } from "../../model/constant";
 import { Image } from "antd";
 import { productApi } from "../../api/product";
-import {useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
-import {CartProductType, DetailInformationType} from "../../dataType/productInfoType";
+import { CartProductType, DetailInformationType } from "../../dataType/productInfoType";
 import { cartApi } from "../../api/cart";
 import useSelfNavigate from "../../hooks/useSelfNavigate";
 

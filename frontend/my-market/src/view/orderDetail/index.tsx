@@ -3,7 +3,7 @@ import { Constants } from "../../model/constant";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { Button, Card, Image, Popconfirm, Space, Spin, Table } from "antd";
 import { orderApi } from "../../api/order";
-import {useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import qs from "query-string";
 import { helper } from "../../util/helper";
 import { OrderOverAllDataType } from "../../dataType/orderInfoType";

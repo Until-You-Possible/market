@@ -14,27 +14,27 @@ import { passwordInfoType } from "../view/personalInfo/childComponent/updatePass
 class UserApi {
     // URLs
     // login
-    private loginURL        : string = "/user/login.do";
+    private loginURL            : string = "/user/login.do";
     // 检查用户名是否存在(有效)
-    private checkNameValidURL  : string = "/user/check_valid.do";
+    private checkNameValidURL   : string = "/user/check_valid.do";
     // register
-    private  userRegisterURL   : string = "/user/register.do";
+    private  userRegisterURL    : string = "/user/register.do";
     // 检查登陆状态
-    private checkUserLoginURL     : string = "/user/get_user_info.do";
+    private checkUserLoginURL   : string = "/user/get_user_info.do";
     // get user's question
-    private  userQuestionURL   : string = "/user/forget_get_question.do";
+    private  userQuestionURL    : string = "/user/forget_get_question.do";
     // check the answer for last question
-    private  userAnswerURL     : string = "/user/forget_check_answer.do";
+    private  userAnswerURL      : string = "/user/forget_check_answer.do";
     // reset the password
-    private  setUserPasswordURL: string = "/user/forget_reset_password.do";
+    private  setUserPasswordURL : string = "/user/forget_reset_password.do";
     // get user info
-    private userInfoURL     : string = "/user/get_information.do";
+    private userInfoURL         : string = "/user/get_information.do";
     // update personal info
-    private updateInfoURL      : string = "/user/update_information.do";
+    private updateInfoURL       : string = "/user/update_information.do";
     // update password when you logged
-    private updatedPasswordURL : string = "/user/reset_password.do";
+    private updatedPasswordURL  : string = "/user/reset_password.do";
     // log out
-    private logOutURL       : string = "/user/logout.do";
+    private logOutURL           : string = "/user/logout.do";
 
     /**
      *  user login
