@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "antd";
-import "../../css/registerSuccess.css";
-import { Link, useLocation } from "react-router-dom";
+import styles from "../../css/registerSuccess.module.css";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import qs from "query-string";
 import { Constants } from "../../model/constant";
 
@@ -9,7 +9,17 @@ const RegisterSuccess: React.FC = () => {
 
     const location = useLocation();
 
+    const navigate = useNavigate();
+
     const currentType = qs.parse(location.search).successPageType;
+
+    useEffect(() => {
+
+        if (!currentType) {
+            navigate("/home");
+        }
+
+    }, [currentType, navigate]);
 
     const differentSuccessPage = (currentType: Array<string | null> | string | null) => {
         if (currentType === Constants.SuccessPageEnum.RESETPASSWORD) {
@@ -36,12 +46,12 @@ const RegisterSuccess: React.FC = () => {
 
 
     return <div className="wrap registerSuccessWrap">
-        <div className="registerSuccessTitle">
+        <div className={styles.registerSuccessTitle}>
             {
                 differentSuccessPage(currentType)
             }
         </div>
-        <Button className="registerSuccessLoginButton">
+        <Button className={styles.registerSuccessLoginButton}>
             {
                 differentSuccessButton(currentType)
             }
