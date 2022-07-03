@@ -40,7 +40,7 @@ class UserApi {
      *  user login
      * @param userData
      */
-    public userLogin(userData: any): Promise<InterfaceDataType> {
+    public userLogin(userData: any): Promise<any> {
         return  http.post(this.loginURL, userData);
     }
 
