@@ -26,7 +26,7 @@ const Products:React.FC = () =>   {
                                              <Col className="gutter-row" span={5} key={idx}>
                                                  <div className="styleSingle" onClick={() => goToDetail(item.categoryId)}>
                                                      <span className="floorText">{item.title}</span>
-                                                     <img className="productListItem" src={require(`../img/floor${item.path}`)} alt={item.title}/>
+                                                     <img className="productListItem" src={require(`/src/img/floor${item.path}`)} alt={item.title}/>
                                                  </div>
                                              </Col>
                                          )

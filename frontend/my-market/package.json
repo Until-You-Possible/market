@@ -2,7 +2,7 @@
   "name": "my-market",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "http://101.35.143.230",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.16.4",
@@ -26,6 +26,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:dev": "dotenv -e .env.dev react-scripts build",
+    "build:test": "dotenv -e .env.test react-scripts build",
+    "build:prod": "dotenv -e .env.prod react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -49,6 +52,7 @@
   },
   "devDependencies": {
     "axios": "^0.27.2",
+    "dotenv-cli": "^6.0.0",
     "jest": "^28.1.1",
     "less": "^4.1.2",
     "less-loader": "^11.0.0"

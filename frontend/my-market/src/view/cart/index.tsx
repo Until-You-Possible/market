@@ -76,7 +76,7 @@ const Cart: React.FC = () => {
         getCartProductList();
     },[]);
 
-    const getCartProductList = ()=>{
+    const getCartProductList = () => {
         cartApi.getCartList().then((res)=>{
             if(helper.successResponse(res)){
                 setDataSource(res.data.cartProductVoList);
