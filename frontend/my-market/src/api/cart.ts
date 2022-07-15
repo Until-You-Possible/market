@@ -8,26 +8,45 @@ import { InterfaceDataType } from "../dataType/publicDataType";
 class Cart {
 
 
-    private getCartCount  : string = "/cart/get_cart_product_count.do";
+    private cartCountURL     : string = "/cart/get_cart_product_count.do";
 
-    private addCart       : string = "/cart/add.do";
+    private addCartURL          : string = "/cart/add.do";
 
-    private cartList   : string = "/cart/list.do";
+    private cartListURL         : string = "/cart/list.do";
 
-    private selectCart    : string = "/cart/select.do";
+    private selectRowURL        : string = "/cart/select.do";
 
-    private unSelectCart  : string = "/cart/un_select_all.do";
+    private unSelectRowURL      : string = "/cart/un_select.do"
 
-    private updateCartURL    : string = "/cart/update.do";
+    private unSelectAllURL      : string = "/cart/un_select_all.do";
 
-    private deleteCart    : string = "/cart/delete_product.do";
+    private selectAllURL        : string = "/cart/select_all.do";
+
+    private updateCartURL       : string = "/cart/update.do";
+
+    private deleteCartURL       : string = "/cart/delete_product.do";
+
+
+    /**
+     * 全选
+     */
+    public selectALl (): Promise<InterfaceDataType>  {
+        return http.post(this.selectAllURL);
+    }
+
+    /**
+     * 取消全选
+     */
+    public unSelectALl (): Promise<InterfaceDataType>  {
+        return http.post(this.unSelectAllURL);
+    }
 
 
     /**
      * 获取购物车数量
      */
     public getBasketCount (): Promise<InterfaceDataType> {
-        return http.post(this.getCartCount);
+        return http.post(this.cartCountURL);
     }
 
     /**
@@ -35,14 +54,14 @@ class Cart {
      * @param productInfo
      */
     public addBasket (productInfo: CartProductType): Promise<InterfaceDataType> {
-        return http.post(this.addCart, productInfo);
+        return http.post(this.addCartURL, productInfo);
     }
 
     /**
      * 获取购物车列表
      */
     getCartList (): Promise<InterfaceDataType> {
-        return  http.get(this.cartList);
+        return  http.get(this.cartListURL);
     }
 
     /**
@@ -50,6 +69,30 @@ class Cart {
     */
     updateCart (data:any): Promise<InterfaceDataType> {
         return http.post(this.updateCartURL,data);
+    }
+
+    /**
+     * 选择购物车商品
+     * @param productInfo
+     */
+    selectRowProduct (productInfo: any): Promise<InterfaceDataType> {
+        return http.post(this.selectRowURL, productInfo);
+    }
+
+    /**
+     * 取消选择的商品
+     * @param productInfo
+     */
+    unSelectRowProduct (productInfo: any): Promise<InterfaceDataType> {
+        return http.post(this.unSelectRowURL, productInfo);
+    }
+
+    /**
+     * 删除指定商品
+     * @param productInfo
+     */
+    deleteCurrentProduct (productInfo: any): Promise<InterfaceDataType> {
+        return http.post(this.deleteCartURL, productInfo);
     }
 
 

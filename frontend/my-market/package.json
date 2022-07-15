@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^28.1.5",
     "@types/node": "^16.11.36",
     "@types/qrcode.react": "^1.0.2",
     "@types/react": "^18.0.9",
@@ -29,7 +30,7 @@
     "build:dev": "dotenv -e .env.dev react-scripts build",
     "build:test": "dotenv -e .env.test react-scripts build",
     "build:prod": "dotenv -e .env.prod react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

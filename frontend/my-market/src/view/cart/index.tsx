@@ -1,4 +1,4 @@
-import React, {CSSProperties, Fragment, useEffect, useState} from "react";
+import React, { CSSProperties, Fragment, useEffect, useState } from "react";
 import { Button, Checkbox, Image, InputNumber, Table } from "antd";
 import { Link} from "react-router-dom";
 import { CartGoodsType } from "../../dataType/productInfoType";
@@ -8,6 +8,7 @@ import { cartApi } from "../../api/cart";
 import { Constants } from "../../model/constant";
 import NavigationHeader from "../../publicComponents/NavigationHeader";
 import { DeleteOutlined } from "@ant-design/icons";
+import { CheckboxChangeEvent } from "antd/es/checkbox";
 
 interface DataType {
     id: number,
@@ -36,9 +37,9 @@ const Cart: React.FC = () => {
             width: 480,
             key: "productName",
             ellipsis: true,
-            render: (value: string,record:any,index:number) =>{
+            render: (value: string, record: any, index: number) =>{
                 return <Fragment>
-                            <Image width={80} src={`${baseURL}${record.productMainImage}`}/>
+                            <Image width={50} src={`${baseURL}${record.productMainImage}`}/>
                             <Link className="registerLink" to={`/home/productDetail?productId=${record.productId}`}>{value}</Link>
                         </Fragment>
 
@@ -70,6 +71,8 @@ const Cart: React.FC = () => {
 
     let [dataSource, setDataSource] = useState<Array<CartGoodsType> | undefined>([]);
 
+    const [checked, setChecked] = useState<boolean>(false);
+
     const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
     useEffect (()=>{
@@ -98,7 +101,7 @@ const Cart: React.FC = () => {
         })
     };
 
-    const onSelectChange = (newSelectedRowKeys: React.Key[]) =>{
+    const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
         setSelectedRowKeys(newSelectedRowKeys);
     };
 
@@ -107,14 +110,36 @@ const Cart: React.FC = () => {
         onChange: onSelectChange
     };
 
-    const onChangeAllCart = () =>{
-        console.log(1);
+    // 全选
+    const onChangeAllCart = (e: CheckboxChangeEvent) => {
+        if (selectedRowKeys.length === Constants.ConditionStatusEnum.ZERO) {
+            if (dataSource?.length) {
+                const ids = dataSource.map(v => v.id);
+                setSelectedRowKeys(ids);
+            }
+        } else {
+            setSelectedRowKeys([]);
+        }
     }
+
+    const toggleChecked = () => {
+        setChecked(!checked);
+    }
+
+    const deleteAllCarts = () => {
+        if (!setSelectedRowKeys.length) {
+            return;
+        }
+
+
+    }
+
+
 
     const formatCartTableFooter = ()=>{
         return <Fragment>
-            <Checkbox onChange={onChangeAllCart}>全部选中</Checkbox>
-            <Button type="text" icon={<DeleteOutlined/>}>全部删除</Button>
+            <Checkbox onClick={toggleChecked} checked={checked} onChange={onChangeAllCart}>全部选中</Checkbox>
+            <Button type="text" icon={<DeleteOutlined/>} onClick={deleteAllCarts}>全部删除</Button>
         </Fragment>;
     };
     return  <div className=" wrap productWrap">
