@@ -66,6 +66,13 @@ const Cart: React.FC = () => {
             align: 'center',
             dataIndex : "productTotalPrice",
             key : "productTotalPrice"
+        },
+        {
+            title : "操作",
+            align: 'center',
+            render(value, record, index) {
+                return <Button type="link" onClick={() => deleteCurrentRow(record)}>删除</Button>
+            }
         }
     ]
 
@@ -87,6 +94,19 @@ const Cart: React.FC = () => {
         });
     };
 
+    // delete the current row
+    const deleteCurrentRow = (item: any) => {
+        const id  =  item.productId;
+        if (id) {
+            cartApi.deleteCurrentProduct(id).then(res => {
+                if (helper.successResponse(res)) {
+                    helper.showMessage("删除成功");
+                    getCartProductList();
+                }
+            });
+        }
+    }
+
     const changeProductNum = (value: number,record:DataType)=>{
         const updateDataObj = {
             productId: record.productId,
@@ -102,7 +122,15 @@ const Cart: React.FC = () => {
     };
 
     const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
+        // 直接调用选择当前行的恶接口
         setSelectedRowKeys(newSelectedRowKeys);
+        if (newSelectedRowKeys.length) {
+            cartApi.selectRowProduct(newSelectedRowKeys).then(res => {
+                if (helper.successResponse(res)) {
+                   helper.showMessage("选择成功～")
+                }
+            });
+        }
     };
 
     const rowSelection = {
@@ -130,8 +158,17 @@ const Cart: React.FC = () => {
         if (!setSelectedRowKeys.length) {
             return;
         }
-
-
+        // 根据key查找对应的productId；
+        let ids = selectedRowKeys.map((v: any) => {
+            return dataSource?.map((m: any) => m.id === v ? m.productId :  null);
+        }).flat().filter(q => q).join();
+        cartApi.deleteCurrentProduct(ids).then(res => {
+            if (helper.successResponse(res)) {
+                helper.showMessage("删除成功～");
+                // refresh list
+                getCartProductList();
+            }
+        });
     }
 
 

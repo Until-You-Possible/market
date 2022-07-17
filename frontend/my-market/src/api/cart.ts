@@ -89,10 +89,10 @@ class Cart {
 
     /**
      * 删除指定商品
-     * @param productInfo
+     * @param id
      */
-    deleteCurrentProduct (productInfo: any): Promise<InterfaceDataType> {
-        return http.post(this.deleteCartURL, productInfo);
+    deleteCurrentProduct (id: string): Promise<InterfaceDataType> {
+        return http.get(this.deleteCartURL, {params: { productIds: id }});
     }
 
 
