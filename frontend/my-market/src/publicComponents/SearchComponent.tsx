@@ -21,7 +21,8 @@ const SearchComponent:React.FC = (props) =>  {
     // const location = useLocation();
     // const currentKeyword = qs.parse(location.search).keyword as string;
 
-    // console.log("contextValue");
+    // context传递value
+    // console.log("contextValue", contextValue);
 
     return <div>
         <Row>

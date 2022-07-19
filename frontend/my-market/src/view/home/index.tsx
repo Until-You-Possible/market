@@ -20,7 +20,6 @@ import Payment from "../payment";
 
 export const Context = createContext<string>("");
 
-
 function Home() {
 
     const location = useLocation();
@@ -62,6 +61,7 @@ function Home() {
             <Context.Provider value={categoryKey}>
                 <SearchComponent />
             </Context.Provider>
+
             {
                 showDifferentComp(location)
             }

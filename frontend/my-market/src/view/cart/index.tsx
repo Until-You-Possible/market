@@ -1,6 +1,6 @@
-import React, { CSSProperties, Fragment, useEffect, useState } from "react";
+import React, {createContext, CSSProperties, Fragment, useCallback, useEffect, useState} from "react";
 import { Button, Checkbox, Image, InputNumber, Table } from "antd";
-import { Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartGoodsType } from "../../dataType/productInfoType";
 import { helper } from "../../util/helper";
 import type { ColumnsType } from "antd/lib/table";
@@ -11,22 +11,23 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 
 interface DataType {
-    id: number,
-    productId: number,
-    productStock: number,
-    productName: string,
-    productPrice: number,
-    quantity: number,
-    productTotalPrice: number
+    id           : number,
+    productId    : number,
+    productStock : number,
+    productName  : string,
+    productPrice : number,
+    quantity     : number,
+    productTotalPrice : number
 }
 
 const baseURL = "http://img.happymmall.com/";
 
 const tableWrapStyle: CSSProperties = {
-    padding: "20px",
-    background: "#fff"
+    padding    : "20px",
+    background : "#fff"
 }
 
+export const CartCountContext = createContext<number>(0);
 
 const Cart: React.FC = () => {
 
@@ -76,23 +77,39 @@ const Cart: React.FC = () => {
         }
     ]
 
+    const navigation = useNavigate();
+
     let [dataSource, setDataSource] = useState<Array<CartGoodsType> | undefined>([]);
 
     const [checked, setChecked] = useState<boolean>(false);
 
     const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
-    useEffect (()=>{
-        getCartProductList();
-    },[]);
-
-    const getCartProductList = () => {
+    const getCartProductList = useCallback(() => {
         cartApi.getCartList().then((res)=>{
             if(helper.successResponse(res)){
                 setDataSource(res.data.cartProductVoList);
+                // 每次list数量的改变都去同志NavHeader去改变count的数量。
+                getCartCount();
+            }
+            if (helper.needToLogin(res)) {
+                navigation("/login");
             }
         });
-    };
+    }, [navigation])
+
+
+    useEffect (()=>{
+
+        getCartProductList();
+
+    },[getCartProductList]);
+
+    const getCartCount = () => {
+        cartApi.getBasketCount().then((res) => {
+            navigation("/home/cart?total=" + res.data);
+        });
+    }
 
     // delete the current row
     const deleteCurrentRow = (item: any) => {
@@ -114,6 +131,7 @@ const Cart: React.FC = () => {
         };
         cartApi.updateCart(updateDataObj).then((res)=>{
             if(helper.successResponse(res)){
+                getCartCount();
                 setDataSource(res.data.cartProductVoList);
             }else{
                 getCartProductList();
@@ -138,7 +156,7 @@ const Cart: React.FC = () => {
         onChange: onSelectChange
     };
 
-    // 全选
+    // select all
     const onChangeAllCart = (e: CheckboxChangeEvent) => {
         if (selectedRowKeys.length === Constants.ConditionStatusEnum.ZERO) {
             if (dataSource?.length) {
@@ -171,14 +189,13 @@ const Cart: React.FC = () => {
         });
     }
 
-
-
     const formatCartTableFooter = ()=>{
         return <Fragment>
             <Checkbox onClick={toggleChecked} checked={checked} onChange={onChangeAllCart}>全部选中</Checkbox>
             <Button type="text" icon={<DeleteOutlined/>} onClick={deleteAllCarts}>全部删除</Button>
         </Fragment>;
     };
+
     return  <div className=" wrap productWrap">
                 <NavigationHeader title={Constants.NavigationTextEnum.CART} />
                 <div style={tableWrapStyle}>

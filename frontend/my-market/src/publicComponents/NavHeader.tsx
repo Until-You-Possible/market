@@ -1,19 +1,24 @@
 
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Row, Col } from "antd";
 import "../css/navHeader.css"
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import { userApi } from "../api/user";
 import { cartApi } from "../api/cart";
 import {helper} from "../util/helper";
 import { Constants } from "../model/constant";
+import qs from "query-string";
 
 const HavHeader:React.FC = () => {
 
     const [userInfo, setUserInfo] = useState<string>("");
 
-    const [cartNumber, setCartNumber] = useState<number>(0)
+    const [cartNumber, setCartNumber] = useState<number>(0);
+
+    const location  = useLocation();
+
+    let totalNumber = qs.parse(location.search).total;
 
     useEffect(() => {
 
@@ -27,13 +32,16 @@ const HavHeader:React.FC = () => {
             }
         });
 
-        // 获取购物车数量
+        getCartCount();
+
+    }, [totalNumber]);
+
+    // 获取数量
+    const getCartCount = () => {
         cartApi.getBasketCount().then((res) => {
             setCartNumber(res.data);
         });
-
-
-    }, []);
+    }
 
     // 退出
     const logOut = () => {
@@ -60,10 +68,10 @@ const HavHeader:React.FC = () => {
                     </Col>
             }
             <Col className="headerCartWrap" span={12}>
-                <div><ShoppingCartOutlined style={{marginRight: "4px"}} />
+                <div className="userInfoWrapperHeader"><ShoppingCartOutlined style={{marginRight: "4px"}} />
                     <Link to="/home/cart">购物车({cartNumber})</Link>
                 </div>
-                <div className="uiMarginLeft">
+                <div className="uiMarginLeft userInfoWrapperHeader">
                     <Link to ={
                         {
                             pathname: "/home/personalInfo?tabIndex=" + Constants.PersonInfoTabEnum.ORDER,

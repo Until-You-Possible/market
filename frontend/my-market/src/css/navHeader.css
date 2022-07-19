@@ -13,6 +13,7 @@
 
 .userInfoWrapperHeader {
     display: flex;
+    align-items: center;
 }
 .userInfoWrapperHeader a{
     color: #999999;
