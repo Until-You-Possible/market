@@ -1,14 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { render, screen } from '@testing-library/react';
 import App from "../App"
+import { createRoot } from "react-dom/client";
 
-describe('ProductHeader', () => {
+describe('App Module', () => {
 
-  it('passing test', () => {
-    expect(true).toBeTruthy();
-  })
+  test('render App container without crashing', () => {
 
-  // it('failing test', () => {
-  //   expect(false).toBeTruthy();
-  // })
-})
+    function AppWithCallbackAfterRender() {
+      useEffect(() => {
+        console.log("rendered")
+      });
+      return <App />
+    }
+    const containerRoot = document.getElementById('root') as HTMLElement;
+    const root = createRoot(containerRoot);
+
+    root.render(<AppWithCallbackAfterRender />);
+
+  });
+
+});
