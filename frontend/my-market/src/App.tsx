@@ -14,6 +14,7 @@ import Login from "./view/login";
 import FindPassword from "./view/findPassword";
 import ResetPassword from "./view/resetPassword";
 import ResultSuccess from "./view/resultSuccess";
+import Coveo from "./view/coveo";
 
 function App() {
       return (
@@ -27,6 +28,7 @@ function App() {
                       <Route path="/findPassword" element={ <FindPassword />} />
                       <Route path="/resultSuccess" element={ <ResultSuccess />} />
                       <Route path="/resetPassword" element={ <ResetPassword />} />
+                      <Route path="/coveo" element={ <Coveo />} />
                   </Routes>
               </div>
           </Router>
